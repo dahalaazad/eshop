@@ -1,10 +1,10 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-export default function ForwardButton() {
+export default function FavoriteButton() {
   return (
     <View>
-      <Text>ForwardButton</Text>
+      <Text>FavoriteButton</Text>
     </View>
   );
 }
