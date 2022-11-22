@@ -1,12 +1,10 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const index = () => {
+export default function SplashScreenFirst() {
   return (
     <View>
-      <Text>index</Text>
+      <Text>SplashScreenFirst</Text>
     </View>
   );
-};
-
-export default index;
+}

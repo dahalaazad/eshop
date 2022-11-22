@@ -1,12 +1,10 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const index = () => {
+export default function UserAccount() {
   return (
     <View>
-      <Text>index</Text>
+      <Text>UserAccount</Text>
     </View>
   );
-};
-
-export default index;
+}

@@ -1,10 +1,10 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-export default function DashCommentButton() {
+export default function ProductDetailsOverview() {
   return (
     <View>
-      <Text>DashCommentButton</Text>
+      <Text>ProductDetailsOverview</Text>
     </View>
   );
 }
