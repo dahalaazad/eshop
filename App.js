@@ -1,11 +1,13 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {Text} from 'react-native';
+import OnboardingStack from './src/routes/OnboardingStack';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Text>E-Shop</Text>
-    </SafeAreaView>
+    <NavigationContainer>
+      <OnboardingStack/>
+    </NavigationContainer>
   );
 };
 

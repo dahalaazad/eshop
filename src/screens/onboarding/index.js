@@ -1,12 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {OnboardingScreenFirst} from './onboarding-screens';
+import {OnboardingScreenSecond} from './onboarding-screens';
+import {OnboardingScreenThird} from './onboarding-screens';
+import {SplashScreenFirst} from './splash-screens';
+import {SplashScreenSecond} from './splash-screens';
 
-const index = () => {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  )
-}
-
-export default index
+export {
+  OnboardingScreenFirst,
+  OnboardingScreenSecond,
+  OnboardingScreenThird,
+  SplashScreenFirst,
+  SplashScreenSecond,
+};
