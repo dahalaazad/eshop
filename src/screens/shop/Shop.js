@@ -4,7 +4,7 @@ import React from 'react';
 export default function Shop({navigation}) {
   return (
     <View style={styles.container} >
-      <Text>Shop</Text>
+      <Text style={{color:'#000',fontSize:25}}>Shop</Text>
       <Button
         title="Go to next page"
         onPress={() => navigation.navigate('ProductDetails')}

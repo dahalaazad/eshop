@@ -4,7 +4,7 @@ import React from 'react';
 export default function Dashboard({navigation}) {
   return (
     <View style={styles.container} >
-      <Text>Dashboard</Text>
+      <Text style={{color:'#000',fontSize:25}}>Dashboard</Text>
       <Button
         title="Go to next page"
         onPress={() => navigation.navigate('ProductDetails')}

@@ -8,11 +8,11 @@ const LoginStack = () => {
   return (
     <LoginStackScreen.Navigator
       name="LoginStack"
-      // screenOptions={{headerShown: false}}
-      >
-      <LoginStackScreen.Screen name="LoginPage" component={Login} />
-      
+      screenOptions={{headerShown: false}}
+    >
       <LoginStackScreen.Screen name="SignupPage" component={Signup} />
+      
+      <LoginStackScreen.Screen name="LoginPage" component={Login} />
     </LoginStackScreen.Navigator>
   );
 };

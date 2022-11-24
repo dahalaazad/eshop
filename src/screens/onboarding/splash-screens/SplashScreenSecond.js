@@ -4,7 +4,7 @@ import React from 'react';
 export default function SplashScreenSecond({navigation}) {
   return (
     <View style={styles.container} >
-      <Text>SplashScreenSecond</Text>
+      <Text style={{color:'#000',fontSize:25}}>SplashScreenSecond</Text>
       
       <Button
         title="Go to 1st onboarding page"

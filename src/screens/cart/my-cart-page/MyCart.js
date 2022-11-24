@@ -4,7 +4,7 @@ import React from 'react';
 export default function MyCart() {
   return (
     <View style={styles.container}>
-      <Text style={{color:'#000'}} >MyCart Page</Text>
+      <Text style={{color:'#000',fontSize:25}}>MyCart Page</Text>
     </View>
   );
 }

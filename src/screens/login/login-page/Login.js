@@ -4,10 +4,10 @@ import React from 'react';
 export default function Login({navigation}) {
   return (
     <View style={styles.container}>
-      <Text style={{color: '#000'}}>LoginPage</Text>
+      <Text style={{color:'#000',fontSize:25}}>LoginPage</Text>
       <Button
-        title="Go to Signup Page"
-        onPress={() => navigation.navigate('SignupPage')}
+        title="You are Logged In"
+        onPress={() => navigation.navigate('MainStack')}
       />
     </View>
   );

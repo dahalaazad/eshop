@@ -4,7 +4,7 @@ import React from 'react';
 export default function OnboardingScreenSecond({navigation}) {
   return (
     <View style={styles.container} >
-      <Text>OnboardingScreenSecond</Text>
+      <Text style={{color:'#000',fontSize:25}}>OnboardingScreenSecond</Text>
       <Button
         title="Go to 3rd onboarding page"
         onPress={() => navigation.navigate('OnboardingScreenThird')}

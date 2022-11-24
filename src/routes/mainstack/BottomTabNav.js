@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ShoppingCart} from '@app/screens/cart';
 import {UserAccount} from '@app/screens/profile';
 import {Colors} from '@app/constants';
-import {DashboardStack, ShopStack} from '.';
+import {DashboardStack, ShopStack,ProfileStack} from '.';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,6 +24,7 @@ const BottomTabNav = () => {
         component={DashboardStack}
         options={{
           title: 'For You',
+          headerShown:false
         }}
       />
 
@@ -31,7 +32,7 @@ const BottomTabNav = () => {
 
       <Tab.Screen name="Cart" component={ShoppingCart} />
 
-      <Tab.Screen name="Account" component={UserAccount} />
+      <Tab.Screen name="Account" component={ProfileStack} options={{headerShown:false}} />
     </Tab.Navigator>
   );
 };

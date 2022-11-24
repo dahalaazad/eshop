@@ -4,7 +4,7 @@ import React from 'react';
 export default function SplashScreenFirst({navigation}) {
   return (
     <View style={styles.container}>
-      <Text>SplashScreenFirst</Text>
+      <Text style={{color:'#000',fontSize:25}}>SplashScreenFirst</Text>
       
       <Button
         title="Go to 2nd splash screen page"

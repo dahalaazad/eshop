@@ -1,14 +1,15 @@
-import { View, Text } from 'react-native';
+import {View, Text} from 'react-native';
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {UserAccount} from '@app/screens/profile';
 
-const ProfileStackScreen  =createNativeStackNavigator();
+const ProfileStackScreen = createNativeStackNavigator();
 const ProfileStack = () => {
   return (
-    <ProfileStackScreen.Navigator name='ProfileStack'>
-      <ProfileStackScreen.Screen name='AccountPage' />
+    <ProfileStackScreen.Navigator name="ProfileStack">
+      <ProfileStackScreen.Screen name="UserAccount" component={UserAccount} options={{headerShown:false}} />
     </ProfileStackScreen.Navigator>
-  )
-}
+  );
+};
 
-export default ProfileStack
+export default ProfileStack;

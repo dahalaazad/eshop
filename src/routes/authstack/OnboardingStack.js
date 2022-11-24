@@ -15,7 +15,7 @@ const OnboardingStack = () => {
   return (
     <OnboardingStackScreen.Navigator
       name="OnboardingStack"
-      screenOptions={{
+      screenOptions={{headerShown:false,
         headerTitleAlign: 'center',
       }}>
       <OnboardingStackScreen.Screen

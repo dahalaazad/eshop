@@ -1,15 +1,13 @@
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {Text} from 'react-native';
-import { AuthStack, MainStack } from '@app/routes';
-
+import {AuthStack, MainStack} from '@app/routes';
 
 const App = () => {
   return (
     <NavigationContainer>
       {/* THERE CANNOT BE TWO STACKS HERE */}
-      {/* <AuthStack/> */}
-      <MainStack/>
+      <AuthStack />
     </NavigationContainer>
   );
 };

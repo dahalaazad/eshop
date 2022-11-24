@@ -4,9 +4,9 @@ import React from 'react';
 export default function OnboardingScreenThird({navigation}) {
   return (
     <View style={styles.container} >
-      <Text>OnboardingScreenThird</Text>
+      <Text style={{color:'#000',fontSize:25}}>OnboardingScreenThird</Text>
       <Button
-        title="Go to Login Page"
+        title="Go to Signup Page"
         onPress={() => navigation.navigate('LoginStack')}
       />
     </View>

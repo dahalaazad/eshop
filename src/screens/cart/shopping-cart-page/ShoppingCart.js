@@ -4,7 +4,7 @@ import React from 'react';
 export default function ShoppingCart({navigation}) {
   return (
     <View style={styles.container}>
-      <Text>ShoppingCart</Text>
+      <Text style={{color:'#000',fontSize:25}}>ShoppingCart</Text>
       <Button
         title="Go to My Cart Page"
         onPress={() => navigation.navigate('MyCart')}

@@ -1,10 +1,17 @@
-import {View, Text} from 'react-native';
+import {View, Text, Button, StyleSheet} from 'react-native';
 import React from 'react';
 
-export default function ChangePassword() {
+export default function ChangePassword({navigation}) {
   return (
-    <View>
-      <Text>ChangePassword</Text>
+    <View style={styles.container}>
+      <Text style={{color:'#000',fontSize:25}} >ChangePassword</Text>
+      <Button
+        title="Go to next page"
+        onPress={() => navigation.navigate('EditProfile')}
+      />
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {alignItems: 'center', justifyContent: 'center', flex: 1},
+});
