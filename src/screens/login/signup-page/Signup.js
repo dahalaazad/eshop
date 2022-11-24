@@ -4,7 +4,6 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   ScrollView,
-  ScrollViewComponent,
 } from 'react-native';
 import React from 'react';
 import InputField from '../../../commons/InputField';
@@ -83,9 +82,8 @@ export const Styles = StyleSheet.create({
   },
 });
 
-export default function Signup() {
+export default function Signup({navigation}) {
   const {
-    register,
     control,
     handleSubmit,
     formState: {errors},
@@ -102,6 +100,7 @@ export default function Signup() {
 
   const signupButtonHandler = signupData => {
     console.log('Signup Pressed', signupData);
+    navigation.navigate('LoginPage');
   };
 
   return (

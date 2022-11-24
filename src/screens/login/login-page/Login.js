@@ -64,7 +64,7 @@ export const Styles = StyleSheet.create({
   },
 });
 
-export default function Login() {
+export default function Login({navigation}) {
   const {
     control,
     handleSubmit,
@@ -78,6 +78,7 @@ export default function Login() {
 
   const loginButtonHandler = loginData => {
     console.log('Login Pressed', loginData);
+    navigation.navigate('MainStack');
   };
 
   return (

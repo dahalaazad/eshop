@@ -1,12 +1,5 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {UserAccount} from './account-page';
+import {UserProfile, EditProfile} from './profile-page';
+import {ChangePassword, UserSettings} from './settings-page';
 
-const index = () => {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  )
-}
-
-export default index
+export {UserAccount, UserProfile, EditProfile, ChangePassword, UserSettings};
