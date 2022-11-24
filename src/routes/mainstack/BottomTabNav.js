@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ShoppingCart} from '@app/screens';
 import {UserAccount} from '@app/screens';
 import {Colors} from '@app/constants';
-import {DashboardStack, ShopStack,ProfileStack} from '.';
+import {DashboardStack, ShopStack, ProfileStack} from '.';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,7 +12,7 @@ const BottomTabNav = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        tabBarActiveTintColor: Colors.primaryBlue,
+        tabBarActiveTintColor: Colors.textLinkColor,
         tabBarInactiveTintColor: 'gray',
         headerTitleAlign: 'center',
         headerStyle: {
@@ -24,7 +24,7 @@ const BottomTabNav = () => {
         component={DashboardStack}
         options={{
           title: 'For You',
-          headerShown:false
+          headerShown: false,
         }}
       />
 
@@ -32,7 +32,11 @@ const BottomTabNav = () => {
 
       <Tab.Screen name="Cart" component={ShoppingCart} />
 
-      <Tab.Screen name="Account" component={ProfileStack} options={{headerShown:false}} />
+      <Tab.Screen
+        name="Account"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
     </Tab.Navigator>
   );
 };
