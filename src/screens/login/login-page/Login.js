@@ -5,10 +5,11 @@ import {StyleSheet} from 'react-native';
 import MainLogo from '../../../assets/svg/MainLogo.svg';
 import {Colors} from '../../../constants';
 import PrimaryButton from '../../../commons/PrimaryButton';
+import {useForm, Controller} from 'react-hook-form';
 
 export const Styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: Colors.loginBackgroundColor,
+    backgroundColor: Colors.whiteColor,
     flex: 1,
     paddingHorizontal: 20,
   },
@@ -52,12 +53,31 @@ export const Styles = StyleSheet.create({
     alignSelf: 'center',
     paddingTop: 15,
   },
-  loginButtonContainer: {},
+  loginButtonContainer: {
+    paddingTop: 45,
+  },
+  errorText: {
+    paddingLeft: 16,
+    fontSize: 12,
+    fontFamily: 'Poppins',
+    color: Colors.errorTextColor,
+  },
 });
 
 export default function Login() {
-  const loginButtonHandler = () => {
-    console.log('Login Pressed');
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  const loginButtonHandler = loginData => {
+    console.log('Login Pressed', loginData);
   };
 
   return (
@@ -75,25 +95,75 @@ export default function Login() {
       </View>
 
       <View style={{paddingBottom: 45, paddingTop: 40}}>
-        <View style={{paddingBottom: 25}}>
-          <InputField labelText="Email/Mobile Number" isPassword={false} />
+        <View style={{paddingBottom: 10}}>
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+              pattern: {
+                value:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              },
+            }}
+            render={({field: {onChange, onBlur, value}}) => (
+              <InputField
+                labelText="Email Address"
+                isPassword={false}
+                onBlur={onBlur}
+                onChange={onChange}
+                value={value}
+              />
+            )}
+            name="email"
+          />
+          {errors.email?.type === 'required' ? (
+            <Text style={Styles.errorText}>Enter your email</Text>
+          ) : errors.email?.type === 'pattern' ? (
+            <Text style={Styles.errorText}>Enter a valid email address</Text>
+          ) : null}
         </View>
 
-        <InputField
-          labelText="Password"
-          isPassword={true}
-          passwordIcon={true}
-        />
+        <View>
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+              minLength: 8,
+              pattern: {
+                value:
+                  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+              },
+            }}
+            render={({field: {onChange, onBlur, value}}) => (
+              <InputField
+                labelText="Password"
+                isPassword={true}
+                passwordIcon={true}
+                onBlur={onBlur}
+                onChange={onChange}
+                value={value}
+              />
+            )}
+            name="password"
+          />
+          {errors.password?.type === 'required' ? (
+            <Text style={Styles.errorText}>Enter your password</Text>
+          ) : errors.password?.type === 'pattern' ? (
+            <Text style={Styles.errorText}>Password pattern doesn't match</Text>
+          ) : errors.password?.type === 'minLength' ? (
+            <Text style={Styles.errorText}>Too short</Text>
+          ) : null}
+        </View>
 
-        <TouchableOpacity onPress={() => {}} style={{paddingTop: 18}}>
+        <TouchableOpacity onPress={() => {}}>
           <Text style={Styles.forgotPasswordLink}>Forgot password?</Text>
         </TouchableOpacity>
 
-        <View style={{paddingTop: 45}}>
+        <View style={Styles.loginButtonContainer}>
           <PrimaryButton
             buttonLabel="Login"
             buttonHeight={60}
-            onPressHandler={loginButtonHandler}
+            onPressHandler={handleSubmit(loginButtonHandler)}
           />
         </View>
       </View>

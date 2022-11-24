@@ -5,11 +5,13 @@ import {StyleSheet} from 'react-native';
 
 const Styles = StyleSheet.create({
   buttonStyles: {
-    justifyContent: 'center',
     borderRadius: 10,
     width: 'auto',
   },
   labelStyles: {fontFamily: 'Poppins', fontSize: 18, fontWeight: '500'},
+  contentStyles: {
+    height: '100%',
+  },
 });
 
 export default function PrimaryButton({
@@ -29,6 +31,7 @@ export default function PrimaryButton({
         width: buttonWidth,
       }}
       labelStyle={Styles.labelStyles}
+      contentStyle={Styles.contentStyles}
       onPress={() => {
         onPressHandler();
       }}>
