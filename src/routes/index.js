@@ -1,12 +1,4 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {AuthStack} from './authstack';
+import {MainStack} from './mainstack';
 
-const index = () => {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  )
-}
-
-export default index
+export {AuthStack, MainStack};

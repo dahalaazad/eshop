@@ -1,10 +1,3 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import ProductDetails from './ProductDetails';
 
-export default function index() {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  );
-}
+export {ProductDetails};

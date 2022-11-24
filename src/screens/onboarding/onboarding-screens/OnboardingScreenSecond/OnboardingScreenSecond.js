@@ -1,13 +1,13 @@
 import {View, Text, Button,StyleSheet} from 'react-native';
 import React from 'react';
 
-export default function Dashboard({navigation}) {
+export default function OnboardingScreenSecond({navigation}) {
   return (
     <View style={styles.container} >
-      <Text style={{color:'#000',fontSize:25}}>Dashboard</Text>
+      <Text style={{color:'#000',fontSize:25}}>OnboardingScreenSecond</Text>
       <Button
-        title="Go to next page"
-        onPress={() => navigation.navigate('ProductDetails')}
+        title="Go to 3rd onboarding page"
+        onPress={() => navigation.navigate('OnboardingScreenThird')}
       />
     </View>
   );
@@ -16,3 +16,4 @@ export default function Dashboard({navigation}) {
 const styles = StyleSheet.create({
   container: {alignItems: 'center', justifyContent: 'center', flex: 1},
 });
+

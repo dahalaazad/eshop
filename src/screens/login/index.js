@@ -1,10 +1,4 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import Login from './login-page/Login';
+import Signup from './signup-page/Signup';
 
-export default function index() {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  );
-}
+export {Login, Signup};

@@ -1,10 +1,4 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {MyCart} from './my-cart-page';
+import {ShoppingCart} from './shopping-cart-page';
 
-export default function index() {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  );
-}
+export {MyCart,ShoppingCart};

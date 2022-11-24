@@ -1,11 +1,14 @@
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {Text} from 'react-native';
+import {AuthStack, MainStack} from '@app/routes';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Text>E-Shop</Text>
-    </SafeAreaView>
+    <NavigationContainer>
+      {/* THERE CANNOT BE TWO STACKS HERE */}
+      <AuthStack />
+    </NavigationContainer>
   );
 };
 

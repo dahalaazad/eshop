@@ -1,12 +1,7 @@
-import {View, Text} from 'react-native';
-import React from 'react';
-
-const index = () => {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  );
-};
-
-export default index;
+export * from './cart';
+export * from './dashboard';
+export * from './login';
+export * from './onboarding';
+export * from './product-details';
+export * from './profile';
+export * from './shop';

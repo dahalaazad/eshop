@@ -1,10 +1,19 @@
-import {View, Text} from 'react-native';
+import {View, Text,Button,StyleSheet} from 'react-native';
 import React from 'react';
 
-export default function Signup() {
+export default function Signup({navigation}) {
   return (
-    <View>
-      <Text>Signup</Text>
+    <View style={styles.container} >
+      <Text style={{color:'#000',fontSize:25}}>Signup</Text>
+      <Button
+        title="Now Go and Log In"
+        onPress={() => navigation.navigate('LoginPage')}
+      />
     </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  container: {alignItems: 'center', justifyContent: 'center', flex: 1},
+});
