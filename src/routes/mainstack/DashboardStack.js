@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Dashboard} from '@app/screens/dashboard';
+import {Dashboard} from '@app/screens';
 
 const DashboardStackScreen = createNativeStackNavigator();
 

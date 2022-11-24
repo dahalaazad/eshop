@@ -1,8 +1,8 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Shop} from '@app/screens/shop';
-import {ProductDetails} from '@app/screens/product-details';
+import {Shop} from '@app/screens';
+import {ProductDetails} from '@app/screens';
 
 const ShopStackScreen = createNativeStackNavigator();
 

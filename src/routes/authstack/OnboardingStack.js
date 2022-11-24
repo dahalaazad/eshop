@@ -7,7 +7,7 @@ import {
   OnboardingScreenThird,
   SplashScreenFirst,
   SplashScreenSecond,
-} from '@app/screens/onboarding';
+} from '@app/screens';
 
 const OnboardingStackScreen = createNativeStackNavigator();
 

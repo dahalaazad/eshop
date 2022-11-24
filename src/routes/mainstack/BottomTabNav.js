@@ -1,8 +1,8 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {ShoppingCart} from '@app/screens/cart';
-import {UserAccount} from '@app/screens/profile';
+import {ShoppingCart} from '@app/screens';
+import {UserAccount} from '@app/screens';
 import {Colors} from '@app/constants';
 import {DashboardStack, ShopStack,ProfileStack} from '.';
 

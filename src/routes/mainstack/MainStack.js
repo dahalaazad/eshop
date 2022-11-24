@@ -1,14 +1,14 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {BottomTabNav} from '.';
-import {ProductDetails} from '@app/screens/product-details';
-import {MyCart} from '@app/screens/cart';
+import {ProductDetails} from '@app/screens';
+import {MyCart} from '@app/screens';
 import {
   ChangePassword,
   EditProfile,
   UserProfile,
   UserSettings,
-} from '@app/screens/profile';
+} from '@app/screens';
 
 const Stack = createNativeStackNavigator();
 
