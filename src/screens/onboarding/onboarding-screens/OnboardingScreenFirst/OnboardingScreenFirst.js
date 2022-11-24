@@ -1,9 +1,9 @@
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button,StyleSheet} from 'react-native';
 import React from 'react';
 
 export default function OnboardingScreenFirst({navigation}) {
   return (
-    <View>
+    <View style={styles.container} >
       <Text style={{color:'#000'}} >OnboardingScreenFirst</Text>
       <Button
         title="Go to 2nd onboarding page"
@@ -12,3 +12,8 @@ export default function OnboardingScreenFirst({navigation}) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {alignItems: 'center', justifyContent: 'center', flex: 1},
+});
+

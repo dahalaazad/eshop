@@ -1,14 +1,13 @@
 import {View, Text, Button,StyleSheet} from 'react-native';
 import React from 'react';
 
-export default function SplashScreenFirst({navigation}) {
+export default function OnboardingScreenThird({navigation}) {
   return (
-    <View style={styles.container}>
-      <Text>SplashScreenFirst</Text>
-      
+    <View style={styles.container} >
+      <Text>OnboardingScreenThird</Text>
       <Button
-        title="Go to 2nd splash screen page"
-        onPress={() => navigation.navigate('SplashScreenSecond')}
+        title="Go to Login Page"
+        onPress={() => navigation.navigate('LoginStack')}
       />
     </View>
   );
@@ -17,3 +16,4 @@ export default function SplashScreenFirst({navigation}) {
 const styles = StyleSheet.create({
   container: {alignItems: 'center', justifyContent: 'center', flex: 1},
 });
+

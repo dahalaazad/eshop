@@ -1,9 +1,9 @@
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button,StyleSheet} from 'react-native';
 import React from 'react';
 
 export default function OnboardingScreenSecond({navigation}) {
   return (
-    <View>
+    <View style={styles.container} >
       <Text>OnboardingScreenSecond</Text>
       <Button
         title="Go to 3rd onboarding page"
@@ -12,3 +12,8 @@ export default function OnboardingScreenSecond({navigation}) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {alignItems: 'center', justifyContent: 'center', flex: 1},
+});
+
