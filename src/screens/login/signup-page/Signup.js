@@ -172,7 +172,10 @@ export default function Signup({navigation}) {
       <View style={Styles.footerContainer}>
         <View style={{flexDirection: 'row'}}>
           <Text style={Styles.footerText}>Already have an account? </Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('LoginPage');
+            }}>
             <Text style={Styles.footerLinkText}>Signin</Text>
           </TouchableOpacity>
         </View>
