@@ -1,7 +1,7 @@
 import React from 'react';
-import {Button} from 'react-native-paper';
-import {Colors} from '../constants';
 import {StyleSheet} from 'react-native';
+import {Button} from 'react-native-paper';
+import {Colors} from '@app/constants';
 
 const Styles = StyleSheet.create({
   buttonStyles: {

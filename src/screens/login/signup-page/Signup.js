@@ -1,86 +1,12 @@
-import {
-  View,
-  Text,
-  KeyboardAvoidingView,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
-import React from 'react';
-import InputField from '../../../commons/InputField';
-import {StyleSheet} from 'react-native';
-import MainLogo from '../../../assets/svg/MainLogo.svg';
-import {Colors} from '../../../constants';
-import PrimaryButton from '../../../commons/PrimaryButton';
+import {View, Text, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
 import {useForm, Controller} from 'react-hook-form';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Checkbox} from 'react-native-paper';
-import {SafeAreaView} from 'react-native-safe-area-context';
-
-export const Styles = StyleSheet.create({
-  mainContainer: {
-    backgroundColor: Colors.whiteColor,
-    flex: 1,
-    paddingHorizontal: 20,
-  },
-  inputFieldContainer: {
-    width: '100%',
-    paddingBottom: 5,
-  },
-  headingText: {
-    color: Colors.blackColor,
-    fontFamily: 'Lexend',
-    fontWeight: '700',
-    fontSize: 26,
-  },
-  subtitleText: {
-    color: Colors.subtitleTextColor,
-    fontFamily: 'Poppins',
-    fontWeight: '400',
-    paddingTop: 6,
-    fontSize: 16,
-  },
-  footerText: {
-    color: Colors.footerTextColor,
-    fontFamily: 'Poppins',
-    fontSize: 14,
-  },
-  footerLinkText: {
-    color: Colors.textLinkColor,
-    fontFamily: 'Poppins',
-    fontSize: 14,
-  },
-  footerContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    paddingBottom: 12,
-  },
-  forgotPasswordLink: {
-    fontFamily: 'Poppins',
-    color: Colors.textLinkColor,
-    fontSize: 16,
-    alignSelf: 'center',
-    paddingTop: 15,
-  },
-  signupButtonContainer: {
-    paddingTop: 35,
-  },
-  errorText: {
-    paddingLeft: 16,
-    fontSize: 12,
-    fontFamily: 'Poppins',
-    color: Colors.errorTextColor,
-  },
-  privacyPolicyContainer: {
-    paddingTop: 8,
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-  },
-  policyLinkText: {
-    color: Colors.textLinkColor,
-    fontFamily: 'Poppins',
-    fontSize: 14,
-  },
-});
+import {Colors} from '@app/constants';
+import {PrimaryButton, InputField} from '@app/commons';
+import {Styles} from '@app/screens/login/LoginStyles';
+import MainLogo from '@app/assets/svg/MainLogo.svg';
 
 export default function Signup({navigation}) {
   const {
@@ -96,16 +22,17 @@ export default function Signup({navigation}) {
     },
   });
 
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = useState(false);
 
   const signupButtonHandler = signupData => {
-    console.log('Signup Pressed', signupData);
     navigation.navigate('LoginPage');
   };
 
   return (
-    <SafeAreaView style={Styles.mainContainer}>
-      <ScrollView>
+    <View style={Styles.mainContainer}>
+      <KeyboardAwareScrollView
+        enableOnAndroid={false}
+        keyboardShouldPersistTaps="handled">
         <View style={{alignItems: 'center'}}>
           <View style={{paddingTop: 45, paddingBottom: 32}}>
             <MainLogo />
@@ -114,8 +41,7 @@ export default function Signup({navigation}) {
           <Text style={Styles.headingText}>Create a New Account</Text>
 
           <Text style={Styles.subtitleText}>
-            Because when the sun shine we shine together told you I'll be here
-            forever
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           </Text>
         </View>
 
@@ -208,47 +134,40 @@ export default function Signup({navigation}) {
           </View>
         </View>
 
-        <KeyboardAvoidingView>
-          <View style={Styles.privacyPolicyContainer}>
-            <Checkbox
-              status={checked ? 'checked' : 'unchecked'}
-              onPress={() => {
-                setChecked(!checked);
-              }}
-              uncheckedColor={Colors.checkboxColor}
-              color={Colors.textLinkColor}
-            />
-            <View>
-              <Text style={{...Styles.subtitleText, fontSize: 14}}>
-                I agree with the{' '}
-                <Text
-                  style={Styles.policyLinkText}
-                  onPress={() => {
-                    console.log('Terms of Service');
-                  }}>
-                  Terms of Service
-                </Text>{' '}
-                and{' '}
-                <Text
-                  style={Styles.policyLinkText}
-                  accessible={true}
-                  onPress={() => {
-                    console.log('Privacy Policy');
-                  }}>
-                  Privacy Policy.
-                </Text>
+        <View style={Styles.privacyPolicyContainer}>
+          <Checkbox
+            status={checked ? 'checked' : 'unchecked'}
+            onPress={() => {
+              setChecked(!checked);
+            }}
+            uncheckedColor={Colors.checkboxColor}
+            color={Colors.textLinkColor}
+          />
+          <View>
+            <Text style={{...Styles.subtitleText, fontSize: 14}}>
+              I agree with the{' '}
+              <Text style={Styles.policyLinkText} onPress={() => {}}>
+                Terms of Service
+              </Text>{' '}
+              and{' '}
+              <Text
+                style={Styles.policyLinkText}
+                accessible={true}
+                onPress={() => {}}>
+                Privacy Policy.
               </Text>
-            </View>
+            </Text>
           </View>
-          <View style={Styles.signupButtonContainer}>
-            <PrimaryButton
-              buttonLabel="Signup"
-              buttonHeight={60}
-              onPressHandler={handleSubmit(signupButtonHandler)}
-            />
-          </View>
-        </KeyboardAvoidingView>
-      </ScrollView>
+        </View>
+
+        <View style={Styles.signupButtonContainer}>
+          <PrimaryButton
+            buttonLabel="Signup"
+            buttonHeight={60}
+            onPressHandler={handleSubmit(signupButtonHandler)}
+          />
+        </View>
+      </KeyboardAwareScrollView>
 
       <View style={Styles.footerContainer}>
         <View style={{flexDirection: 'row'}}>
@@ -258,6 +177,6 @@ export default function Signup({navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }

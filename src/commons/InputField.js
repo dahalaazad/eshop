@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {TextInput} from 'react-native-paper';
-import {Colors} from '../constants/';
+import {Colors} from '@app/constants';
 
 export default function InputField({
   labelText,
@@ -23,6 +23,7 @@ export default function InputField({
       onBlur={onBlur}
       onChangeText={onChange}
       value={value}
+      selectionColor={Colors.subtitleTextColor}
       right={
         passwordIcon && (
           <TextInput.Icon
