@@ -16,7 +16,12 @@ const BottomTabNav = () => {
         tabBarInactiveTintColor: 'gray',
         headerTitleAlign: 'center',
         headerStyle: {
-          backgroundColor: '#d2d4dc',
+          backgroundColor: Colors.mainBackgroundColor,
+        },
+        headerTitleStyle: {
+          fontSize: 24,
+          fontWeight: '500',
+          fontFamily: 'Poppins',
         },
       })}>
       <Tab.Screen
@@ -28,9 +33,17 @@ const BottomTabNav = () => {
         }}
       />
 
-      <Tab.Screen name="Shop" component={ShopStack} />
+      <Tab.Screen
+        name="Shop"
+        component={ShopStack}
+        options={{headerTitle: 'All Product'}}
+      />
 
-      <Tab.Screen name="Cart" component={ShoppingCart} />
+      <Tab.Screen
+        name="Cart"
+        component={ShoppingCart}
+        options={{headerTitle: 'Shopping Cart'}}
+      />
 
       <Tab.Screen
         name="Account"

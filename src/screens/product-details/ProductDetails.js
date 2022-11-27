@@ -1,10 +1,10 @@
-import {View, Text, StyleSheet,Button} from 'react-native';
+import {View, Text, StyleSheet, Button} from 'react-native';
 import React from 'react';
 
 export default function ProductDetails() {
   return (
     <View style={styles.container}>
-      <Text style={{color:'#000',fontSize:25}}>ProductDetails</Text>
+      <Text style={{color: '#000', fontSize: 25}}>ProductDetails</Text>
     </View>
   );
 }
