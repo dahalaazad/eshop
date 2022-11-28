@@ -1,7 +1,7 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Colors} from '@app/constants';
-import FE from 'react-native-vector-icons/Feather';
+import FilterButtonIcon from '@app/assets/svg/FilterButtonIcon.svg';
 
 const Styles = StyleSheet.create({
   buttonStyles: {
@@ -9,6 +9,7 @@ const Styles = StyleSheet.create({
     padding: 15,
     marginTop: 6,
     borderRadius: 10,
+    justifyContent: 'center',
   },
 });
 
@@ -19,7 +20,7 @@ export default function FilterButton() {
       onPress={() => {
         console.log('first');
       }}>
-      <FE name="sliders" size={25} color={Colors.whiteColor} />
+      <FilterButtonIcon />
     </TouchableOpacity>
   );
 }
