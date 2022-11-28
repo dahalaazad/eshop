@@ -1,18 +1,19 @@
-import {View, Text, Button,StyleSheet} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import React from 'react';
+import {FilterButton, SearchBar} from '@app/commons';
+import {Colors} from '@app/constants';
+import {Styles} from '@app/screens/dashboard/DashboardStyles';
 
 export default function Dashboard({navigation}) {
   return (
-    <View style={styles.container} >
-      <Text style={{color:'#000',fontSize:25}}>Dashboard</Text>
-      <Button
-        title="Go to next page"
-        onPress={() => navigation.navigate('ProductDetails')}
-      />
+    <View style={Styles.mainContainer}>
+      <View style={Styles.topBarContainer}>
+        <SearchBar
+          labelText={'Search for products'}
+          outlineColor={Colors.searchBarColor}
+        />
+        <FilterButton />
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {alignItems: 'center', justifyContent: 'center', flex: 1},
-});
