@@ -47,7 +47,7 @@ export default function Signup({navigation}) {
         </View>
 
         <View style={{paddingTop: 20}}>
-          <View style={{paddingBottom: 10}}>
+          <View style={{paddingBottom: 5}}>
             <Controller
               control={control}
               rules={{
@@ -75,7 +75,7 @@ export default function Signup({navigation}) {
             ) : null}
           </View>
 
-          <View style={{paddingBottom: 10}}>
+          <View style={{paddingBottom: 5}}>
             <Controller
               control={control}
               rules={{

@@ -43,8 +43,8 @@ export const Styles = StyleSheet.create({
   signupFooterContainer: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: 30,
-    paddingBottom: 15,
+    paddingTop: 40,
+    paddingBottom: 50,
   },
   forgotPasswordLink: {
     fontFamily: 'Poppins',

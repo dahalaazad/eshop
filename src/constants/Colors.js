@@ -9,4 +9,5 @@ export const Colors = {
   textLinkColor: '#212E7E',
   inputFieldIconColor: '#868686',
   checkboxColor: '#888888',
+  searchBarColor: '#F2F2F2',
 };

@@ -37,6 +37,7 @@ export default function InputField({
           />
         )
       }
+      style={{backgroundColor: Colors.whiteColor}}
     />
   );
 }
