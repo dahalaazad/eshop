@@ -11,4 +11,7 @@ export const Styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  adContainer: {
+    paddingTop: 15,
+  },
 });

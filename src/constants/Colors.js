@@ -10,4 +10,5 @@ export const Colors = {
   inputFieldIconColor: '#868686',
   checkboxColor: '#888888',
   searchBarColor: '#F2F2F2',
+  dashboardAdTitleColor: '#E1C589',
 };
