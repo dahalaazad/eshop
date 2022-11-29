@@ -8,7 +8,7 @@ export default function FavoriteButton() {
   return (
     <View>
       <TouchableOpacity
-        style={[styles.backButton,styles.shadowProp]}
+        style={flattenStyle}
         onPress={() => {
           iconName==='hearto'? setIconName('heart'): setIconName('hearto')
         }}>
@@ -32,3 +32,8 @@ const styles = StyleSheet.create({
     elevation:10
   },
 });
+
+const flattenStyle = StyleSheet.flatten([
+  styles.backButton,
+  styles.shadowProp
+]);

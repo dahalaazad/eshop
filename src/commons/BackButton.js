@@ -7,7 +7,7 @@ export default function BackButton({onBackPress}) {
   return (
     <View>
       <TouchableOpacity
-        style={[styles.backButton, styles.shadowProp]}
+        style={flattenStyle}
         onPress={onBackPress}>
         <AD name="left" size={25} color={Colors.backButtonBlueColor} />
       </TouchableOpacity>
@@ -29,3 +29,8 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
 });
+
+const flattenStyle = StyleSheet.flatten([
+  styles.backButton,
+  styles.shadowProp
+]);
