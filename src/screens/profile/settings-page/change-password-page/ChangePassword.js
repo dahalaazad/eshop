@@ -1,10 +1,18 @@
 import {View, Text, Button, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
+import {BackButton} from '@app/commons';
 
 export default function ChangePassword({navigation}) {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: (...props) => (
+        <BackButton {...props} onBackPress={() => navigation.goBack()} />
+      ),
+    });
+  }, [navigation]);
   return (
     <View style={styles.container}>
-      <Text style={{color:'#000',fontSize:25}} >ChangePassword</Text>
+      <Text style={{color: '#000', fontSize: 25}}>ChangePassword</Text>
       <Button
         title="Go to next page"
         onPress={() => navigation.navigate('EditProfile')}

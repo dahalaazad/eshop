@@ -11,9 +11,7 @@ import {
   UserSettings,
 } from '@app/screens';
 import {Button, Text, View, Image} from 'react-native';
-import {BackButton, FavoriteButton} from '@app/commons';
-import {TouchableOpacity} from 'react-native';
-import AD from 'react-native-vector-icons/AntDesign';
+import {FavoriteButton} from '@app/commons';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +23,7 @@ const MainStack = ({navigation}) => {
         headerStyle: {
           backgroundColor: Colors.mainBackgroundColor,
         },
+        headerTitleAlign: 'center',
         headerTitleStyle: {
           fontSize: 24,
           fontWeight: '500',
@@ -42,9 +41,6 @@ const MainStack = ({navigation}) => {
         component={ProductDetails}
         options={{
           headerTitle: '',
-          headerBackTitle: 'Go Back',
-          headerTitleStyle: {color: '#000'},
-          headerLeft: () => <BackButton />,
           headerRight: () => <FavoriteButton />,
         }}
       />
@@ -54,8 +50,6 @@ const MainStack = ({navigation}) => {
         component={MyCart}
         options={{
           headerTitle: 'My Cart',
-          headerTitleAlign: 'center',
-          headerLeft: () => <BackButton />,
         }}
       />
 
@@ -64,8 +58,6 @@ const MainStack = ({navigation}) => {
         component={UserProfile}
         options={{
           headerTitle: 'Profile',
-          headerTitleAlign: 'center',
-          headerLeft: () => <BackButton />,
         }}
       />
 
@@ -74,8 +66,6 @@ const MainStack = ({navigation}) => {
         component={UserSettings}
         options={{
           headerTitle: 'Settings',
-          headerTitleAlign: 'center',
-          headerLeft: () => <BackButton />,
         }}
       />
 
@@ -84,13 +74,11 @@ const MainStack = ({navigation}) => {
         component={ChangePassword}
         options={{
           headerTitle: 'Change Password',
-          headerTitleAlign: 'center',
           headerTitleStyle: {
             fontFamily: 'Sofia Pro',
             fontSize: 20,
             fontWeight: '500',
           },
-          headerLeft: () => <BackButton />,
         }}
       />
 
@@ -99,8 +87,6 @@ const MainStack = ({navigation}) => {
         component={EditProfile}
         options={{
           headerTitle: 'Edit Profile',
-          headerTitleAlign: 'center',
-          headerLeft: () => <BackButton />,
         }}
       />
     </Stack.Navigator>
