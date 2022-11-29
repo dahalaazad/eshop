@@ -6,6 +6,7 @@ import SearchIcon from '@app/assets/svg/SearchIcon.svg';
 export default function SearchBar({labelText, onBlur, onChange, outlineColor}) {
   return (
     <TextInput
+      theme={{roundness: 12}}
       mode="outlined"
       style={{
         paddingLeft: 8,

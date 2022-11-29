@@ -17,8 +17,9 @@ export default function FilterButton() {
   return (
     <TouchableOpacity
       style={Styles.buttonStyles}
+      activeOpacity={0.8}
       onPress={() => {
-        console.log('first');
+        console.log('Filter Button');
       }}>
       <FilterButtonIcon />
     </TouchableOpacity>
