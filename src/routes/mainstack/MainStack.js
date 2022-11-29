@@ -21,7 +21,7 @@ const MainStack = ({navigation}) => {
       name="MainStack"
       screenOptions={{
         headerStyle: {
-          backgroundColor: Colors.mainBackgroundColor,
+          backgroundColor: Colors.loginBackgroundColor,
         },
         headerTitleAlign: 'center',
         headerTitleStyle: {
@@ -29,6 +29,7 @@ const MainStack = ({navigation}) => {
           fontWeight: '500',
           fontFamily: 'Poppins',
         },
+        headerTransparent:true,
       }}>
       <Stack.Screen
         name="BottomTabNav"
