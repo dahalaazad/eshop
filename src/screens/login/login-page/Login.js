@@ -121,7 +121,7 @@ export default function Login({navigation}) {
           <Text style={Styles.footerText}>Don't have an account? </Text>
           <TouchableOpacity
             onPress={() => {
-              // navigation.navigate('SignupPage');
+              navigation.navigate('SignupPage');
             }}>
             <Text style={Styles.footerLinkText}>Join us</Text>
           </TouchableOpacity>

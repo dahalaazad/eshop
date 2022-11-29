@@ -8,6 +8,8 @@ const App = () => {
     <NavigationContainer>
       {/* THERE CANNOT BE TWO STACKS HERE */}
       <AuthStack />
+      {/* To disable Login Module for testing during development, uncomment the below line */}
+      {/* <MainStack/> */}
     </NavigationContainer>
   );
 };
