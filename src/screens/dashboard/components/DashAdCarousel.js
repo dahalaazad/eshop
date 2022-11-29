@@ -1,8 +1,7 @@
 import React from 'react';
-import {View, Text, ImageBackground} from 'react-native';
-import DashAdCarouselButton from '@app/screens/dashboard/components/DashboardAdCarouselButton';
-import DashboardAdContainerImage from '@app/assets/svg/DashboardAdContainerImage.svg';
-import {Styles} from '@app/screens/dashboard/components/DashboardAdCarouselStyles';
+import {View, Text} from 'react-native';
+import DashAdCarouselButton from '@app/screens/dashboard/components/DashAdCarouselButton';
+import {Styles} from '@app/screens/dashboard/components/DashAdCarouselStyles';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default function DashAdCarousel({adTitle, adSubTitle, adImage}) {
@@ -28,6 +27,9 @@ export default function DashAdCarousel({adTitle, adSubTitle, adImage}) {
               buttonLabel="Buy Now"
               buttonHeight={50}
               buttonWidth={120}
+              onPressHandler={() => {
+                console.log('Buy Now Button');
+              }}
             />
           </View>
         </View>
