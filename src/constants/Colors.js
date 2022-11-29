@@ -7,7 +7,9 @@ export const Colors = {
   errorTextColor: '#EE1D0D',
   footerTextColor: '#635555',
   textLinkColor: '#212E7E',
+  iconBlueColor:'#212E7E',
   inputFieldIconColor: '#868686',
   checkboxColor: '#888888',
-  backButtonBlue: '#41416E',
+  backButtonBlueColor: '#41416E',
+  inactiveIconGrayColor:'#818181'
 };

@@ -9,7 +9,7 @@ export default function BackButton({onBackPress}) {
       <TouchableOpacity
         style={[styles.backButton, styles.shadowProp]}
         onPress={onBackPress}>
-        <AD name="left" size={25} color={Colors.backButtonBlue} />
+        <AD name="left" size={25} color={Colors.backButtonBlueColor} />
       </TouchableOpacity>
     </View>
   );

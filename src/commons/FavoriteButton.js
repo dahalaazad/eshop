@@ -12,7 +12,7 @@ export default function FavoriteButton() {
         onPress={() => {
           iconName==='hearto'? setIconName('heart'): setIconName('hearto')
         }}>
-        <AD name={iconName} size={25} color={Colors.backButtonBlue}/>
+        <AD name={iconName} size={25} color={Colors.backButtonBlueColor}/>
       </TouchableOpacity>
     </View>
   );
