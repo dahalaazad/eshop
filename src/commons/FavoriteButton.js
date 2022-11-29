@@ -8,11 +8,11 @@ export default function FavoriteButton() {
   return (
     <View>
       <TouchableOpacity
-        style={styles.backButton}
+        style={[styles.backButton,styles.shadowProp]}
         onPress={() => {
           iconName==='hearto'? setIconName('heart'): setIconName('hearto')
         }}>
-        <AD name={iconName} size={25} color='red'/>
+        <AD name={iconName} size={25} color={Colors.backButtonBlue}/>
       </TouchableOpacity>
     </View>
   );
@@ -23,5 +23,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.whiteColor,
     borderRadius: 8,
     padding: 12,
+  },
+  shadowProp: {
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height:13},
+    shadowOpacity:0.8,
+    shadowRadius: 8,
+    elevation:10
   },
 });
