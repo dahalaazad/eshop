@@ -3,12 +3,12 @@ import React from 'react';
 import AD from 'react-native-vector-icons/AntDesign';
 import {Colors} from '@app/constants';
 
-export default function BackButton({navigation}) {
+export default function BackButton({onBackPress}) {
   return (
     <View>
       <TouchableOpacity
-        style={[styles.backButton,styles.shadowProp]}
-        onPress={() => alert('Back Button')}>
+        style={[styles.backButton, styles.shadowProp]}
+        onPress={onBackPress}>
         <AD name="left" size={25} color={Colors.backButtonBlue} />
       </TouchableOpacity>
     </View>
@@ -23,9 +23,9 @@ const styles = StyleSheet.create({
   },
   shadowProp: {
     shadowColor: '#000',
-    shadowOffset: {width: -2, height: 8},
-    shadowOpacity:0.12,
-    shadowRadius: 3,
+    shadowOffset: {width: 0, height: 13},
+    shadowOpacity: 0.8,
+    shadowRadius: 8,
+    elevation: 10,
   },
-  
 });
