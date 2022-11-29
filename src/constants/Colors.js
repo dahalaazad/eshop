@@ -8,7 +8,11 @@ export const Colors = {
   footerTextColor: '#635555',
   textLinkColor: '#212E7E',
   inputFieldIconColor: '#868686',
+  productCardSubtitleColor: '#828282',
+  productCardPriceColor: '#4E61D6',
   checkboxColor: '#888888',
   searchBarColor: '#F2F2F2',
   dashboardAdTitleColor: '#E1C589',
+  dashboardProductCategoryColor: '#F1F1F1',
+  dashboardProductCategoryActiveColor: '#C3C8E3',
 };
