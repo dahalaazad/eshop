@@ -93,6 +93,11 @@ const productCardData = [
 export default function Dashboard({navigation}) {
   const progressValue = useSharedValue(0);
 
+  const onProductCardPress = itemId => {
+    console.log(itemId);
+    navigation.navigate('ProductDetails');
+  };
+
   const productCategoryRender = ({item}) => (
     <DashProductCategory
       categoryName={item.categoryName}
@@ -193,10 +198,12 @@ export default function Dashboard({navigation}) {
           {productCardData.map(item => (
             <ProductCard
               key={item.id}
+              productId={item.id}
               productCardImage={item.productCardImage}
               productCardTitle={item.productCardTitle}
               productCardSubTitle={item.productCardSubTitle}
               productCardPrice={item.productCardPrice}
+              onPressHandler={onProductCardPress}
             />
           ))}
         </View>

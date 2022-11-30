@@ -1,17 +1,22 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Colors} from '@app/constants';
-import EngineFilterImage from '@app/assets/svg/EngineFilter.svg';
-import BrakePadImage from '@app/assets/svg/BrakePad.svg';
 
 export default function ProductCard({
+  productId,
   productCardImage,
   productCardTitle,
   productCardSubTitle,
   productCardPrice,
+  onPressHandler,
 }) {
   return (
-    <TouchableOpacity style={Styles.mainContainer} activeOpacity={0.6}>
+    <TouchableOpacity
+      style={Styles.mainContainer}
+      activeOpacity={0.6}
+      onPress={() => {
+        onPressHandler(productId);
+      }}>
       <View style={Styles.imageContainer}>{productCardImage}</View>
       <View style={Styles.textContainer}>
         <Text style={Styles.titleText}>{productCardTitle}</Text>
