@@ -65,28 +65,28 @@ const productCardData = [
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
-    productCardPrice: 'Rs 1,999',
+    productCardPrice: 1999,
   },
   {
     id: 2,
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
-    productCardPrice: 'Rs 1,999',
+    productCardPrice: 1999,
   },
   {
     id: 3,
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
-    productCardPrice: 'Rs 1,999',
+    productCardPrice: 1999,
   },
   {
     id: 4,
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
-    productCardPrice: 'Rs 1,999',
+    productCardPrice: 1999,
   },
 ];
 
@@ -94,7 +94,6 @@ export default function Dashboard({navigation}) {
   const progressValue = useSharedValue(0);
 
   const onProductCardPress = itemId => {
-    console.log(itemId);
     navigation.navigate('ProductDetails');
   };
 
@@ -131,9 +130,7 @@ export default function Dashboard({navigation}) {
             onProgressChange={(_, absoluteProgress) =>
               (progressValue.value = absoluteProgress)
             }
-            onSnapToItem={index => {
-              console.log(index);
-            }}
+            onSnapToItem={index => {}}
             pagingEnabled={true}
             renderItem={({item}, index) => (
               <View>

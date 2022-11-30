@@ -49,13 +49,13 @@ export default function Login({navigation}) {
           <View style={{paddingBottom: 10}}>
             <Controller
               control={control}
-              // rules={{
-              //   required: true,
-              //   pattern: {
-              //     value:
-              //       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              //   },
-              // }}
+              rules={{
+                required: true,
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                },
+              }}
               render={({field: {onChange, onBlur, value}}) => (
                 <InputField
                   labelText="Email Address"
@@ -77,14 +77,14 @@ export default function Login({navigation}) {
           <View>
             <Controller
               control={control}
-              // rules={{
-              //   required: true,
-              //   minLength: 8,
-              //   pattern: {
-              //     value:
-              //       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-              //   },
-              // }}
+              rules={{
+                required: true,
+                minLength: 8,
+                pattern: {
+                  value:
+                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+                },
+              }}
               render={({field: {onChange, onBlur, value}}) => (
                 <InputField
                   labelText="Password"

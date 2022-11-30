@@ -21,7 +21,7 @@ export default function ProductCard({
       <View style={Styles.textContainer}>
         <Text style={Styles.titleText}>{productCardTitle}</Text>
         <Text style={Styles.subTitleText}>{productCardSubTitle}</Text>
-        <Text style={Styles.priceText}>{productCardPrice}</Text>
+        <Text style={Styles.priceText}>{`Rs. ${productCardPrice}`}</Text>
       </View>
     </TouchableOpacity>
   );

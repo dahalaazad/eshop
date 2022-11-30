@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import React from 'react';
 import Animated, {
   Extrapolate,
@@ -6,12 +6,20 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated';
 
-export default function DashAdPagination({
-  index,
-  backgroundColor,
-  length,
-  animValue,
-}) {
+const Styles = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: 'white',
+    borderRadius: 50,
+    overflow: 'hidden',
+  },
+  animatedContainer: {
+    borderRadius: 50,
+    backgroundColor: 'white',
+    flex: 1,
+  },
+});
+
+export default function DashAdPagination({index, length, animValue}) {
   const width = 10;
 
   const animStyle = useAnimatedStyle(() => {
@@ -38,24 +46,8 @@ export default function DashAdPagination({
   }, [animValue, index, length]);
 
   return (
-    <View
-      style={{
-        backgroundColor: 'white',
-        width,
-        height: width,
-        borderRadius: 50,
-        overflow: 'hidden',
-      }}>
-      <Animated.View
-        style={[
-          {
-            borderRadius: 50,
-            backgroundColor,
-            flex: 1,
-          },
-          animStyle,
-        ]}
-      />
+    <View style={Styles.mainContainer}>
+      <Animated.View style={[Styles.animatedContainer, animStyle]} />
     </View>
   );
 }
