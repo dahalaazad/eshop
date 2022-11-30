@@ -10,7 +10,7 @@ const App = () => {
     <NavigationContainer>
       <GestureHandlerRootView style={{flex: 1}}>
         {/* THERE CANNOT BE TWO STACKS HERE */}
-        <MainStack />
+        <AuthStack />
         <StatusBar backgroundColor={Colors.loginBackgroundColor} />
       </GestureHandlerRootView>
     </NavigationContainer>
