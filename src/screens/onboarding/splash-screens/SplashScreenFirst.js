@@ -1,7 +1,7 @@
 import {View, Text, Button, StyleSheet, Animated} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors} from '@app/constants';
-import {MainLogo }from '@app/assets/svg';
+import {MainLogo} from '@app/assets/svg';
 
 export default function SplashScreenFirst({navigation}) {
   const [bottomValue, setBottomValue] = useState(new Animated.Value(100));
