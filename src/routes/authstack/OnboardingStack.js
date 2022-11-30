@@ -6,7 +6,6 @@ import {
   OnboardingScreenSecond,
   OnboardingScreenThird,
   SplashScreenFirst,
-  SplashScreenSecond,
 } from '@app/screens';
 
 const OnboardingStackScreen = createNativeStackNavigator();
@@ -25,13 +24,7 @@ const OnboardingStack = () => {
           title: 'Splash One',
         }}
       />
-      <OnboardingStackScreen.Screen
-        name="SplashScreenSecond"
-        component={SplashScreenSecond}
-        options={{
-          title: 'Splash Two',
-        }}
-      />
+      
       <OnboardingStackScreen.Screen
         name="OnboardingScreenFirst"
         component={OnboardingScreenFirst}
