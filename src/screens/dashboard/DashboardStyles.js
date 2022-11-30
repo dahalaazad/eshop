@@ -23,10 +23,11 @@ export const Styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   buttonTabContainer: {
-    height: 60,
     marginTop: 25,
-    backgroundColor: 'white',
+    padding: 5,
+    backgroundColor: Colors.dashboardProductCategoryColor,
     borderRadius: 13,
+    justifyContent: 'center',
   },
   productCardContainer: {
     height: '100%',
