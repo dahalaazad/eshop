@@ -3,7 +3,7 @@ import {Colors} from '@app/constants';
 
 export const Styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: Colors.whiteColor,
+    backgroundColor: Colors.loginBackgroundColor,
     flex: 1,
     paddingHorizontal: 20,
   },
@@ -39,6 +39,12 @@ export const Styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
     marginBottom: 30,
+  },
+  signupFooterContainer: {
+    flex: 1,
+    alignItems: 'center',
+    paddingTop: 40,
+    paddingBottom: 50,
   },
   forgotPasswordLink: {
     fontFamily: 'Poppins',

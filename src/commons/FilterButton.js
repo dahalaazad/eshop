@@ -1,10 +1,27 @@
-import {View, Text} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {Colors} from '@app/constants';
+import FilterButtonIcon from '@app/assets/svg/FilterButtonIcon.svg';
+
+const Styles = StyleSheet.create({
+  buttonStyles: {
+    backgroundColor: Colors.textLinkColor,
+    padding: 15,
+    marginTop: 6,
+    borderRadius: 10,
+    justifyContent: 'center',
+  },
+});
 
 export default function FilterButton() {
   return (
-    <View>
-      <Text>FilterButton</Text>
-    </View>
+    <TouchableOpacity
+      style={Styles.buttonStyles}
+      activeOpacity={0.8}
+      onPress={() => {
+        console.log('Filter Button');
+      }}>
+      <FilterButtonIcon />
+    </TouchableOpacity>
   );
 }

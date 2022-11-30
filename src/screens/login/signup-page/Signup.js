@@ -29,10 +29,11 @@ export default function Signup({navigation}) {
   };
 
   return (
-    <View style={Styles.mainContainer}>
-      <KeyboardAwareScrollView
-        enableOnAndroid={false}
-        keyboardShouldPersistTaps="handled">
+    <KeyboardAwareScrollView
+      style={Styles.mainContainer}
+      enableOnAndroid={false}
+      keyboardShouldPersistTaps="handled">
+      <View>
         <View style={{alignItems: 'center'}}>
           <View style={{paddingTop: 45, paddingBottom: 32}}>
             <MainLogo />
@@ -46,7 +47,7 @@ export default function Signup({navigation}) {
         </View>
 
         <View style={{paddingTop: 20}}>
-          <View style={{paddingBottom: 10}}>
+          <View style={{paddingBottom: 5}}>
             <Controller
               control={control}
               rules={{
@@ -74,7 +75,7 @@ export default function Signup({navigation}) {
             ) : null}
           </View>
 
-          <View style={{paddingBottom: 10}}>
+          <View style={{paddingBottom: 5}}>
             <Controller
               control={control}
               rules={{
@@ -167,9 +168,9 @@ export default function Signup({navigation}) {
             onPressHandler={handleSubmit(signupButtonHandler)}
           />
         </View>
-      </KeyboardAwareScrollView>
+      </View>
 
-      <View style={Styles.footerContainer}>
+      <View style={Styles.signupFooterContainer}>
         <View style={{flexDirection: 'row'}}>
           <Text style={Styles.footerText}>Already have an account? </Text>
           <TouchableOpacity
@@ -180,6 +181,6 @@ export default function Signup({navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </KeyboardAwareScrollView>
   );
 }
