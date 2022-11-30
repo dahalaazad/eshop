@@ -1,19 +1,45 @@
-import {View, Text, Button,StyleSheet} from 'react-native';
-import React from 'react';
+import {View, Text, Button, StyleSheet, Animated} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Colors} from '@app/constants';
+import MainLogo from '@app/assets/svg/MainLogo.svg';
 
 export default function SplashScreenFirst({navigation}) {
+  const [bottomValue, setBottomValue] = useState(new Animated.Value(100));
+
+  const animatedStyles = {
+    transform: [{translateY: bottomValue}],
+  };
+
+  const moveLogo = () => {
+    Animated.timing(bottomValue, {
+      toValue: -250,
+      duration: 3000,
+      useNativeDriver: true,
+    }).start();
+    setTimeout(() => navigation.navigate('OnboardingScreenFirst'), 4000);
+  };
+
+  useEffect(() => {
+    moveLogo();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text style={{color:'#000',fontSize:25}}>SplashScreenFirst</Text>
-      
-      <Button
-        title="Go to 2nd splash screen page"
-        onPress={() => navigation.navigate('SplashScreenSecond')}
-      />
+      <Animated.View style={animatedStyles}>
+        <MainLogo style={styles.mainLogoStyle} />
+      </Animated.View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {alignItems: 'center', justifyContent: 'center', flex: 1},
+  container: {
+    backgroundColor: Colors.backButtonBlueColor,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    flex: 1,
+  },
+  mainLogoStyle: {
+    color: Colors.whiteColor,
+  },
 });
