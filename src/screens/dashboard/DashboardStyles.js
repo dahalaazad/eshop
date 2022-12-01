@@ -16,6 +16,9 @@ export const Styles = StyleSheet.create({
   adContainer: {
     marginTop: 15,
   },
+  adIndicatorContainer: {
+    top: 0,
+  },
   productCategoryContainer: {
     alignItems: 'center',
     marginTop: 25,
@@ -35,5 +38,12 @@ export const Styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+  },
+  dotStyle: {
+    width: 8,
+    height: 8,
+    backgroundColor: 'red',
+    borderRadius: 5,
+    marginHorizontal: 2,
   },
 });

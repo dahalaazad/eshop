@@ -9,6 +9,7 @@ export default function ProductCard({
   productCardSubTitle,
   productCardPrice,
   onPressHandler,
+  titleTextFontWeight,
 }) {
   return (
     <TouchableOpacity
@@ -19,7 +20,9 @@ export default function ProductCard({
       }}>
       <View style={Styles.imageContainer}>{productCardImage}</View>
       <View style={Styles.textContainer}>
-        <Text style={Styles.titleText}>{productCardTitle}</Text>
+        <Text style={{...Styles.titleText, fontWeight: titleTextFontWeight}}>
+          {productCardTitle}
+        </Text>
         <Text style={Styles.subTitleText}>{productCardSubTitle}</Text>
         <Text style={Styles.priceText}>{`Rs. ${productCardPrice}`}</Text>
       </View>
