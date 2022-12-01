@@ -52,7 +52,7 @@ const BottomTabNav = () => {
         tabBarInactiveTintColor: Colors.inactiveIconGrayColor,
         headerTitleAlign: 'center',
         headerStyle: {
-          backgroundColor: Colors.mainBackgroundColor,
+          backgroundColor: Colors.loginBackgroundColor,
         },
         headerTitleStyle: {
           fontSize: 24,

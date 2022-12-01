@@ -1,8 +1,7 @@
-import React from 'react';
-import {View, ScrollView, FlatList, Text} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {View, ScrollView, FlatList, Animated} from 'react-native';
 import {FilterButton, ProductCard, SearchBar} from '@app/commons';
 import DashAdCarousel from '@app/screens/dashboard/components/DashAdCarousel';
-import DashAdPagination from '@app/screens/dashboard/components/DashAdPagination';
 import {Colors} from '@app/constants';
 import {Styles} from '@app/screens/dashboard/DashboardStyles';
 import CastrolImage from '@app/assets/svg/DashboardAdCastrol.svg';
@@ -15,7 +14,7 @@ import BrakePadImage from '@app/assets/svg/BrakePad.svg';
 import DashProductCategory from '@app/screens/dashboard/components/DashProductCategory';
 import DashProductSegmentedTab from '@app/screens/dashboard/components/DashProductSegmentedTab';
 import Carousel from 'react-native-reanimated-carousel';
-import {useSharedValue} from 'react-native-reanimated';
+import {ExpandingDot} from 'react-native-animated-pagination-dots';
 
 const adData = [
   {
@@ -28,11 +27,17 @@ const adData = [
     id: 2,
     adTitle: 'LOREM IPSUM',
     adSubTitle: 'Non-stop protection from every threat',
-    adImage: <CastrolImage />,
+    adImage: <EngineFilterImage />,
+  },
+  {
+    id: 3,
+    adTitle: 'FIRE STYLE',
+    adSubTitle: 'Non-stop protection from every threat',
+    adImage: <BrakePadImage />,
   },
 ];
 
-const productCategoryData = [
+const productCategoryDataItems = [
   {
     id: 1,
     categoryName: 'Bike',
@@ -91,17 +96,33 @@ const productCardData = [
 ];
 
 export default function Dashboard({navigation}) {
-  const progressValue = useSharedValue(0);
+  const scrollX = useRef(new Animated.Value(0)).current;
+
+  const [productCategoryData, setProductCategoryData] = useState(
+    productCategoryDataItems,
+  );
 
   const onProductCardPress = itemId => {
     navigation.navigate('ProductDetails');
   };
 
+  const productCategoryStatusChange = itemId => {
+    // productCategoryData.filter(
+    //   item =>
+    //     item.id === itemId &&
+    //     setProductCategoryData((prevState, props) =>
+    //       console.log(...prevState.item),
+    //     ),
+    // );
+  };
+
   const productCategoryRender = ({item}) => (
     <DashProductCategory
+      categoryId={item.id}
       categoryName={item.categoryName}
       categoryImage={item.categoryImage}
       isActive={item.isActive}
+      statusChangeHandler={productCategoryStatusChange}
     />
   );
 
@@ -127,10 +148,19 @@ export default function Dashboard({navigation}) {
             autoPlayReverse={false}
             data={adData}
             scrollAnimationDuration={400}
-            onProgressChange={(_, absoluteProgress) =>
-              (progressValue.value = absoluteProgress)
+            onScrollEnd={index =>
+              Animated.event(
+                [{nativeEvent: {contentOffset: {index: scrollX}}}],
+                {
+                  useNativeDriver: false,
+                },
+              )
             }
-            onSnapToItem={index => {}}
+            onSnapToItem={index =>
+              Animated.event([{nativeEvent: {contentOffset: {x: scrollX}}}], {
+                useNativeDriver: false,
+              })
+            }
             pagingEnabled={true}
             renderItem={({item}, index) => (
               <View>
@@ -143,30 +173,17 @@ export default function Dashboard({navigation}) {
               </View>
             )}
           />
-          {/* {!!progressValue && (
-            <View
-              style={{
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                width: 10,
-                alignSelf: 'center',
-                position: 'absolute',
-                right: 5,
-                top: 40,
-              }}>
-              {adData.map(index => {
-                return (
-                  <DashAdPagination
-                    backgroundColor={'blue'}
-                    animValue={progressValue}
-                    index={index}
-                    key={index}
-                    length={adData.length}
-                  />
-                );
-              })}
-            </View>
-          )} */}
+        </View>
+
+        <View>
+          <ExpandingDot
+            data={adData}
+            expandingDotWidth={25}
+            scrollX={scrollX}
+            inActiveDotOpacity={0.2}
+            dotStyle={Styles.dotStyle}
+            containerStyle={Styles.adIndicatorContainer}
+          />
         </View>
 
         <View style={Styles.productCategoryContainer}>
@@ -201,6 +218,7 @@ export default function Dashboard({navigation}) {
               productCardSubTitle={item.productCardSubTitle}
               productCardPrice={item.productCardPrice}
               onPressHandler={onProductCardPress}
+              titleTextFontWeight="600"
             />
           ))}
         </View>
