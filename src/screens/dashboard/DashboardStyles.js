@@ -16,6 +16,9 @@ export const Styles = StyleSheet.create({
   adContainer: {
     marginTop: 15,
   },
+  adIndicatorContainer: {
+    top: 0,
+  },
   productCategoryContainer: {
     alignItems: 'center',
     marginTop: 25,
