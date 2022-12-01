@@ -5,7 +5,6 @@ import {MainLogo} from '@app/assets/svg';
 
 export default function SplashScreenFirst({navigation}) {
   const [bottomValue, setBottomValue] = useState(new Animated.Value(100));
-
   const animatedStyles = {
     transform: [{translateY: bottomValue}],
   };
@@ -13,10 +12,10 @@ export default function SplashScreenFirst({navigation}) {
   const moveLogo = () => {
     Animated.timing(bottomValue, {
       toValue: -250,
-      duration: 3000,
+      duration: 1000,
       useNativeDriver: true,
     }).start();
-    setTimeout(() => navigation.navigate('OnboardingScreenFirst'), 4000);
+    setTimeout(() => navigation.navigate('OnboardingScreenFirst'), 1500);
   };
 
   useEffect(() => {
