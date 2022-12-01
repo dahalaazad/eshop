@@ -3,6 +3,10 @@ import React from 'react';
 import {Colors} from '@app/constants';
 import {Styles} from '@app/screens/shop/ShopStyles';
 import {FilterButton, ProductCard, SearchBar} from '@app/commons';
+import HondaGearBoxImage1 from '@app/assets/svg/HondaGearBox1.svg';
+import HondaGearBoxImage2 from '@app/assets/svg/HondaGearBox2.svg';
+import HondaGearBoxImage3 from '@app/assets/svg/HondaGearBox3.svg';
+import HondaGearBoxImage4 from '@app/assets/svg/HondaGearBox4.svg';
 import EngineFilterImage from '@app/assets/svg/EngineFilter.svg';
 import BrakePadImage from '@app/assets/svg/BrakePad.svg';
 
@@ -19,6 +23,7 @@ export default function Shop({navigation}) {
       productCardSubTitle={item.productCardSubTitle}
       productCardPrice={item.productCardPrice}
       onPressHandler={onProductCardPress}
+      titleTextFontWeight="600"
     />
   );
 
@@ -31,6 +36,7 @@ export default function Shop({navigation}) {
         />
         <FilterButton />
       </View>
+
       <View>
         <FlatList
           numColumns={2}
@@ -48,28 +54,28 @@ export default function Shop({navigation}) {
 const productCardData = [
   {
     id: 1,
-    productCardImage: <EngineFilterImage />,
-    productCardTitle: 'Engine Filter',
+    productCardImage: <HondaGearBoxImage1 />,
+    productCardTitle: 'Honda Gear Box',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 1999,
   },
   {
     id: 2,
-    productCardImage: <BrakePadImage />,
+    productCardImage: <HondaGearBoxImage2 />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 1999,
   },
   {
     id: 3,
-    productCardImage: <EngineFilterImage />,
+    productCardImage: <HondaGearBoxImage3 />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 1999,
   },
   {
     id: 4,
-    productCardImage: <BrakePadImage />,
+    productCardImage: <HondaGearBoxImage4 />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 1999,
