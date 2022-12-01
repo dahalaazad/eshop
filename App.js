@@ -1,15 +1,18 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {Text} from 'react-native';
+import {StatusBar} from 'react-native';
 import {AuthStack, MainStack} from '@app/routes';
+import {Colors} from '@app/constants';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const App = () => {
   return (
     <NavigationContainer>
-      {/* THERE CANNOT BE TWO STACKS HERE */}
-      <AuthStack />
-      {/* To disable Login Module for testing during development, uncomment the below line */}
-      {/* <MainStack/> */}
+      <GestureHandlerRootView style={{flex: 1}}>
+        {/* THERE CANNOT BE TWO STACKS HERE */}
+        <AuthStack />
+        <StatusBar backgroundColor={Colors.loginBackgroundColor} />
+      </GestureHandlerRootView>
     </NavigationContainer>
   );
 };

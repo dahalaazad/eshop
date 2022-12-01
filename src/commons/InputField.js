@@ -15,6 +15,7 @@ export default function InputField({
 
   return (
     <TextInput
+      theme={{roundness: 12}}
       mode="outlined"
       label={labelText}
       secureTextEntry={hidePassword}
@@ -37,6 +38,7 @@ export default function InputField({
           />
         )
       }
+      style={{backgroundColor: Colors.whiteColor}}
     />
   );
 }

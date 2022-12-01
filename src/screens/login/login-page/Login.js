@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, Text, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {InputField, PrimaryButton} from '@app/commons';
@@ -23,10 +29,11 @@ export default function Login({navigation}) {
   };
 
   return (
-    <KeyboardAvoidingView style={Styles.mainContainer}>
-      <KeyboardAwareScrollView
-        enableOnAndroid={false}
-        keyboardShouldPersistTaps="handled">
+    <KeyboardAwareScrollView
+      style={Styles.mainContainer}
+      enableOnAndroid={false}
+      keyboardShouldPersistTaps="handled">
+      <View>
         <View style={{alignItems: 'center'}}>
           <View style={{paddingTop: 65, paddingBottom: 52}}>
             <MainLogo />
@@ -38,18 +45,17 @@ export default function Login({navigation}) {
             There are many variations of passages
           </Text>
         </View>
-
         <View style={{paddingBottom: 45, paddingTop: 40}}>
           <View style={{paddingBottom: 10}}>
             <Controller
               control={control}
-              // rules={{
-              //   required: true,
-              //   pattern: {
-              //     value:
-              //       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              //   },
-              // }}
+              rules={{
+                required: true,
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                },
+              }}
               render={({field: {onChange, onBlur, value}}) => (
                 <InputField
                   labelText="Email Address"
@@ -71,14 +77,14 @@ export default function Login({navigation}) {
           <View>
             <Controller
               control={control}
-              // rules={{
-              //   required: true,
-              //   minLength: 8,
-              //   pattern: {
-              //     value:
-              //       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-              //   },
-              // }}
+              rules={{
+                required: true,
+                minLength: 8,
+                pattern: {
+                  value:
+                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+                },
+              }}
               render={({field: {onChange, onBlur, value}}) => (
                 <InputField
                   labelText="Password"
@@ -114,7 +120,7 @@ export default function Login({navigation}) {
             />
           </View>
         </View>
-      </KeyboardAwareScrollView>
+      </View>
 
       <View style={Styles.footerContainer}>
         <View style={{flexDirection: 'row'}}>
@@ -127,6 +133,6 @@ export default function Login({navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 }
