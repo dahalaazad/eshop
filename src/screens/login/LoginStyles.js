@@ -19,6 +19,7 @@ export const Styles = StyleSheet.create({
   },
   subtitleText: {
     color: Colors.subtitleTextColor,
+    textAlign: 'center',
     fontFamily: 'Poppins',
     fontWeight: '400',
     paddingTop: 6,
@@ -66,9 +67,17 @@ export const Styles = StyleSheet.create({
     color: Colors.errorTextColor,
   },
   privacyPolicyContainer: {
-    paddingTop: 14,
     flexDirection: 'row',
+    paddingTop: 14,
+    width: '95%',
     alignItems: 'flex-start',
+  },
+  policyText: {
+    color: Colors.subtitleTextColor,
+    fontFamily: 'Poppins',
+    fontWeight: '400',
+    paddingTop: 6,
+    fontSize: 14,
   },
   policyLinkText: {
     color: Colors.textLinkColor,
