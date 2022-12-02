@@ -1,4 +1,4 @@
-import {OnboardingScreenFirst} from './onboarding-screens';
-import {SplashScreenFirst} from './splash-screens';
+import {OnboardingScreen} from './onboarding-screens';
+import {SplashScreen} from './splash-screens';
 
-export {OnboardingScreenFirst, SplashScreenFirst};
+export {OnboardingScreen, SplashScreen};

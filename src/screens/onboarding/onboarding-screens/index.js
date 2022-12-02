@@ -1,3 +1,3 @@
-import {OnboardingScreenFirst} from './OnboardingScreenFirst';
+import OnboardingScreen from './OnboardingScreen';
 
-export {OnboardingScreenFirst};
+export {OnboardingScreen};

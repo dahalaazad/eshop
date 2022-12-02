@@ -2,8 +2,8 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
-  OnboardingScreenFirst,
-  SplashScreenFirst,
+  OnboardingScreen,
+  SplashScreen,
 } from '@app/screens';
 
 const OnboardingStackScreen = createNativeStackNavigator();
@@ -16,16 +16,16 @@ const OnboardingStack = () => {
         headerTitleAlign: 'center',
       }}>
       <OnboardingStackScreen.Screen
-        name="SplashScreenFirst"
-        component={SplashScreenFirst}
+        name="SplashScreen"
+        component={SplashScreen}
         options={{
           title: 'Splash One',
         }}
       />
       
       <OnboardingStackScreen.Screen
-        name="OnboardingScreenFirst"
-        component={OnboardingScreenFirst}
+        name="OnboardingScreen"
+        component={OnboardingScreen}
         options={{
           title: 'Onboarding One',
         }}
