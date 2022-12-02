@@ -11,32 +11,14 @@ import {Colors} from '@app/constants';
 import AD from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import LinearGradient from 'react-native-linear-gradient';
-import {Repairman1, Repairman2, DeliveryGirl} from '@app/assets/svg';
+import {onboardingValues} from '.';
 
 export default function OnboardingScreen({navigation}) {
   const [onboardScreenIndex, setOnboardScreenIndex] = useState(0);
-  const screenValues = [
-    {
-      svgIcon: <Repairman1 viewBox="50 10 300 310" />,
-      titleText: 'Solving all your motoworld problems',
-      descriptionText: 'Use E-mistri to call for best service near you.',
-    },
-    {
-      svgIcon: <Repairman2 viewBox="50 30 500 500" />,
-      titleText: 'On your service within few taps',
-      descriptionText: 'E-mistri is on your service within few taps.',
-    },
-    {
-      svgIcon: <DeliveryGirl height="85%" />,
-      titleText: 'Let’s get started with E-mistri',
-      descriptionText:
-        'Let us have a new moto servicing experience with E-mistri.',
-    },
-  ];
 
   const moveToNextScreen = () => {
     console.log(onboardScreenIndex);
-    onboardScreenIndex < screenValues.length - 1
+    onboardScreenIndex < onboardingValues.length - 1
       ? setOnboardScreenIndex(onboardScreenIndex + 1)
       : navigation.navigate('LoginStack');
   };
@@ -76,17 +58,17 @@ export default function OnboardingScreen({navigation}) {
         <View
         // style={{flex: 1}}
         >
-          {screenValues[onboardScreenIndex].svgIcon}
+          {onboardingValues[onboardScreenIndex].svgIcon}
         </View>
       </View>
 
       <View style={[styles.bottomHalfContainer, styles.centerStyle]}>
         <Text style={[styles.commonTextStyle, styles.titleText]}>
-          {screenValues[onboardScreenIndex].titleText}
+          {onboardingValues[onboardScreenIndex].titleText}
         </Text>
 
         <Text style={[styles.commonTextStyle, styles.descriptionText]}>
-          {screenValues[onboardScreenIndex].descriptionText}
+          {onboardingValues[onboardScreenIndex].descriptionText}
         </Text>
 
         <LinearGradient
@@ -127,7 +109,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: 20,
-    marginBottom:-20,
+    marginBottom: -20,
     paddingHorizontal: 20,
     zIndex: 1,
   },
