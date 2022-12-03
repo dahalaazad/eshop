@@ -53,6 +53,8 @@ const BottomTabNav = () => {
         headerTitleAlign: 'center',
         headerStyle: {
           backgroundColor: Colors.loginBackgroundColor,
+          elevation: 0,
+          shadowOpacity: 0,
         },
         headerTitleStyle: {
           fontSize: 24,
