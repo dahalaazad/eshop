@@ -52,6 +52,9 @@ export default function DashAdCarouselPagination() {
         onSnapToItem={index => setAdCarouselIndex(index)}
         sliderWidth={360}
         itemWidth={350}
+        disableIntervalMomentum={true} // One slide only.
+        inactiveSlideOpacity={1}
+        inactiveSlideScale={1}
       />
 
       <Pagination
