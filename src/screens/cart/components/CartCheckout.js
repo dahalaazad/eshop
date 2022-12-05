@@ -50,6 +50,7 @@ export default function CartCheckout() {
       <View style={Styles.rightContainer}>
         <PrimaryButton
           buttonLabel="Checkout"
+          buttonRadius={5}
           buttonHeight={51}
           buttonWidth={200}
           onPressHandler={checkoutButtonHandler}

@@ -13,13 +13,13 @@ export const Styles = StyleSheet.create({
   },
   adItemContainer: {
     // backgroundColor: 'blue',
-    marginTop: 25,
+    marginTop: 20,
   },
   promotionTextContainer: {
     // backgroundColor: 'blue',
   },
   adContainer: {
-    marginTop: 25,
+    marginTop: 20,
   },
   bottomContainer: {
     width: '90%',

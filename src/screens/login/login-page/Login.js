@@ -114,6 +114,7 @@ export default function Login({navigation}) {
 
           <View style={Styles.loginButtonContainer}>
             <PrimaryButton
+              buttonRadius={10}
               buttonLabel="Login"
               buttonHeight={60}
               onPressHandler={handleSubmit(loginButtonHandler)}

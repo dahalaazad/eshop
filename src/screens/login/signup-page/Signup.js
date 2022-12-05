@@ -163,6 +163,7 @@ export default function Signup({navigation}) {
 
         <View style={Styles.signupButtonContainer}>
           <PrimaryButton
+            buttonRadius={10}
             buttonLabel="Signup"
             buttonHeight={60}
             onPressHandler={handleSubmit(signupButtonHandler)}

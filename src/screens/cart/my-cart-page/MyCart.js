@@ -23,15 +23,7 @@ export default function MyCart({navigation}) {
 
   const myCartRender = ({item}) => (
     <CartItem
-      svgImage={
-        <item.shoppingCartImage
-          height={80}
-          width={85}
-          style={{
-            top: 2,
-          }}
-        />
-      }
+      svgImage={<item.shoppingCartImage height={80} width={80} />}
       titleText={item.shoppingCartTitle}
       subTitleText={item.shoppingCartSubTitle}
       itemPrice={item.shoppingCartPrice}
@@ -39,13 +31,15 @@ export default function MyCart({navigation}) {
     />
   );
 
+  const checkoutButtonHandler = () => {};
+
   return (
     <View style={Styles.mainContainer}>
       <View style={Styles.topItemContainer}>
         <FlatList
           // columnWrapperStyle={{justifyContent: 'space-around'}}
           ItemSeparatorComponent={() => <View style={{height: 20}} />}
-          contentContainerStyle={{paddingTop: 50, paddingBottom: 10}}
+          contentContainerStyle={{paddingTop: 50, paddingBottom: 50}}
           data={myCartData}
           keyExtractor={data => data.id}
           renderItem={myCartRender}
@@ -66,7 +60,12 @@ export default function MyCart({navigation}) {
           <MyCartBillContainer />
         </View>
         <View style={Styles.buttonContainer}>
-          <PrimaryButton buttonHeight={51} buttonLabel="Proceed to Checkout" />
+          <PrimaryButton
+            buttonHeight={51}
+            buttonRadius={5}
+            buttonLabel="Proceed to Checkout"
+            onPressHandler={checkoutButtonHandler}
+          />
         </View>
       </View>
     </View>
