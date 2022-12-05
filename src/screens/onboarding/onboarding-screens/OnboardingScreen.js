@@ -11,7 +11,7 @@ import {Colors} from '@app/constants';
 import AD from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import LinearGradient from 'react-native-linear-gradient';
-import {onboardingValues} from '.';
+import {onboardingValues} from './onboardingValues';
 
 export default function OnboardingScreen({navigation}) {
   const [onboardScreenIndex, setOnboardScreenIndex] = useState(0);
