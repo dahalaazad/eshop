@@ -21,12 +21,10 @@ export const Styles = StyleSheet.create({
   },
   productCategoryContainer: {
     alignItems: 'center',
-    marginTop: 25,
-    height: 100,
     paddingHorizontal: 12,
   },
   buttonTabContainer: {
-    marginTop: 25,
+    marginTop: 30,
     padding: 5,
     backgroundColor: Colors.dashboardProductCategoryColor,
     borderRadius: 13,
@@ -34,7 +32,7 @@ export const Styles = StyleSheet.create({
   },
   productCardContainer: {
     height: '100%',
-    marginTop: 25,
+    marginTop: 30,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',

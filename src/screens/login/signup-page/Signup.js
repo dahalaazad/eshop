@@ -145,7 +145,7 @@ export default function Signup({navigation}) {
             color={Colors.textLinkColor}
           />
           <View>
-            <Text style={{...Styles.subtitleText, fontSize: 14}}>
+            <Text style={{...Styles.policyText}}>
               I agree with the{' '}
               <Text style={Styles.policyLinkText} onPress={() => {}}>
                 Terms of Service
