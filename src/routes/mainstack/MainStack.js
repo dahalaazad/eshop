@@ -1,6 +1,5 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {BottomTabNav} from '.';
 import {Colors} from '@app/constants';
 import {
   ProductDetails,
@@ -12,6 +11,7 @@ import {
 } from '@app/screens';
 import {Button, Text, View, Image} from 'react-native';
 import {FavoriteButton} from '@app/commons';
+import BottomTabNav from './BottomTabNav';
 
 const Stack = createNativeStackNavigator();
 

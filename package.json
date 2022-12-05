@@ -19,6 +19,7 @@
     "react-devtools": "^4.26.1",
     "react-hook-form": "^7.39.5",
     "react-native": "0.70.6",
+    "react-native-animated-pagination-dots": "^0.1.73",
     "react-native-gesture-handler": "^2.8.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-linear-gradient": "^2.6.2",

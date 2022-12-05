@@ -1,9 +1,4 @@
-import {OnboardingScreenFirst} from "./OnboardingScreenFirst";
-import {OnboardingScreenSecond} from './OnboardingScreenSecond';
-import {OnboardingScreenThird} from './OnboardingScreenThird';
+import OnboardingScreen from './OnboardingScreen';
+import {onboardingValues} from './onboardingValues';
 
-export {
-    OnboardingScreenFirst,
-    OnboardingScreenSecond,
-    OnboardingScreenThird
-};
+export {onboardingValues, OnboardingScreen};

@@ -37,4 +37,11 @@ export const Styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
   },
+  dotStyle: {
+    width: 8,
+    height: 8,
+    backgroundColor: 'red',
+    borderRadius: 5,
+    marginHorizontal: 2,
+  },
 });
