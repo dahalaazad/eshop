@@ -7,7 +7,7 @@ import WaveBackground from './WaveBackground.svg';
 import Repairman1 from './Repairman1.svg';
 import Repairman2 from './Repairman2.svg';
 import DeliveryGirl from './DeliveryGirl.svg'
-
+import CommentIcon from './CommentIcon.svg'
 export {
   CartIcon,
   HomeIcon,
@@ -18,4 +18,5 @@ export {
   Repairman1,
   Repairman2,
   DeliveryGirl,
+  CommentIcon,
 };
