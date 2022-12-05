@@ -17,7 +17,6 @@ export default function OnboardingScreen({navigation}) {
   const [onboardScreenIndex, setOnboardScreenIndex] = useState(0);
 
   const moveToNextScreen = () => {
-    console.log(onboardScreenIndex);
     onboardScreenIndex < onboardingValues.length - 1
       ? setOnboardScreenIndex(onboardScreenIndex + 1)
       : navigation.navigate('LoginStack');
@@ -55,11 +54,7 @@ export default function OnboardingScreen({navigation}) {
           </TouchableOpacity>
         </View>
 
-        <View
-        // style={{flex: 1}}
-        >
-          {onboardingValues[onboardScreenIndex].svgIcon}
-        </View>
+        <View>{onboardingValues[onboardScreenIndex].svgIcon}</View>
       </View>
 
       <View style={[styles.bottomHalfContainer, styles.centerStyle]}>
