@@ -1,5 +1,5 @@
 import {View, Text, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet} from 'react-native';
 import {Colors} from '@app/constants';
 import MinusIcon from '@app/assets/svg/CounterMinusIcon.svg';
@@ -28,17 +28,27 @@ const Styles = StyleSheet.create({
 });
 
 export default function ProductCounter() {
+  const [count, setCount] = useState(1);
+
+  const incrementCounter = () => {
+    count < 100 && setCount(count + 1);
+  };
+
+  const decrementCounter = () => {
+    count > 1 && setCount(count - 1);
+  };
+
   return (
     <View style={Styles.mainContainer}>
-      <TouchableOpacity activeOpacity={0.5}>
+      <TouchableOpacity activeOpacity={0.5} onPress={decrementCounter}>
         <MinusIcon />
       </TouchableOpacity>
 
       <View style={Styles.counterTextContainer}>
-        <Text style={Styles.counterText}>2</Text>
+        <Text style={Styles.counterText}>{count}</Text>
       </View>
 
-      <TouchableOpacity activeOpacity={0.5}>
+      <TouchableOpacity activeOpacity={0.5} onPress={incrementCounter}>
         <PlusIcon />
       </TouchableOpacity>
     </View>
