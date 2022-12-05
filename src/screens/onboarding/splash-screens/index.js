@@ -1,4 +1,3 @@
-import SplashScreenFirst from './SplashScreenFirst';
-import SplashScreenSecond from './SplashScreenSecond';
+import SplashScreen from './SplashScreen';
 
-export {SplashScreenFirst, SplashScreenSecond};
+export {SplashScreen};

@@ -4,11 +4,13 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ShoppingCart} from '@app/screens';
 import {UserAccount} from '@app/screens';
 import {Colors} from '@app/constants';
-import {DashboardStack, ShopStack, ProfileStack} from '.';
 import HomeIcon from '@app/assets/svg/HomeIcon.svg';
 import ShopIcon from '@app/assets/svg/ShopIcon.svg';
 import CartIcon from '@app/assets/svg/CartIcon.svg';
 import ProfileIcon from '@app/assets/svg/ProfileIcon.svg';
+import DashboardStack from './DashboardStack';
+import ShopStack from './ShopStack';
+import ProfileStack from './ProfileStack';
 
 const Tab = createBottomTabNavigator();
 
