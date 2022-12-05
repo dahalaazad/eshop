@@ -93,7 +93,7 @@ export default function MyCartAdComponent() {
       <MyCartAdMainImage
         style={{
           position: 'absolute',
-          top: 30,
+          bottom: 20,
           right: 0,
         }}
       />
