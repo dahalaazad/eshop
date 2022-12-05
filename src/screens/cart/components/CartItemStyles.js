@@ -46,6 +46,20 @@ export const Styles = StyleSheet.create({
     fontWeight: '500',
     color: Colors.blackColor,
   },
+  discountedItemPriceContainer: {
+    position: 'absolute',
+    left: 80,
+    bottom: 3,
+  },
+  discountedPriceText: {
+    color: Colors.productCardSubtitleColor,
+    position: 'absolute',
+    bottom: 0,
+    textDecorationLine: 'line-through',
+    fontFamily: 'Poppins',
+    fontSize: 15,
+    fontWeight: '500',
+  },
   rightButtonContainer: {
     position: 'relative',
     width: '28%',
@@ -59,5 +73,10 @@ export const Styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     right: 2,
+  },
+  priceContainer: {
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: 0,
   },
 });
