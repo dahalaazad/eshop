@@ -6,7 +6,7 @@ import {Checkbox} from 'react-native-paper';
 import {Colors} from '@app/constants';
 import {PrimaryButton, InputField} from '@app/commons';
 import {Styles} from '@app/screens/login/LoginStyles';
-import MainLogo from '@app/assets/svg/MainLogo.svg';
+import {MainLogoColor} from '@app/assets/svg';
 
 export default function Signup({navigation}) {
   const {
@@ -36,7 +36,7 @@ export default function Signup({navigation}) {
       <View>
         <View style={{alignItems: 'center'}}>
           <View style={{paddingTop: 45, paddingBottom: 32}}>
-            <MainLogo />
+            <MainLogoColor />
           </View>
 
           <Text style={Styles.headingText}>Create a New Account</Text>
