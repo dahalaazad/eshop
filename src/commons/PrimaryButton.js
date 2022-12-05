@@ -19,6 +19,7 @@ export default function PrimaryButton({
   buttonHeight,
   onPressHandler,
   buttonWidth,
+  buttonIcon
 }) {
   return (
     <Button
@@ -32,6 +33,7 @@ export default function PrimaryButton({
       }}
       labelStyle={Styles.labelStyles}
       contentStyle={Styles.contentStyles}
+      icon={buttonIcon}
       onPress={() => {
         onPressHandler();
       }}>
