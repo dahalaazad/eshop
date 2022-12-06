@@ -10,10 +10,13 @@ export const Styles = StyleSheet.create({
   },
   topContainer: {
     alignItems: 'center',
+    position: 'relative',
   },
   imageContainer: {
-    // backgroundColor: 'blue',
-    justifyContent: 'center',
+    // marginTop: 50,
+    backgroundColor: 'blue',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   buttonContainer: {marginTop: 25},
   botContainer: {

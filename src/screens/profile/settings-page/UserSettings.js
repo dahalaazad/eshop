@@ -1,6 +1,9 @@
-import {View, Text, Button, StyleSheet} from 'react-native';
-import React, {useLayoutEffect} from 'react';
+import {View, Text, Button, StyleSheet, FlatList} from 'react-native';
+import React, {useLayoutEffect, useState} from 'react';
 import {BackButton} from '@app/commons';
+import {Styles} from './UserSettingsStyles';
+import {UserSettingMenuItem, UserSettingToggleButton} from './components';
+import {UserSettingMenuItemData} from '@app/constants';
 
 export default function UserSettings({navigation}) {
   useLayoutEffect(() => {
@@ -10,16 +13,34 @@ export default function UserSettings({navigation}) {
       ),
     });
   }, [navigation]);
+
+  const [switchStatus, setSwitchStatus] = useState(false);
+
+  const [settingMenuData, setSettingMenuData] = useState(
+    UserSettingMenuItemData,
+  );
+
+  const onToggleSwitch = () => setSwitchStatus(!switchStatus);
+
+  const menuItemRender = ({item}) => (
+    <UserSettingMenuItem
+      menuText={item.text}
+      menuLeft={item.left}
+      menuRight={
+        <item.right isSwitchOn={switchStatus} onToggleSwitch={onToggleSwitch} />
+      }
+    />
+  );
+
   return (
-    <View style={styles.container}>
-      <Text style={{color: '#000', fontSize: 25}}>UserSettings</Text>
-      <Button
-        title="Go to next page"
-        onPress={() => navigation.navigate('ChangePassword')}
+    <View style={Styles.mainContainer}>
+      <FlatList
+        ItemSeparatorComponent={() => <View style={{height: 30}} />}
+        contentContainerStyle={{paddingTop: 20, paddingBottom: 20}}
+        data={settingMenuData}
+        keyExtractor={data => data.id}
+        renderItem={menuItemRender}
       />
     </View>
   );
 }
-const styles = StyleSheet.create({
-  container: {alignItems: 'center', justifyContent: 'center', flex: 1},
-});

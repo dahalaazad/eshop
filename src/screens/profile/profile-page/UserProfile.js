@@ -2,8 +2,9 @@ import {View, Text, Button, StyleSheet} from 'react-native';
 import React, {useLayoutEffect} from 'react';
 import {BackButton, PrimaryButton} from '@app/commons';
 import {Styles} from './UserProfileStyles';
-import {UserProfileBeardedMan} from '@app/assets/svg';
+import {UserProfileBeardedMan, UserProfileWomanGlasses} from '@app/assets/svg';
 import {UserProfileInfoCard} from './components';
+import {UserSettingToggleButton} from '../settings-page/components';
 
 export default function UserProfile({navigation}) {
   useLayoutEffect(() => {
