@@ -10,7 +10,6 @@ export default function UserSettingToggleButton({isSwitchOn, onToggleSwitch}) {
         value={isSwitchOn}
         onValueChange={onToggleSwitch}
         style={{
-          width: 70,
           transform: [{scaleX: 1.1}, {scaleY: 1.1}],
         }}
         trackColor={{
