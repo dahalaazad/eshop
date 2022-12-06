@@ -5,7 +5,6 @@ import {Colors} from '@app/constants';
 
 const Styles = StyleSheet.create({
   buttonStyles: {
-    borderRadius: 10,
     width: 'auto',
   },
   labelStyles: {fontFamily: 'Poppins', fontSize: 18, fontWeight: '500'},
@@ -19,6 +18,7 @@ export default function PrimaryButton({
   buttonHeight,
   onPressHandler,
   buttonWidth,
+  buttonRadius,
 }) {
   return (
     <Button
@@ -29,6 +29,7 @@ export default function PrimaryButton({
         ...Styles.buttonStyles,
         height: buttonHeight,
         width: buttonWidth,
+        borderRadius: buttonRadius,
       }}
       labelStyle={Styles.labelStyles}
       contentStyle={Styles.contentStyles}
