@@ -12,6 +12,7 @@ import MyCartPromotion from './MyCartPromotion.svg';
 import MyCartAdMainImage from './MyCartAdMainImage.svg';
 import MinusIcon from './CounterMinusIcon.svg';
 import PlusIcon from './CounterPlusIcon.svg';
+import UserProfileBeardedMan from './UserProfileBeardedMan.svg';
 
 export {
   CartIcon,
@@ -28,4 +29,5 @@ export {
   MyCartAdMainImage,
   MinusIcon,
   PlusIcon,
+  UserProfileBeardedMan,
 };
