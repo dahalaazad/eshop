@@ -45,8 +45,10 @@ export default function CartCheckout() {
     <View style={Styles.mainContainer}>
       <View style={Styles.leftContainer}>
         <Text style={Styles.text}>Total</Text>
+
         <Text style={Styles.price}>Rs. 2,999</Text>
       </View>
+
       <View style={Styles.rightContainer}>
         <PrimaryButton
           buttonLabel="Checkout"

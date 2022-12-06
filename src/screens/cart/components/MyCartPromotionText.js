@@ -1,6 +1,5 @@
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import {Colors} from '@app/constants';
 import {MyCartPromotion} from '@app/assets/svg';
 
@@ -32,6 +31,7 @@ export default function MyCartPromotionText() {
       <View style={Styles.imageContainer}>
         <MyCartPromotion />
       </View>
+
       <View>
         <Text style={Styles.adText}>
           Save Rs 324 compared to Authorised Services

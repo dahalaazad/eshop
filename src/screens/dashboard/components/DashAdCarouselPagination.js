@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import DashAdCarousel from '@app/screens/dashboard/components/DashAdCarousel';
 import Carousel, {Pagination} from 'react-native-snap-carousel-v4';
 import {Colors} from '@app/constants';
@@ -64,23 +64,29 @@ export default function DashAdCarouselPagination() {
         containerStyle={{
           paddingTop: 15,
         }}
-        dotStyle={{
-          width: 25,
-          height: 8,
-          backgroundColor: Colors.textLinkColor,
-          borderRadius: 5,
-        }}
-        dotContainerStyle={{
-          marginHorizontal: 4,
-        }}
+        dotStyle={Styles.dotStyle}
+        dotContainerStyle={Styles.dotContainerStyle}
         tappableDots={true}
-        inactiveDotStyle={{
-          width: 8,
-          backgroundColor: Colors.productCardSubtitleColor,
-        }}
+        inactiveDotStyle={Styles.inactiveDotStyle}
         inactiveDotOpacity={0.2}
         inactiveDotScale={1}
       />
     </View>
   );
 }
+
+export const Styles = StyleSheet.create({
+  dotStyle: {
+    width: 25,
+    height: 8,
+    backgroundColor: Colors.textLinkColor,
+    borderRadius: 5,
+  },
+  dotContainerStyle: {
+    marginHorizontal: 4,
+  },
+  inactiveDotStyle: {
+    width: 8,
+    backgroundColor: Colors.productCardSubtitleColor,
+  },
+});

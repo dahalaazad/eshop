@@ -1,9 +1,7 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
-import {StyleSheet} from 'react-native';
 import {Colors} from '@app/constants';
-import MinusIcon from '@app/assets/svg/CounterMinusIcon.svg';
-import PlusIcon from '@app/assets/svg/CounterPlusIcon.svg';
+import {MinusIcon, PlusIcon} from '@app/assets/svg';
 
 const Styles = StyleSheet.create({
   mainContainer: {

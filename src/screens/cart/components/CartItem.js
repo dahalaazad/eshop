@@ -12,8 +12,6 @@ export default function CartItem({
   itemPrice,
   itemDiscountedPrice,
 }) {
-  console.log(titleText, subTitleText, 'in cartitem page');
-
   return (
     <View style={Styles.mainContainer}>
       <View style={{flexDirection: 'row'}}>

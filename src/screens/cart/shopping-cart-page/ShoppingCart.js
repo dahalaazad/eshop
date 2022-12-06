@@ -7,7 +7,6 @@ import {CartCheckout} from '@app/screens/cart/components';
 
 export default function ShoppingCart({navigation}) {
   const [shoppingCartData, setShoppingCartData] = useState(ShoppingCartData);
-  console.log(shoppingCartData);
 
   const shoppingCartRender = ({item}) => (
     <CartItem
@@ -36,6 +35,7 @@ export default function ShoppingCart({navigation}) {
         keyExtractor={data => data.id}
         renderItem={shoppingCartRender}
       />
+
       <View style={Styles.checkoutContainer}>
         <CartCheckout />
       </View>

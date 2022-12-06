@@ -36,11 +36,21 @@ export const Styles = StyleSheet.create({
     fontSize: 12,
     color: Colors.myCartAdTextOne,
   },
+  adTextOneContainer: {
+    position: 'absolute',
+    top: 10,
+    left: 20,
+  },
   adTextTwo: {
     fontFamily: 'Poppins',
     fontWeight: '800',
     fontSize: 30,
     color: Colors.whiteColor,
+  },
+  adTextTwoContainer: {
+    position: 'absolute',
+    top: 22,
+    left: 20,
   },
   adTextThree: {
     fontFamily: 'Poppins',
@@ -48,11 +58,21 @@ export const Styles = StyleSheet.create({
     fontSize: 12,
     color: Colors.whiteColor,
   },
+  adTextThreeContainer: {
+    position: 'absolute',
+    top: 60,
+    left: 20,
+  },
   adTextFour: {
     fontFamily: 'Poppins',
     fontWeight: '400',
     fontSize: 12,
     color: Colors.whiteColor,
+  },
+  adTextFourContainer: {
+    position: 'absolute',
+    top: 90,
+    left: 20,
   },
   botContainer: {
     paddingTop: 12,
@@ -73,19 +93,19 @@ export default function MyCartAdComponent() {
         end={{x: 1, y: 0}}
         colors={['#0074DD', '#A3CEF5']}
         style={Styles.gradientContainer}>
-        <View style={{position: 'absolute', top: 10, left: 20}}>
+        <View style={Styles.adTextOneContainer}>
           <Text style={Styles.adTextOne}>UPTO</Text>
         </View>
 
-        <View style={{position: 'absolute', top: 22, left: 20}}>
+        <View style={Styles.adTextTwoContainer}>
           <Text style={Styles.adTextTwo}>Rs. 300 OFF</Text>
         </View>
 
-        <View style={{position: 'absolute', top: 60, left: 20}}>
+        <View style={Styles.adTextThreeContainer}>
           <Text style={Styles.adTextThree}>PER PANEL</Text>
         </View>
 
-        <View style={{position: 'absolute', top: 90, left: 20}}>
+        <View style={Styles.adTextFourContainer}>
           <Text style={Styles.adTextFour}>2 Year Warranty on Paint</Text>
         </View>
       </LinearGradient>
