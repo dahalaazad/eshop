@@ -31,6 +31,18 @@ export default function MyCart({navigation}) {
     />
   );
 
+  const renderFooterComponent = () => (
+    <View style={Styles.adItemContainer}>
+      <View style={Styles.promotionTextContainer}>
+        <MyCartPromotionText />
+      </View>
+
+      <View style={Styles.adContainer}>
+        <MyCartAdComponent />
+      </View>
+    </View>
+  );
+
   const CartItemFlatList = (
     <FlatList
       // columnWrapperStyle={{justifyContent: 'space-around'}}
@@ -39,17 +51,7 @@ export default function MyCart({navigation}) {
       data={myCartData}
       keyExtractor={data => data.id}
       renderItem={myCartRender}
-      ListFooterComponent={() => (
-        <View style={Styles.adItemContainer}>
-          <View style={Styles.promotionTextContainer}>
-            <MyCartPromotionText />
-          </View>
-
-          <View style={Styles.adContainer}>
-            <MyCartAdComponent />
-          </View>
-        </View>
-      )}
+      ListFooterComponent={renderFooterComponent}
     />
   );
 
