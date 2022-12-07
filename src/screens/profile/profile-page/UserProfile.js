@@ -1,9 +1,9 @@
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, Button, StyleSheet, Image} from 'react-native';
 import React, {useLayoutEffect} from 'react';
 import {BackButton, PrimaryButton} from '@app/commons';
 import {Styles} from './UserProfileStyles';
-import {UserProfileBeardedMan, UserProfileWomanGlasses} from '@app/assets/svg';
 import {UserProfileInfoCard} from './components';
+import Images from '@app/constants/Images';
 import {UserSettingToggleButton} from '../settings-page/components';
 
 export default function UserProfile({navigation}) {
@@ -20,19 +20,20 @@ export default function UserProfile({navigation}) {
   return (
     <View style={Styles.mainContainer}>
       <View style={Styles.topContainer}>
-        <View style={Styles.imageContainer}>
-          <UserProfileBeardedMan height={107} width={107} />
+        <View>
+          {/* <UserProfileWomanGlasses /> */}
+          <Image source={Images.profileBeardedMan} resizeMode="cover" />
         </View>
 
         <View style={Styles.userNameContainer}>
           <Text style={Styles.userNameText}>User Name</Text>
         </View>
 
-        <View style={Styles.emailContainer}>
+        <View>
           <Text style={Styles.emailText}>random@email.com</Text>
         </View>
 
-        <View style={Styles.buttonContainer}>
+        <View>
           <PrimaryButton
             buttonLabel="Edit Profile"
             buttonHeight={50}

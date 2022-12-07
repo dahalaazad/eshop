@@ -12,12 +12,6 @@ export const Styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative',
   },
-  imageContainer: {
-    // marginTop: 50,
-    backgroundColor: 'blue',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-  },
   buttonContainer: {marginTop: 25},
   botContainer: {
     marginTop: 40,
@@ -36,6 +30,4 @@ export const Styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
   },
-  userNameContainer: {},
-  emailContainer: {},
 });

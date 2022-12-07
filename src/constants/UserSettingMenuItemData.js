@@ -28,12 +28,14 @@ export default UserSettingMenuItemData = [
     text: 'Notification',
     left: <UserSettingsNotification />,
     right: UserSettingToggleButton,
+    toggleStatus: true,
   },
   {
     id: 4,
     text: 'Dark Mode',
     left: <UserSettingsDarkMode />,
     right: UserSettingToggleButton,
+    toggleStatus: false,
   },
   {
     id: 5,
