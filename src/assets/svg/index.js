@@ -20,6 +20,18 @@ import UserSettingsNotification from './UserSettingsNotification.svg';
 import UserSettingsPrivacy from './UserSettingsPrivacy.svg';
 import UserSettingMenuRightArrow from './UserSettingMenuRightArrow.svg';
 import UserProfileWomanGlasses from './UserProfileWomanGlasses.svg';
+import AccountProfileCheck from './AccountProfileCheck.svg';
+import UserSettingChangeLanguageIcon from './UserSettingChangeLanguageIcon.svg';
+import UserSettingChangePasswordIcon from './UserSettingChangePasswordIcon.svg';
+import UserSettingDarkMode from './UserSettingDarkMode.svg';
+import UserSettingNotification from './UserSettingNotification.svg';
+import UserSettingPrivacy from './UserSettingPrivacy.svg';
+import AccountRibbon from './AccountRibbon.svg';
+import UserAccountIcon from './UserAccountIcon.svg';
+import UserAccountSettingIcon from './UserAccountSettingIcon.svg';
+import UserAccountShareIcon from './UserAccountShareIcon.svg';
+import UserAccountAboutIcon from './UserAccountAboutIcon.svg';
+import UserAccountLogout from './UserAccountLogout.svg';
 
 export {
   CartIcon,
@@ -30,6 +42,11 @@ export {
   WaveBackground,
   Repairman1,
   Repairman2,
+  UserSettingChangeLanguageIcon,
+  UserSettingChangePasswordIcon,
+  UserSettingDarkMode,
+  UserSettingNotification,
+  UserSettingPrivacy,
   DeliveryGirl,
   MainLogoColor,
   MyCartPromotion,
@@ -44,4 +61,11 @@ export {
   UserSettingsDarkMode,
   UserSettingsNotification,
   UserSettingsPrivacy,
+  AccountProfileCheck,
+  AccountRibbon,
+  UserAccountIcon,
+  UserAccountSettingIcon,
+  UserAccountShareIcon,
+  UserAccountAboutIcon,
+  UserAccountLogout,
 };

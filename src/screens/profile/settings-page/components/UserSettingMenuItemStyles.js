@@ -23,4 +23,13 @@ export const Styles = StyleSheet.create({
     color: Colors.blackColor,
     fontSize: 16,
   },
+  leftImageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.itemMenuIconBackgroundColor,
+    padding: 15,
+    borderRadius: 8,
+    height: 46,
+    width: 46,
+  },
 });

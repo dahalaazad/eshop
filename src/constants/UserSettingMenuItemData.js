@@ -1,9 +1,9 @@
 import {
-  UserSettingsChangePassword,
-  UserSettingsChangeLanguage,
-  UserSettingsDarkMode,
-  UserSettingsNotification,
-  UserSettingsPrivacy,
+  UserSettingChangeLanguageIcon,
+  UserSettingChangePasswordIcon,
+  UserSettingDarkMode,
+  UserSettingNotification,
+  UserSettingPrivacy,
 } from '@app/assets/svg';
 import {
   UserSettingMenuArrow,
@@ -14,33 +14,33 @@ export default UserSettingMenuItemData = [
   {
     id: 1,
     text: 'Change Password',
-    left: <UserSettingsChangePassword />,
+    left: <UserSettingChangePasswordIcon />,
     right: UserSettingMenuArrow,
   },
   {
     id: 2,
     text: 'Change Language',
-    left: <UserSettingsChangeLanguage />,
+    left: <UserSettingChangeLanguageIcon />,
     right: UserSettingMenuArrow,
   },
   {
     id: 3,
     text: 'Notification',
-    left: <UserSettingsNotification />,
+    left: <UserSettingNotification />,
     right: UserSettingToggleButton,
     toggleStatus: true,
   },
   {
     id: 4,
     text: 'Dark Mode',
-    left: <UserSettingsDarkMode />,
+    left: <UserSettingDarkMode />,
     right: UserSettingToggleButton,
     toggleStatus: false,
   },
   {
     id: 5,
     text: 'Privacy Policy',
-    left: <UserSettingsPrivacy />,
+    left: <UserSettingPrivacy />,
     right: UserSettingMenuArrow,
   },
 ];
