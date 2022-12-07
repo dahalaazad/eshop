@@ -8,7 +8,6 @@ import Repairman1 from './Repairman1.svg';
 import Repairman2 from './Repairman2.svg';
 import DeliveryGirl from './DeliveryGirl.svg'
 import CommentIcon from './CommentIcon.svg'
-import DeliveryGirl from './DeliveryGirl.svg';
 import MainLogoColor from './MainLogoColor.svg';
 import MyCartPromotion from './MyCartPromotion.svg';
 import MyCartAdMainImage from './MyCartAdMainImage.svg';
