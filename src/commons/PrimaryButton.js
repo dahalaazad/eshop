@@ -6,7 +6,6 @@ import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Styles = StyleSheet.create({
   buttonStyles: {
-    borderRadius: 10,
     width: 'auto',
     alignItems: 'center',
     justifyContent: 'center',
@@ -25,6 +24,7 @@ export default function PrimaryButton({
   buttonIconName,
   buttonIconSize,
   buttonIconColor,
+  buttonRadius,
 }) {
   return (
     <Button
@@ -35,6 +35,7 @@ export default function PrimaryButton({
         ...Styles.buttonStyles,
         height: buttonHeight,
         width: buttonWidth,
+        borderRadius: buttonRadius,
       }}
       labelStyle={Styles.labelStyles}
       contentStyle={Styles.contentStyles}

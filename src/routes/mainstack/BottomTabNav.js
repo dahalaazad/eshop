@@ -1,8 +1,6 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ShoppingCart} from '@app/screens';
-import {UserAccount} from '@app/screens';
 import {Colors} from '@app/constants';
 import HomeIcon from '@app/assets/svg/HomeIcon.svg';
 import ShopIcon from '@app/assets/svg/ShopIcon.svg';
@@ -20,33 +18,44 @@ const BottomTabNav = () => {
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
-          if (route.name === 'DashboardStack') {
-            iconName = focused ? (
-              <HomeIcon style={{color: Colors.iconBlueColor}} />
-            ) : (
-              <HomeIcon style={{color: Colors.inactiveIconGrayColor}} />
-            );
-          } else if (route.name === 'Shop') {
-            iconName = focused ? (
-              <ShopIcon style={{color: Colors.iconBlueColor}} />
-            ) : (
-              <ShopIcon style={{color: Colors.inactiveIconGrayColor}} />
-            );
-          } else if (route.name === 'Cart') {
-            iconName = focused ? (
-              <CartIcon style={{color: Colors.iconBlueColor}} />
-            ) : (
-              <CartIcon style={{color: Colors.inactiveIconGrayColor}} />
-            );
-          } else if (route.name === 'Account') {
-            iconName = focused ? (
-              <ProfileIcon style={{color: Colors.iconBlueColor}} />
-            ) : (
-              <ProfileIcon style={{color: Colors.inactiveIconGrayColor}} />
-            );
+
+          switch (route.name) {
+            case 'DashboardStack':
+              iconName = focused ? (
+                <HomeIcon style={{color: Colors.iconBlueColor}} />
+              ) : (
+                <HomeIcon style={{color: Colors.inactiveIconGrayColor}} />
+              );
+              break;
+
+            case 'Shop':
+              iconName = focused ? (
+                <ShopIcon style={{color: Colors.iconBlueColor}} />
+              ) : (
+                <ShopIcon style={{color: Colors.inactiveIconGrayColor}} />
+              );
+              break;
+
+            case 'Cart':
+              iconName = focused ? (
+                <CartIcon style={{color: Colors.iconBlueColor}} />
+              ) : (
+                <CartIcon style={{color: Colors.inactiveIconGrayColor}} />
+              );
+              break;
+
+            case 'Account':
+              iconName = focused ? (
+                <ProfileIcon style={{color: Colors.iconBlueColor}} />
+              ) : (
+                <ProfileIcon style={{color: Colors.inactiveIconGrayColor}} />
+              );
+              break;
+
+            default:
+              <HomeIcon style={{color: Colors.inactiveIconGrayColor}} />;
           }
 
-          // You can return any component that you like here!
           return iconName;
         },
 

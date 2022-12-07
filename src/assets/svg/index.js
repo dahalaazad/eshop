@@ -8,6 +8,21 @@ import Repairman1 from './Repairman1.svg';
 import Repairman2 from './Repairman2.svg';
 import DeliveryGirl from './DeliveryGirl.svg'
 import CommentIcon from './CommentIcon.svg'
+import DeliveryGirl from './DeliveryGirl.svg';
+import MainLogoColor from './MainLogoColor.svg';
+import MyCartPromotion from './MyCartPromotion.svg';
+import MyCartAdMainImage from './MyCartAdMainImage.svg';
+import MinusIcon from './CounterMinusIcon.svg';
+import PlusIcon from './CounterPlusIcon.svg';
+import UserProfileBeardedMan from './UserProfileBeardedMan.svg';
+import UserSettingsChangePassword from './UserSettingsChangePassword.svg';
+import UserSettingsChangeLanguage from './UserSettingsChangeLanguage.svg';
+import UserSettingsDarkMode from './UserSettingsDarkMode.svg';
+import UserSettingsNotification from './UserSettingsNotification.svg';
+import UserSettingsPrivacy from './UserSettingsPrivacy.svg';
+import UserSettingMenuRightArrow from './UserSettingMenuRightArrow.svg';
+import UserProfileWomanGlasses from './UserProfileWomanGlasses.svg';
+
 export {
   CartIcon,
   HomeIcon,
@@ -19,4 +34,17 @@ export {
   Repairman2,
   DeliveryGirl,
   CommentIcon,
+  MainLogoColor,
+  MyCartPromotion,
+  MyCartAdMainImage,
+  MinusIcon,
+  PlusIcon,
+  UserProfileBeardedMan,
+  UserSettingsChangePassword,
+  UserSettingMenuRightArrow,
+  UserProfileWomanGlasses,
+  UserSettingsChangeLanguage,
+  UserSettingsDarkMode,
+  UserSettingsNotification,
+  UserSettingsPrivacy,
 };

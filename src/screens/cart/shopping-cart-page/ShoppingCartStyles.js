@@ -6,4 +6,7 @@ export const Styles = StyleSheet.create({
     backgroundColor: Colors.loginBackgroundColor,
     flex: 1,
   },
+  checkoutContainer: {
+    marginTop: 5,
+  },
 });

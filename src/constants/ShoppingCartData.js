@@ -1,6 +1,5 @@
 import BrakePadImage from '@app/assets/svg/BrakePad.svg';
 import EngineFilterImage from '@app/assets/svg/EngineFilter.svg';
-import HondaGearBox1Image from '@app/assets/svg/HondaGearBox1.svg';
 
 export default shoppingCartData = [
   {
@@ -8,7 +7,7 @@ export default shoppingCartData = [
     shoppingCartImage: BrakePadImage,
     shoppingCartTitle: 'FZ Brake Pad',
     shoppingCartSubTitle: 'Wingardium Leviosa',
-    shoppingCartPrice: 1999,
+    shoppingCartPrice: 2999,
   },
   {
     id: 2,
@@ -19,17 +18,17 @@ export default shoppingCartData = [
   },
   {
     id: 3,
-    shoppingCartImage: HondaGearBox1Image,
+    shoppingCartImage: EngineFilterImage,
     shoppingCartTitle: 'Duke Handle Bars',
     shoppingCartSubTitle: 'Wingardium Leviosa',
-    shoppingCartPrice: 1999,
+    shoppingCartPrice: 1399,
   },
   {
     id: 4,
     shoppingCartImage: BrakePadImage,
     shoppingCartTitle: 'FZ Brake Pad',
     shoppingCartSubTitle: 'Wingardium Leviosa',
-    shoppingCartPrice: 1999,
+    shoppingCartPrice: 1899,
   },
   {
     id: 5,
@@ -40,7 +39,7 @@ export default shoppingCartData = [
   },
   {
     id: 6,
-    shoppingCartImage: HondaGearBox1Image,
+    shoppingCartImage: EngineFilterImage,
     shoppingCartTitle: 'Duke Handle Bars',
     shoppingCartSubTitle: 'Wingardium Leviosa',
     shoppingCartPrice: 1999,

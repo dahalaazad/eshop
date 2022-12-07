@@ -10,7 +10,7 @@ import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {InputField, PrimaryButton} from '@app/commons';
 import {Styles} from '@app/screens/login/LoginStyles';
-import MainLogo from '@app/assets/svg/MainLogo.svg';
+import {MainLogoColor} from '@app/assets/svg';
 
 export default function Login({navigation}) {
   const {
@@ -36,7 +36,7 @@ export default function Login({navigation}) {
       <View>
         <View style={{alignItems: 'center'}}>
           <View style={{paddingTop: 65, paddingBottom: 52}}>
-            <MainLogo />
+            <MainLogoColor />
           </View>
 
           <Text style={Styles.headingText}>Welcome Back</Text>
@@ -114,6 +114,7 @@ export default function Login({navigation}) {
 
           <View style={Styles.loginButtonContainer}>
             <PrimaryButton
+              buttonRadius={10}
               buttonLabel="Login"
               buttonHeight={60}
               onPressHandler={handleSubmit(loginButtonHandler)}
