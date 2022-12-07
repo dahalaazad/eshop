@@ -17,6 +17,7 @@ export const Colors = {
   myCartAdTextOne: '#FFA93F',
   checkoutPriceText: '#4F4F4F',
   dashboardAdTitleColor: '#E1C589',
+  toggleButtonOffColor: '#D9DBE4',
   dashboardProductCategoryColor: '#F1F1F1',
   dashboardProductCategoryActiveColor: '#C3C8E3',
   backButtonBlueColor: '#41416E',

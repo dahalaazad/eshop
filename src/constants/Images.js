@@ -1,1 +1,3 @@
-export const Images = {};
+export default {
+  profileBeardedMan: require('../assets/images/UserProfileBeardedMan.png'),
+};
