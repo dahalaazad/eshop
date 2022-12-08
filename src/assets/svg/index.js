@@ -39,6 +39,10 @@ import UserAccountSettingIcon from './UserAccountSettingIcon.svg';
 import UserAccountShareIcon from './UserAccountShareIcon.svg';
 import UserAccountAboutIcon from './UserAccountAboutIcon.svg';
 import UserAccountLogout from './UserAccountLogout.svg';
+import ProductCategoryBike from './DashboardCategoryBike.svg';
+import ProductCategoryScooter from './DashboardCategoryScooter.svg';
+import ProductCategoryCar from './DashboardCategoryCar.svg';
+import ProductCategoryAccessories from './DashboardCategoryAccessories.svg';
 
 export {
   BrakePadImage,
@@ -82,4 +86,8 @@ export {
   UserAccountShareIcon,
   UserAccountAboutIcon,
   UserAccountLogout,
+  ProductCategoryBike,
+  ProductCategoryScooter,
+  ProductCategoryCar,
+  ProductCategoryAccessories,
 };

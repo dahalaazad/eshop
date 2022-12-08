@@ -1,9 +1,12 @@
-import ProductCategoryBike from '@app/assets/svg/DashboardCategoryBike.svg';
-import ProductCategoryScooter from '@app/assets/svg/DashboardCategoryScooter.svg';
-import ProductCategoryCar from '@app/assets/svg/DashboardCategoryCar.svg';
-import ProductCategoryAccessories from '@app/assets/svg/DashboardCategoryAccessories.svg';
-import EngineFilterImage from '@app/assets/svg/EngineFilter.svg';
-import BrakePadImage from '@app/assets/svg/BrakePad.svg';
+import {
+  EngineFilterImage,
+  BrakePadImage,
+  ProductCategoryBike,
+  ProductCategoryScooter,
+  ProductCategoryCar,
+  ProductCategoryAccessories,
+} from '@app/assets/svg';
+
 import {productCategoryDataItems} from './productCategoryData';
 import productCardData from './ProductCardData';
 
@@ -13,7 +16,8 @@ const partsData = [
     productCardCategory: 'Engine Filter',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Castrol Engine Filter',
-    productCardSubTitle: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.... See More',
+    productCardSubTitle:
+      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.... See More',
     productCardPrice: 1999,
   },
   {
@@ -29,7 +33,8 @@ const partsData = [
     productCardCategory: 'Engine Filter',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Chevron Engine Filter',
-    productCardSubTitle: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.... See More',
+    productCardSubTitle:
+      'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.... See More',
     productCardPrice: 1999,
   },
   {
