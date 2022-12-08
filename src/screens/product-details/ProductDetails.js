@@ -4,7 +4,7 @@ import {BackButton, PrimaryButton, ProductCounter,ProductHorizontalScroll} from 
 import {AllProductList, Colors} from '@app/constants';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import FA from 'react-native-vector-icons/FontAwesome';
-import DashAdCarouselPagination from '@app/screens/dashboard/components/DashAdCarouselPagination';
+import {DashAdCarouselPagination} from '@app/screens';
 import {useSelector} from 'react-redux';
 import {
   CommentIcon,
