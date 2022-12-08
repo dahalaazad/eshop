@@ -1,5 +1,13 @@
-import {View, Text, Image} from 'react-native';
-import React from 'react';
+import {
+  View,
+  Text,
+  Image,
+  Share,
+  Modal,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+} from 'react-native';
+import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Styles} from './UserAccountStyles';
 import Images from '@app/constants/Images';
@@ -10,14 +18,47 @@ import {
 } from '@app/assets/svg';
 import {AccountRewardPointCard, UserAccountMenuItemGroup} from './components';
 import UserAccountMenuItem from './components/UserAccountMenuItem';
+import ProfileLogoutCard from '../components/ProfileLogoutCard';
+import ProfileLogoutModal from '../components/ProfileLogoutModal';
 
 export default function UserAccount({navigation}) {
+  const [logoutModalVisible, setLogoutModalVisible] = useState(false);
+
+  const toggleLogoutModal = () => {
+    setLogoutModalVisible(!logoutModalVisible);
+  };
+
+  const closeLogoutModal = () => {
+    setLogoutModalVisible(false);
+  };
+
   handleOnPressInformation = () => {
     navigation.navigate('UserProfile');
   };
 
   handleOnPressSettings = () => {
     navigation.navigate('UserSettings');
+  };
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        title: 'This is Share Title',
+        message: 'https://www.google.com/',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -56,6 +97,7 @@ export default function UserAccount({navigation}) {
         <UserAccountMenuItemGroup
           navigateInformation={handleOnPressInformation}
           navigateSettings={handleOnPressSettings}
+          onShare={onShare}
         />
       </View>
 
@@ -67,8 +109,15 @@ export default function UserAccount({navigation}) {
           menuLeft={<UserAccountLogout />}
           menuRight={<UserSettingMenuRightArrow />}
           menuSubText="Change your app settings"
+          onPress={toggleLogoutModal}
         />
       </View>
+
+      <ProfileLogoutModal
+        modalVisible={logoutModalVisible}
+        toggleLogoutModal={toggleLogoutModal}
+        closeLogoutModal={closeLogoutModal}
+      />
     </View>
   );
 }

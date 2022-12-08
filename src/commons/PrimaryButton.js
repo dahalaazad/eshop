@@ -19,10 +19,11 @@ export default function PrimaryButton({
   onPressHandler,
   buttonWidth,
   buttonRadius,
+  isOutlined,
 }) {
   return (
     <Button
-      mode="contained"
+      mode={isOutlined ? 'outlined' : 'contained'}
       color={Colors.textLinkColor}
       uppercase={false}
       style={{
