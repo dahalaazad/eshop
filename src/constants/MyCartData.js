@@ -1,5 +1,4 @@
-import BrakePadImage from '@app/assets/svg/BrakePad.svg';
-import RegularServiceImage from '@app/assets/svg/RegularServiceImage.svg';
+import {BrakePadImage,RegularServiceImage} from '@app/assets/svg';
 
 export default shoppingCartData = [
   {
