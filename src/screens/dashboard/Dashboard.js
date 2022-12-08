@@ -12,10 +12,12 @@ import {
   BrakePadImage,
   CastrolImage,
 } from '@app/assets/svg';
-import DashProductCategory from '@app/screens/dashboard/components/DashProductCategory';
-import DashProductSegmentedTab from '@app/screens/dashboard/components/DashProductSegmentedTab';
-import DashAdCarouselPagination from './components/DashAdCarouselPagination';
-import DashAdCarousel from '@app/screens/dashboard/components/DashAdCarousel';
+import {
+  DashProductCategory,
+  DashProductSegmentedTab,
+  DashAdCarouselPagination,
+  DashAdCarousel,
+} from '@app/screens';
 
 const productCategoryDataItems = [
   {
