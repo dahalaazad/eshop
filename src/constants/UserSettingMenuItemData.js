@@ -16,6 +16,7 @@ export default UserSettingMenuItemData = [
     text: 'Change Password',
     left: <UserSettingChangePasswordIcon />,
     right: UserSettingMenuArrow,
+    navigationRoute:'ChangePassword'
   },
   {
     id: 2,

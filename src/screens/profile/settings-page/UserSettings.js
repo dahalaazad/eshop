@@ -26,6 +26,8 @@ export default function UserSettings({navigation}) {
     <UserSettingMenuItem
       menuText={item.text}
       menuLeft={item.left}
+      navigation={navigation}
+      navigationRoute={item.navigationRoute}
       menuRight={
         <item.right isSwitchOn={switchStatus} onToggleSwitch={onToggleSwitch} />
       }

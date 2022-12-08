@@ -76,9 +76,10 @@ const MainStack = ({navigation}) => {
         options={{
           headerTitle: 'Change Password',
           headerTitleStyle: {
+            color:Colors.changePasswordHeaderColor,
             fontFamily: 'Sofia Pro',
             fontSize: 20,
-            fontWeight: '500',
+            fontWeight: 'bold',
           },
         }}
       />

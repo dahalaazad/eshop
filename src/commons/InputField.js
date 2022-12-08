@@ -9,6 +9,8 @@ export default function InputField({
   onBlur,
   onChange,
   value,
+  borderWidth,
+  borderColor,
 }) {
   const [hidePassword, setHidePassword] = useState(isPassword);
   const [eyeIcon, setEyeIcon] = useState(passwordIcon);
@@ -38,7 +40,7 @@ export default function InputField({
           />
         )
       }
-      style={{backgroundColor: Colors.whiteColor}}
+      style={{backgroundColor: Colors.whiteColor,borderWidth:borderWidth,borderColor:borderColor}}
     />
   );
 }
