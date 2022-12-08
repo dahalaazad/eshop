@@ -1,6 +1,11 @@
 import {View, Text, StyleSheet, Button, FlatList} from 'react-native';
 import React, {useLayoutEffect} from 'react';
-import {BackButton, PrimaryButton, ProductCounter,ProductHorizontalScroll} from '@app/commons';
+import {
+  BackButton,
+  PrimaryButton,
+  ProductCounter,
+  ProductHorizontalScroll,
+} from '@app/commons';
 import {AllProductList, Colors} from '@app/constants';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import FA from 'react-native-vector-icons/FontAwesome';
@@ -16,17 +21,17 @@ import {
   HondaGearBoxImage4,
 } from '@app/assets/svg';
 
-
 export default function ProductDetails({route, navigation}) {
   const {itemId, sourcePage} = route.params;
-  console.log(itemId, sourcePage);
   const product = useSelector(state => state.product);
   const dashboardProduct = product?.dashboardProducts;
   const shopProduct = product?.shopProduct;
+
   const currentProduct =
     sourcePage === 'dashboard'
       ? dashboardProduct?.filter(item => item.id === itemId)
       : shopProduct?.filter(item => item.id === itemId);
+
   const shopProductImageList = [
     <HondaGearBoxImage1 height="100%" width="100%" />,
     <HondaGearBoxImage2 height="100%" width="100%" />,
@@ -77,6 +82,7 @@ export default function ProductDetails({route, navigation}) {
                 ? currentProduct[0].productCardCategory
                 : AllProductList.shopProducts[itemId - 1].productCardCategory}
             </Text>
+
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <FA
@@ -85,6 +91,7 @@ export default function ProductDetails({route, navigation}) {
                 size={15}
                 style={{paddingTop: 20}}
               />
+              
               <Text style={[styles.topLine, {paddingLeft: 10}]}>(4.5)</Text>
             </View>
           </View>
@@ -95,6 +102,7 @@ export default function ProductDetails({route, navigation}) {
                 ? currentProduct[0].productCardTitle
                 : AllProductList.shopProducts[itemId - 1].productCardTitle}
             </Text>
+
             <Text style={styles.secondLine}>
               {`Rs. ${
                 sourcePage === 'dashboard'
@@ -117,6 +125,7 @@ export default function ProductDetails({route, navigation}) {
           <View>
             <ProductCounter />
           </View>
+
           <View>
             <TouchableOpacity style={styles.commentButton}>
               <CommentIcon />
@@ -146,6 +155,7 @@ export default function ProductDetails({route, navigation}) {
           <View style={{paddingTop: 30}}>
             <Text style={styles.horizontalScrollTitle}>Similar to this</Text>
           </View>
+
           <View style={{flexDirection: 'row', paddingBottom: 10}}>
             <ProductHorizontalScroll />
           </View>
