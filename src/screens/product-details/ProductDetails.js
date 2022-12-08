@@ -91,7 +91,7 @@ export default function ProductDetails({route, navigation}) {
                 size={15}
                 style={{paddingTop: 20}}
               />
-              
+
               <Text style={[styles.topLine, {paddingLeft: 10}]}>(4.5)</Text>
             </View>
           </View>
@@ -139,13 +139,7 @@ export default function ProductDetails({route, navigation}) {
               buttonIconSize={24}
               buttonIconColor={Colors.whiteColor}
               buttonRadius={10}
-              buttonStyle={{
-                fontFamily: 'Poppins',
-                fontSize: 16,
-                fontWeight: '500',
-                paddingTop: 5,
-                borderRadius: 10,
-              }}
+              buttonStyle={styles.primaryButtonStyles}
               onPressHandler={() => alert('Add to Cart')}
             />
           </View>
@@ -156,7 +150,7 @@ export default function ProductDetails({route, navigation}) {
             <Text style={styles.horizontalScrollTitle}>Similar to this</Text>
           </View>
 
-          <View style={{flexDirection: 'row', paddingBottom: 10}}>
+          <View style={styles.similarItemTextStyle}>
             <ProductHorizontalScroll />
           </View>
         </View>
@@ -225,5 +219,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins',
     fontSize: 16,
     fontWeight: '600',
+  },
+  primaryButtonStyles: {
+    fontFamily: 'Poppins',
+    fontSize: 16,
+    fontWeight: '500',
+    paddingTop: 5,
+    borderRadius: 10,
+  },
+  similarItemTextStyle: {
+    flexDirection: 'row',
+    paddingBottom: 10,
   },
 });

@@ -44,4 +44,9 @@ export const Styles = StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: 2,
   },
+  dashboardProductCategoryStyles: {
+    backgroundColor: '#F1F1F1',
+    padding: 10,
+    borderRadius: 16,
+  },
 });

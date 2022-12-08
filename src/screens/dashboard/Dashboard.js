@@ -122,7 +122,7 @@ export default function Dashboard({navigation}) {
       categoryImage={item.categoryImage}
       isActive={item.isActive}
       statusChangeHandler={productCategoryStatusChange}
-      style={{backgroundColor:'#F1F1F1',padding:10,borderRadius:16}}
+      style={Styles.dashboardProductCategoryStyles}
     />
   );
 
