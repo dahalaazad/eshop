@@ -6,7 +6,7 @@ export default function UserSettingMenuItem({menuText, menuLeft, menuRight}) {
   return (
     <TouchableOpacity style={Styles.mainContainer} activeOpacity={0.5}>
       <View style={Styles.leftContainer}>
-        <View>{menuLeft}</View>
+        <View style={Styles.leftImageContainer}>{menuLeft}</View>
 
         <View style={Styles.textContainer}>
           <Text style={Styles.settingText}>{menuText}</Text>

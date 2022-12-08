@@ -27,6 +27,18 @@ import HondaGearBoxImage1 from './HondaGearBox1.svg';
 import HondaGearBoxImage2 from './HondaGearBox2.svg';
 import HondaGearBoxImage3 from './HondaGearBox3.svg';
 import HondaGearBoxImage4 from './HondaGearBox4.svg';
+import AccountProfileCheck from './AccountProfileCheck.svg';
+import UserSettingChangeLanguageIcon from './UserSettingChangeLanguageIcon.svg';
+import UserSettingChangePasswordIcon from './UserSettingChangePasswordIcon.svg';
+import UserSettingDarkMode from './UserSettingDarkMode.svg';
+import UserSettingNotification from './UserSettingNotification.svg';
+import UserSettingPrivacy from './UserSettingPrivacy.svg';
+import AccountRibbon from './AccountRibbon.svg';
+import UserAccountIcon from './UserAccountIcon.svg';
+import UserAccountSettingIcon from './UserAccountSettingIcon.svg';
+import UserAccountShareIcon from './UserAccountShareIcon.svg';
+import UserAccountAboutIcon from './UserAccountAboutIcon.svg';
+import UserAccountLogout from './UserAccountLogout.svg';
 
 export {
   BrakePadImage,
@@ -39,6 +51,11 @@ export {
   WaveBackground,
   Repairman1,
   Repairman2,
+  UserSettingChangeLanguageIcon,
+  UserSettingChangePasswordIcon,
+  UserSettingDarkMode,
+  UserSettingNotification,
+  UserSettingPrivacy,
   DeliveryGirl,
   CommentIcon,
   MainLogoColor,
@@ -58,4 +75,11 @@ export {
   HondaGearBoxImage2,
   HondaGearBoxImage3,
   HondaGearBoxImage4,
+  AccountProfileCheck,
+  AccountRibbon,
+  UserAccountIcon,
+  UserAccountSettingIcon,
+  UserAccountShareIcon,
+  UserAccountAboutIcon,
+  UserAccountLogout,
 };

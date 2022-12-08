@@ -11,6 +11,7 @@ export const Colors = {
   inputFieldIconColor: '#868686',
   productCardSubtitleColor: '#828282',
   productCardPriceColor: '#4E61D6',
+  itemMenuIconBackgroundColor: '#EBECF5',
   checkboxColor: '#888888',
   searchBarColor: '#F2F2F2',
   myCartAdBackgroundColor: '#E3F2FF',
