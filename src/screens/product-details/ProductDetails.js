@@ -25,7 +25,6 @@ import getImage from '@app/utils/getImage';
 export default function ProductDetails({navigation}) {
   const currentProduct = useSelector(state => state.product.currentProduct);
   const productImage = getImage(currentProduct?.imageId);
-  console.log(currentProduct)
 
   useLayoutEffect(() => {
     navigation.setOptions({
