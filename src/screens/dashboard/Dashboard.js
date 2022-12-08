@@ -18,6 +18,8 @@ import {
   DashAdCarouselPagination,
   DashAdCarousel,
 } from '@app/screens';
+import {useDispatch} from 'react-redux';
+import {setCurrentProduct} from '@app/redux/slices/displayProducts/productSlice';
 
 const productCategoryDataItems = [
   {
@@ -49,6 +51,8 @@ const productCategoryDataItems = [
 const productCardData = [
   {
     id: 1,
+    imageId: 'engineFilter',
+    productCardCategory:'engineFilter',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
@@ -56,6 +60,8 @@ const productCardData = [
   },
   {
     id: 2,
+    imageId: 'brakePad',
+    productCardCategory:'brakePad',
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
@@ -63,6 +69,8 @@ const productCardData = [
   },
   {
     id: 3,
+    imageId: 'engineFilter',
+    productCardCategory:'engineFilter',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
@@ -70,6 +78,8 @@ const productCardData = [
   },
   {
     id: 4,
+    imageId: 'brakePad',
+    productCardCategory:'brakePad',
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
@@ -99,17 +109,33 @@ const adData = [
 ];
 
 export default function Dashboard({navigation}) {
+  const dispatch = useDispatch();
   const scrollX = useRef(new Animated.Value(0)).current;
 
   const [productCategoryData, setProductCategoryData] = useState(
     productCategoryDataItems,
   );
 
-  const onProductCardPress = itemId => {
-    navigation.navigate('ProductDetails', {
-      itemId: itemId,
-      sourcePage: 'dashboard',
-    });
+  const onProductCardPress = (
+    id,
+    imageId,
+    productCardCategory,
+    productCardTitle,
+    productCardSubTitle,
+    productCardPrice,
+  ) => {
+    
+    dispatch(
+      setCurrentProduct({
+        id,
+        imageId,
+        productCardCategory,
+        productCardTitle,
+        productCardSubTitle,
+        productCardPrice,
+      }),
+    );
+    navigation.navigate('ProductDetails');
   };
 
   const productCategoryStatusChange = itemId => {
@@ -191,6 +217,8 @@ export default function Dashboard({navigation}) {
             <ProductCard
               key={item.id}
               productId={item.id}
+              productImageId={item.imageId}
+              productCardCategory={item.productCardCategory}
               productCardImage={item.productCardImage}
               productCardTitle={item.productCardTitle}
               productCardSubTitle={item.productCardSubTitle}

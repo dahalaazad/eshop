@@ -4,6 +4,8 @@ import {Colors} from '@app/constants';
 
 export default function ProductCard({
   productId,
+  productImageId,
+  productCardCategory,
   productCardImage,
   productCardTitle,
   productCardSubTitle,
@@ -16,14 +18,24 @@ export default function ProductCard({
       style={Styles.mainContainer}
       activeOpacity={0.6}
       onPress={() => {
-        onPressHandler(productId);
+        onPressHandler(
+          productId,
+          productImageId,
+          productCardCategory,
+          productCardTitle,
+          productCardSubTitle,
+          productCardPrice,
+        );
       }}>
       <View style={Styles.imageContainer}>{productCardImage}</View>
+
       <View style={Styles.textContainer}>
         <Text style={{...Styles.titleText, fontWeight: titleTextFontWeight}}>
           {productCardTitle}
         </Text>
+
         <Text style={Styles.subTitleText}>{productCardSubTitle}</Text>
+        
         <Text style={Styles.priceText}>{`Rs. ${productCardPrice}`}</Text>
       </View>
     </TouchableOpacity>

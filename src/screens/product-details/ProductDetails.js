@@ -20,28 +20,13 @@ import {
   HondaGearBoxImage3,
   HondaGearBoxImage4,
 } from '@app/assets/svg';
+import getImage from '@app/utils/getImage';
 
-export default function ProductDetails({route, navigation}) {
-  const {itemId, sourcePage} = route.params;
-  const product = useSelector(state => state.product);
-  const dashboardProduct = product?.dashboardProducts;
-  const shopProduct = product?.shopProduct;
-
-  const currentProduct =
-    sourcePage === 'dashboard'
-      ? dashboardProduct?.filter(item => item.id === itemId)
-      : shopProduct?.filter(item => item.id === itemId);
-
-  const shopProductImageList = [
-    <HondaGearBoxImage1 height="100%" width="100%" />,
-    <HondaGearBoxImage2 height="100%" width="100%" />,
-    <HondaGearBoxImage3 height="100%" width="100%" />,
-    <HondaGearBoxImage4 height="100%" width="100%" />,
-    <EngineFilterImage height="100%" width="100%" />,
-    <BrakePadImage height="100%" width="100%" />,
-    <EngineFilterImage height="100%" width="100%" />,
-    <BrakePadImage height="100%" width="100%" />,
-  ];
+export default function ProductDetails({navigation}) {
+  const product = useSelector(state => state.product.productList);
+  const currentProduct = useSelector(state => state.product.currentProduct);
+  console.log('fromredux--->', currentProduct);
+  const productImage = getImage(currentProduct.imageId);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -57,19 +42,7 @@ export default function ProductDetails({route, navigation}) {
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <DashAdCarouselPagination
-          dataArr={
-            sourcePage === 'dashboard'
-              ? currentProduct[0].productCardCategory == 'Brake Pad'
-                ? [
-                    <BrakePadImage height="100%" width="100%" />,
-                    <BrakePadImage height="50%" width="50%" />,
-                  ]
-                : [
-                    <EngineFilterImage height="100%" width="100%" />,
-                    <EngineFilterImage height="50%" width="50%" />,
-                  ]
-              : [shopProductImageList[itemId - 1]]
-          }
+          dataArr={[productImage,<EngineFilterImage />, <BrakePadImage />]}
           renderCarouselItem={renderCarouselItem}
         />
       </View>
@@ -77,11 +50,7 @@ export default function ProductDetails({route, navigation}) {
       <View style={styles.bottomContainer}>
         <View style={{alignItems: 'stretch', padding: 20}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.topLine}>
-              {sourcePage === 'dashboard'
-                ? currentProduct[0].productCardCategory
-                : AllProductList.shopProducts[itemId - 1].productCardCategory}
-            </Text>
+            <Text style={styles.topLine}>{currentProduct.productCardCategory}</Text>
 
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -97,28 +66,14 @@ export default function ProductDetails({route, navigation}) {
           </View>
 
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.secondLine}>
-              {sourcePage === 'dashboard'
-                ? currentProduct[0].productCardTitle
-                : AllProductList.shopProducts[itemId - 1].productCardTitle}
-            </Text>
+            <Text style={styles.secondLine}>{currentProduct.productCardTitle}</Text>
 
-            <Text style={styles.secondLine}>
-              {`Rs. ${
-                sourcePage === 'dashboard'
-                  ? currentProduct[0].productCardPrice
-                  : AllProductList.shopProducts[itemId - 1].productCardPrice
-              }`}
-            </Text>
+            <Text style={styles.secondLine}>{`Rs. ${currentProduct.productCardPrice}`}</Text>
           </View>
         </View>
 
         <View style={{padding: 20}}>
-          <Text style={styles.topLine}>
-            {sourcePage === 'dashboard'
-              ? currentProduct[0].productCardSubTitle
-              : AllProductList.shopProducts[itemId - 1].productCardSubTitle}
-          </Text>
+          <Text style={styles.topLine}>{currentProduct.productCardSubTitle}</Text>
         </View>
 
         <View style={styles.productDescription}>

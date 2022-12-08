@@ -1,20 +1,11 @@
-import {
-  EngineFilterImage,
-  BrakePadImage,
-  ProductCategoryBike,
-  ProductCategoryScooter,
-  ProductCategoryCar,
-  ProductCategoryAccessories,
-} from '@app/assets/svg';
-
 import {productCategoryDataItems} from './productCategoryData';
 import productCardData from './ProductCardData';
 
 const partsData = [
   {
     id: 1,
+    productId:'engineFilter',
     productCardCategory: 'Engine Filter',
-    productCardImage: <EngineFilterImage />,
     productCardTitle: 'Castrol Engine Filter',
     productCardSubTitle:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.... See More',
@@ -22,16 +13,16 @@ const partsData = [
   },
   {
     id: 2,
+    productId:'brakePad',
     productCardCategory: 'Brake Pad',
-    productCardImage: <BrakePadImage />,
     productCardTitle: 'FZ Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 2500,
   },
   {
     id: 3,
+    productId:'engineFilter',
     productCardCategory: 'Engine Filter',
-    productCardImage: <EngineFilterImage />,
     productCardTitle: 'Chevron Engine Filter',
     productCardSubTitle:
       'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.... See More',
@@ -39,8 +30,8 @@ const partsData = [
   },
   {
     id: 4,
+    productId:'brakePad',
     productCardCategory: 'Brake Pad',
-    productCardImage: <BrakePadImage />,
     productCardTitle: 'TVS Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 2500,
