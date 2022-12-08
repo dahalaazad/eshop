@@ -10,6 +10,7 @@ import {
 export default productCardData = [
   {
     id: 1,
+    imageId:'hondaGearBoxImage1',
     productCardCategory: 'HondaGearBoxImage1',
     productCardImage: <HondaGearBoxImage1 />,
     productCardTitle: 'Honda Gear Box',
@@ -18,6 +19,7 @@ export default productCardData = [
   },
   {
     id: 2,
+    imageId:'hondaGearBoxImage2',
     productCardCategory: 'HondaGearBoxImage2',
     productCardImage: <HondaGearBoxImage2 />,
     productCardTitle: 'Gear box 2',
@@ -26,6 +28,7 @@ export default productCardData = [
   },
   {
     id: 3,
+    imageId:'hondaGearBoxImage3',
     productCardCategory: 'HondaGearBoxImage3',
     productCardImage: <HondaGearBoxImage3 />,
     productCardTitle: 'gear box 3',
@@ -34,6 +37,7 @@ export default productCardData = [
   },
   {
     id: 4,
+    imageId:'hondaGearBoxImage4',
     productCardCategory: 'HondaGearBoxImage4',
     productCardImage: <HondaGearBoxImage4 />,
     productCardTitle: 'gear box 4',
@@ -42,6 +46,7 @@ export default productCardData = [
   },
   {
     id: 5,
+    imageId:'engineFilter',
     productCardCategory: 'EngineFilterImage',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
@@ -50,6 +55,7 @@ export default productCardData = [
   },
   {
     id: 6,
+    imageId:'brakepad',
     productCardCategory: 'BrakePadImage',
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
@@ -58,6 +64,7 @@ export default productCardData = [
   },
   {
     id: 7,
+    imageId:'engineFilter',
     productCardCategory: 'EngineFilterImage',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
@@ -66,6 +73,7 @@ export default productCardData = [
   },
   {
     id: 8,
+    imageId:'brakepad',
     productCardCategory: 'BrakePadImage',
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',

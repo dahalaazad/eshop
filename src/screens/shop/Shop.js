@@ -4,15 +4,37 @@ import {Colors} from '@app/constants';
 import {Styles} from '@app/screens/shop/ShopStyles';
 import {FilterButton, ProductCard, SearchBar} from '@app/commons';
 import {ProductCardData} from '@app/constants';
+import {useDispatch} from 'react-redux';
+import {setCurrentProduct} from '@app/redux/slices/displayProducts/productSlice';
 
 export default function Shop({navigation}) {
-  const onProductCardPress = itemId => {
-    navigation.navigate('ProductDetails',{itemId: itemId,sourcePage:'shop'});
+  const dispatch = useDispatch();
+  const onProductCardPress = (
+    id,
+    imageId,
+    productCardCategory,
+    productCardTitle,
+    productCardSubTitle,
+    productCardPrice,
+  ) => {
+    dispatch(
+      setCurrentProduct({
+        id,
+        imageId,
+        productCardCategory,
+        productCardTitle,
+        productCardSubTitle,
+        productCardPrice,
+      }),
+    );
+    navigation.navigate('ProductDetails');
   };
 
   const productListRender = ({item}) => (
     <ProductCard
       productId={item.id}
+      productImageId={item.imageId}
+      productCardCategory={item.productCardCategory}
       productCardImage={item.productCardImage}
       productCardTitle={item.productCardTitle}
       productCardSubTitle={item.productCardSubTitle}
