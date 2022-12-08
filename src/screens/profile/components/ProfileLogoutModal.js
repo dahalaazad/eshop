@@ -7,6 +7,7 @@ export default function ProfileLogoutModal({
   modalVisible,
   toggleLogoutModal,
   closeLogoutModal,
+  children,
 }) {
   return (
     <Modal
@@ -20,7 +21,7 @@ export default function ProfileLogoutModal({
         activeOpacity={1}
         style={Styles.modalBackdropContainer}
         onPress={closeLogoutModal}>
-        <ProfileLogoutCard closeLogoutModal={closeLogoutModal} />
+        {children}
       </TouchableOpacity>
     </Modal>
   );

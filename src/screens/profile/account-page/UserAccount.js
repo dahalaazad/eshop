@@ -1,12 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  Share,
-  Modal,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, Image, Share} from 'react-native';
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Styles} from './UserAccountStyles';
@@ -18,8 +10,8 @@ import {
 } from '@app/assets/svg';
 import {AccountRewardPointCard, UserAccountMenuItemGroup} from './components';
 import UserAccountMenuItem from './components/UserAccountMenuItem';
-import ProfileLogoutCard from '../components/ProfileLogoutCard';
 import ProfileLogoutModal from '../components/ProfileLogoutModal';
+import {ProfileLogoutCard} from '@app/screens/profile';
 
 export default function UserAccount({navigation}) {
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
@@ -116,8 +108,9 @@ export default function UserAccount({navigation}) {
       <ProfileLogoutModal
         modalVisible={logoutModalVisible}
         toggleLogoutModal={toggleLogoutModal}
-        closeLogoutModal={closeLogoutModal}
-      />
+        closeLogoutModal={closeLogoutModal}>
+        <ProfileLogoutCard closeLogoutModal={closeLogoutModal} />
+      </ProfileLogoutModal>
     </View>
   );
 }
