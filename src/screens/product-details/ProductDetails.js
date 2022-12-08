@@ -6,7 +6,7 @@ import {
   ProductCounter,
   ProductHorizontalScroll,
 } from '@app/commons';
-import {AllProductList, Colors} from '@app/constants';
+import {Colors} from '@app/constants';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import FA from 'react-native-vector-icons/FontAwesome';
 import {DashAdCarouselPagination} from '@app/screens';
@@ -24,7 +24,7 @@ import getImage from '@app/utils/getImage';
 
 export default function ProductDetails({navigation}) {
   const currentProduct = useSelector(state => state.product.currentProduct);
-  const productImage = getImage(currentProduct.imageId);
+  const productImage = getImage(currentProduct.item.productImageId);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -48,7 +48,7 @@ export default function ProductDetails({navigation}) {
       <View style={styles.bottomContainer}>
         <View style={{alignItems: 'stretch', padding: 20}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.topLine}>{currentProduct.productCardCategory}</Text>
+            <Text style={styles.topLine}>{currentProduct.item.productCardCategory}</Text>
 
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -64,14 +64,14 @@ export default function ProductDetails({navigation}) {
           </View>
 
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.secondLine}>{currentProduct.productCardTitle}</Text>
+            <Text style={styles.secondLine}>{currentProduct.item.productCardTitle}</Text>
 
-            <Text style={styles.secondLine}>{`Rs. ${currentProduct.productCardPrice}`}</Text>
+            <Text style={styles.secondLine}>{`Rs. ${currentProduct.item.productCardPrice}`}</Text>
           </View>
         </View>
 
         <View style={{padding: 20}}>
-          <Text style={styles.topLine}>{currentProduct.productCardSubTitle}</Text>
+          <Text style={styles.topLine}>{currentProduct.item.productCardSubTitle}</Text>
         </View>
 
         <View style={styles.productDescription}>

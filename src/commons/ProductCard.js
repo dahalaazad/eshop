@@ -13,19 +13,20 @@ export default function ProductCard({
   onPressHandler,
   titleTextFontWeight,
 }) {
+  const productItem = {
+    productId,
+    productImageId,
+    productCardCategory,
+    productCardTitle,
+    productCardSubTitle,
+    productCardPrice,
+  };
   return (
     <TouchableOpacity
       style={Styles.mainContainer}
       activeOpacity={0.6}
       onPress={() => {
-        onPressHandler(
-          productId,
-          productImageId,
-          productCardCategory,
-          productCardTitle,
-          productCardSubTitle,
-          productCardPrice,
-        );
+        onPressHandler(productItem);
       }}>
       <View style={Styles.imageContainer}>{productCardImage}</View>
 
@@ -35,7 +36,7 @@ export default function ProductCard({
         </Text>
 
         <Text style={Styles.subTitleText}>{productCardSubTitle}</Text>
-        
+
         <Text style={Styles.priceText}>{`Rs. ${productCardPrice}`}</Text>
       </View>
     </TouchableOpacity>

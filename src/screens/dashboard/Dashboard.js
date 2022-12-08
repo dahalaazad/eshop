@@ -52,7 +52,7 @@ const productCardData = [
   {
     id: 1,
     imageId: 'engineFilter',
-    productCardCategory:'engineFilter',
+    productCardCategory: 'engineFilter',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
@@ -61,7 +61,7 @@ const productCardData = [
   {
     id: 2,
     imageId: 'brakePad',
-    productCardCategory:'brakePad',
+    productCardCategory: 'brakePad',
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
@@ -70,7 +70,7 @@ const productCardData = [
   {
     id: 3,
     imageId: 'engineFilter',
-    productCardCategory:'engineFilter',
+    productCardCategory: 'engineFilter',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
@@ -79,7 +79,7 @@ const productCardData = [
   {
     id: 4,
     imageId: 'brakePad',
-    productCardCategory:'brakePad',
+    productCardCategory: 'brakePad',
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
@@ -116,25 +116,8 @@ export default function Dashboard({navigation}) {
     productCategoryDataItems,
   );
 
-  const onProductCardPress = (
-    id,
-    imageId,
-    productCardCategory,
-    productCardTitle,
-    productCardSubTitle,
-    productCardPrice,
-  ) => {
-    
-    dispatch(
-      setCurrentProduct({
-        id,
-        imageId,
-        productCardCategory,
-        productCardTitle,
-        productCardSubTitle,
-        productCardPrice,
-      }),
-    );
+  const onProductCardPress = item => {
+    dispatch(setCurrentProduct({item}));
     navigation.navigate('ProductDetails');
   };
 
