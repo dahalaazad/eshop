@@ -1,7 +1,7 @@
 import {View, Text, FlatList, StyleSheet} from 'react-native';
 import React from 'react';
 import {productCategoryDataItems} from '@app/constants/productCategoryData';
-import DashProductCategory from '@app/screens/dashboard/components/DashProductCategory';
+import {DashProductCategory} from '@app/screens';
 import {Colors} from '@app/constants';
 
 const ProductHorizontalScroll = () => {
