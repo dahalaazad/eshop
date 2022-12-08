@@ -24,7 +24,8 @@ import getImage from '@app/utils/getImage';
 
 export default function ProductDetails({navigation}) {
   const currentProduct = useSelector(state => state.product.currentProduct);
-  const productImage = getImage(currentProduct.item.productImageId);
+  const productImage = getImage(currentProduct?.imageId);
+  console.log(currentProduct)
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -40,7 +41,7 @@ export default function ProductDetails({navigation}) {
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <DashAdCarouselPagination
-          dataArr={[productImage,<EngineFilterImage />, <BrakePadImage />]}
+          dataArr={[productImage, <EngineFilterImage />, <BrakePadImage />]}
           renderCarouselItem={renderCarouselItem}
         />
       </View>
@@ -48,7 +49,9 @@ export default function ProductDetails({navigation}) {
       <View style={styles.bottomContainer}>
         <View style={{alignItems: 'stretch', padding: 20}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.topLine}>{currentProduct.item.productCardCategory}</Text>
+            <Text style={styles.topLine}>
+              {currentProduct?.productCardCategory || ''}
+            </Text>
 
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -64,14 +67,20 @@ export default function ProductDetails({navigation}) {
           </View>
 
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.secondLine}>{currentProduct.item.productCardTitle}</Text>
+            <Text style={styles.secondLine}>
+              {currentProduct?.productCardTitle || ''}
+            </Text>
 
-            <Text style={styles.secondLine}>{`Rs. ${currentProduct.item.productCardPrice}`}</Text>
+            <Text style={styles.secondLine}>{`Rs. ${
+              currentProduct?.productCardPrice || ''
+            }`}</Text>
           </View>
         </View>
 
         <View style={{padding: 20}}>
-          <Text style={styles.topLine}>{currentProduct.item.productCardSubTitle}</Text>
+          <Text style={styles.topLine}>
+            {currentProduct?.productCardSubTitle || ''}
+          </Text>
         </View>
 
         <View style={styles.productDescription}>

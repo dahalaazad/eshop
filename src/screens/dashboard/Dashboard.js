@@ -117,7 +117,15 @@ export default function Dashboard({navigation}) {
   );
 
   const onProductCardPress = item => {
-    dispatch(setCurrentProduct({item}));
+    const currentObj = {
+      id: item.id,
+      imageId: item.imageId,
+      productCardCategory: item.productCardCategory,
+      productCardTitle: item.productCardTitle,
+      productCardSubTitle: item.productCardSubTitle,
+      productCardPrice: item.productCardPrice,
+    };
+    dispatch(setCurrentProduct(currentObj));
     navigation.navigate('ProductDetails');
   };
 
@@ -196,20 +204,17 @@ export default function Dashboard({navigation}) {
         </View>
 
         <View style={Styles.productCardContainer}>
-          {productCardData.map(item => (
-            <ProductCard
-              key={item.id}
-              productId={item.id}
-              productImageId={item.imageId}
-              productCardCategory={item.productCardCategory}
-              productCardImage={item.productCardImage}
-              productCardTitle={item.productCardTitle}
-              productCardSubTitle={item.productCardSubTitle}
-              productCardPrice={item.productCardPrice}
-              onPressHandler={onProductCardPress}
-              titleTextFontWeight="600"
-            />
-          ))}
+          {Array.isArray(productCardData) &&
+            productCardData.length &&
+            productCardData.map(item => (
+              <ProductCard
+                key={item.id}
+                product={item}
+                productCardImage={item.productCardImage}
+                onPressHandler={onProductCardPress}
+                titleTextFontWeight="600"
+              />
+            ))}
         </View>
       </ScrollView>
     </View>

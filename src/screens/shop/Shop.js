@@ -9,21 +9,25 @@ import {setCurrentProduct} from '@app/redux/slices/displayProducts/productSlice'
 
 export default function Shop({navigation}) {
   const dispatch = useDispatch();
-  
+
   const onProductCardPress = item => {
-    dispatch(setCurrentProduct({item}));
+    const currentObj = {
+      id: item.id,
+      imageId: item.imageId,
+      productCardCategory: item.productCardCategory,
+      productCardTitle: item.productCardTitle,
+      productCardSubTitle: item.productCardSubTitle,
+      productCardPrice: item.productCardPrice,
+    };
+    dispatch(setCurrentProduct(currentObj));
     navigation.navigate('ProductDetails');
   };
 
   const productListRender = ({item}) => (
     <ProductCard
-      productId={item.id}
-      productImageId={item.imageId}
-      productCardCategory={item.productCardCategory}
+      key={item.id}
+      product={item}
       productCardImage={item.productCardImage}
-      productCardTitle={item.productCardTitle}
-      productCardSubTitle={item.productCardSubTitle}
-      productCardPrice={item.productCardPrice}
       onPressHandler={onProductCardPress}
       titleTextFontWeight="600"
     />

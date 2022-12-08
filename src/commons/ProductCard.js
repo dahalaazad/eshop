@@ -3,41 +3,26 @@ import React from 'react';
 import {Colors} from '@app/constants';
 
 export default function ProductCard({
-  productId,
-  productImageId,
-  productCardCategory,
-  productCardImage,
-  productCardTitle,
-  productCardSubTitle,
-  productCardPrice,
+  product,
   onPressHandler,
   titleTextFontWeight,
 }) {
-  const productItem = {
-    productId,
-    productImageId,
-    productCardCategory,
-    productCardTitle,
-    productCardSubTitle,
-    productCardPrice,
-  };
   return (
     <TouchableOpacity
       style={Styles.mainContainer}
       activeOpacity={0.6}
-      onPress={() => {
-        onPressHandler(productItem);
-      }}>
-      <View style={Styles.imageContainer}>{productCardImage}</View>
+      onPress={() => onPressHandler(product)}>
+      <View style={Styles.imageContainer}>{product.productCardImage}</View>
 
       <View style={Styles.textContainer}>
         <Text style={{...Styles.titleText, fontWeight: titleTextFontWeight}}>
-          {productCardTitle}
+          {product.productCardTitle}
         </Text>
 
-        <Text style={Styles.subTitleText}>{productCardSubTitle}</Text>
+        <Text style={Styles.subTitleText}>{product.productCardSubTitle}</Text>
 
-        <Text style={Styles.priceText}>{`Rs. ${productCardPrice}`}</Text>
+        <Text
+          style={Styles.priceText}>{`Rs. ${product.productCardPrice}`}</Text>
       </View>
     </TouchableOpacity>
   );
