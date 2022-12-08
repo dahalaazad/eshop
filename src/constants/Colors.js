@@ -23,4 +23,6 @@ export const Colors = {
   dashboardProductCategoryActiveColor: '#C3C8E3',
   backButtonBlueColor: '#41416E',
   inactiveIconGrayColor: '#818181',
+  startIconYellow:'#F2994A',
+  borderBottomColor:'rgba(189, 189, 189, 0.4)',
 };

@@ -6,12 +6,10 @@ export const Styles = StyleSheet.create({
     backgroundColor: 'gray',
     height: 180,
     borderRadius: 20,
-    marginHorizontal: 10,
   },
   imageContainer: {
     height: '100%',
     width: '100%',
-    position: 'relative',
     flexDirection: 'row',
     borderRadius: 20,
     alignItems: 'center',
@@ -35,6 +33,7 @@ export const Styles = StyleSheet.create({
     color: Colors.whiteColor,
     fontWeight: '600',
     zIndex: 1,
+    paddingRight:10,
   },
   buttonContainer: {
     paddingTop: 10,

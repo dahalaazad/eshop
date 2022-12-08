@@ -1,19 +1,25 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice} from '@reduxjs/toolkit';
+import {ProductCardData} from '@app/constants';
+import {AllProductList} from '@app/constants';
 
-const initialState = {name: 'product 1', age: 26};
+const initialState = {
+  productList: [],
+  currentProduct: {},
+};
 
 export const productSlice = createSlice({
-    name: 'product',
-    initialState,
-    reducers: {
-        setProduct: (state, action) => {
-            return {...state, name: action.payload};
-
-        },
-        
-    }
+  name: 'product',
+  initialState,
+  reducers: {
+    setProduct: (state, action) => {
+      return {...state, productList: action.payload};
+    },
+    setCurrentProduct: (state, action) => {
+      return {...state,currentProduct: action.payload};
+    },
+  },
 });
 
-export const {setProduct} = productSlice.actions;
+export const {setProduct, setCurrentProduct} = productSlice.actions;
 
 export default productSlice.reducer;

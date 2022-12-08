@@ -3,11 +3,7 @@ import React from 'react';
 import {Colors} from '@app/constants';
 
 export default function ProductCard({
-  productId,
-  productCardImage,
-  productCardTitle,
-  productCardSubTitle,
-  productCardPrice,
+  product,
   onPressHandler,
   titleTextFontWeight,
 }) {
@@ -15,16 +11,18 @@ export default function ProductCard({
     <TouchableOpacity
       style={Styles.mainContainer}
       activeOpacity={0.6}
-      onPress={() => {
-        onPressHandler(productId);
-      }}>
-      <View style={Styles.imageContainer}>{productCardImage}</View>
+      onPress={() => onPressHandler(product)}>
+      <View style={Styles.imageContainer}>{product.productCardImage}</View>
+
       <View style={Styles.textContainer}>
         <Text style={{...Styles.titleText, fontWeight: titleTextFontWeight}}>
-          {productCardTitle}
+          {product.productCardTitle}
         </Text>
-        <Text style={Styles.subTitleText}>{productCardSubTitle}</Text>
-        <Text style={Styles.priceText}>{`Rs. ${productCardPrice}`}</Text>
+
+        <Text style={Styles.subTitleText}>{product.productCardSubTitle}</Text>
+
+        <Text
+          style={Styles.priceText}>{`Rs. ${product.productCardPrice}`}</Text>
       </View>
     </TouchableOpacity>
   );

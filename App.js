@@ -7,8 +7,6 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {useSelector} from 'react-redux';
 
 const App = () => {
-  const product = useSelector(state => state.product);
-
   return (
     <NavigationContainer>
       <GestureHandlerRootView style={{flex: 1}}>
