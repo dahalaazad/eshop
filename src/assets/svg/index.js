@@ -32,6 +32,8 @@ import UserAccountSettingIcon from './UserAccountSettingIcon.svg';
 import UserAccountShareIcon from './UserAccountShareIcon.svg';
 import UserAccountAboutIcon from './UserAccountAboutIcon.svg';
 import UserAccountLogout from './UserAccountLogout.svg';
+import CountryIconFrance from './CountryIconFrance.svg';
+import LanguageOptionCheck from './LanguageOptionCheck.svg';
 
 export {
   CartIcon,
@@ -68,4 +70,6 @@ export {
   UserAccountShareIcon,
   UserAccountAboutIcon,
   UserAccountLogout,
+  CountryIconFrance,
+  LanguageOptionCheck,
 };
