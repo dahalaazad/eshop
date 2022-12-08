@@ -12,7 +12,7 @@ const Styles = StyleSheet.create({
   },
   labelStyles: {fontFamily: 'Poppins', fontSize: 18, fontWeight: '500'},
   contentStyles: {
-    height: '100%',
+    // height: '100%',
   },
 });
 
@@ -25,18 +25,22 @@ export default function PrimaryButton({
   buttonIconSize,
   buttonIconColor,
   buttonRadius,
+  buttonStyle,
 }) {
   return (
     <Button
       mode="contained"
       color={Colors.textLinkColor}
       uppercase={false}
-      style={{
-        ...Styles.buttonStyles,
-        height: buttonHeight,
-        width: buttonWidth,
-        borderRadius: buttonRadius,
-      }}
+      style={
+        buttonStyle
+      //   {
+      //   ...Styles.buttonStyles,
+      //   height: buttonHeight,
+      //   width: buttonWidth,
+      //   borderRadius: buttonRadius,
+      // }
+    }
       labelStyle={Styles.labelStyles}
       contentStyle={Styles.contentStyles}
       icon={({size, color}) => (

@@ -6,8 +6,8 @@ import ShopIcon from './ShopIcon.svg';
 import WaveBackground from './WaveBackground.svg';
 import Repairman1 from './Repairman1.svg';
 import Repairman2 from './Repairman2.svg';
-import DeliveryGirl from './DeliveryGirl.svg'
-import CommentIcon from './CommentIcon.svg'
+import DeliveryGirl from './DeliveryGirl.svg';
+import CommentIcon from './CommentIcon.svg';
 import MainLogoColor from './MainLogoColor.svg';
 import MyCartPromotion from './MyCartPromotion.svg';
 import MyCartAdMainImage from './MyCartAdMainImage.svg';
@@ -21,8 +21,16 @@ import UserSettingsNotification from './UserSettingsNotification.svg';
 import UserSettingsPrivacy from './UserSettingsPrivacy.svg';
 import UserSettingMenuRightArrow from './UserSettingMenuRightArrow.svg';
 import UserProfileWomanGlasses from './UserProfileWomanGlasses.svg';
+import BrakePadImage from './BrakePad.svg';
+import EngineFilterImage from './EngineFilter.svg';
+import HondaGearBoxImage1 from './HondaGearBox1.svg';
+import HondaGearBoxImage2 from './HondaGearBox2.svg';
+import HondaGearBoxImage3 from './HondaGearBox3.svg';
+import HondaGearBoxImage4 from './HondaGearBox4.svg';
 
 export {
+  BrakePadImage,
+  EngineFilterImage,
   CartIcon,
   HomeIcon,
   MainLogo,
@@ -46,4 +54,8 @@ export {
   UserSettingsDarkMode,
   UserSettingsNotification,
   UserSettingsPrivacy,
+  HondaGearBoxImage1,
+  HondaGearBoxImage2,
+  HondaGearBoxImage3,
+  HondaGearBoxImage4,
 };

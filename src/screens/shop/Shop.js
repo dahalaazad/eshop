@@ -7,7 +7,7 @@ import {ProductCardData} from '@app/constants';
 
 export default function Shop({navigation}) {
   const onProductCardPress = itemId => {
-    navigation.navigate('ProductDetails');
+    navigation.navigate('ProductDetails',{itemId: itemId,sourcePage:'shop'});
   };
 
   const productListRender = ({item}) => (

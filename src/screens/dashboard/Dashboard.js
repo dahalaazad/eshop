@@ -12,6 +12,8 @@ import BrakePadImage from '@app/assets/svg/BrakePad.svg';
 import DashProductCategory from '@app/screens/dashboard/components/DashProductCategory';
 import DashProductSegmentedTab from '@app/screens/dashboard/components/DashProductSegmentedTab';
 import DashAdCarouselPagination from './components/DashAdCarouselPagination';
+import CastrolImage from '@app/assets/svg/DashboardAdCastrol.svg';
+import DashAdCarousel from '@app/screens/dashboard/components/DashAdCarousel';
 
 const productCategoryDataItems = [
   {
@@ -71,6 +73,27 @@ const productCardData = [
   },
 ];
 
+const adData = [
+  {
+    id: 1,
+    adTitle: 'CASTROL MAGNATEC',
+    adSubTitle: 'Non-stop protection from every start',
+    adImage: <CastrolImage />,
+  },
+  {
+    id: 2,
+    adTitle: 'LOREM IPSUM',
+    adSubTitle: 'Non-stop protection from every threat',
+    adImage: <EngineFilterImage />,
+  },
+  {
+    id: 3,
+    adTitle: 'FIRE STYLE',
+    adSubTitle: 'Non-stop protection from every threat',
+    adImage: <BrakePadImage />,
+  },
+];
+
 export default function Dashboard({navigation}) {
   const scrollX = useRef(new Animated.Value(0)).current;
 
@@ -79,7 +102,7 @@ export default function Dashboard({navigation}) {
   );
 
   const onProductCardPress = itemId => {
-    navigation.navigate('ProductDetails');
+    navigation.navigate('ProductDetails', {itemId: itemId,sourcePage:'dashboard'});
   };
 
   const productCategoryStatusChange = itemId => {
@@ -99,7 +122,19 @@ export default function Dashboard({navigation}) {
       categoryImage={item.categoryImage}
       isActive={item.isActive}
       statusChangeHandler={productCategoryStatusChange}
+      style={{backgroundColor:'#F1F1F1',padding:10,borderRadius:16}}
     />
+  );
+
+  const renderCarouselItem = ({item}) => (
+    <View>
+      <DashAdCarousel
+        key={item.id}
+        adTitle={item.adTitle}
+        adSubTitle={item.adSubTitle}
+        adImage={item.adImage}
+      />
+    </View>
   );
 
   return (
@@ -116,7 +151,10 @@ export default function Dashboard({navigation}) {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}>
         <View style={Styles.adContainer}>
-          <DashAdCarouselPagination />
+          <DashAdCarouselPagination
+            dataArr={adData}
+            renderCarouselItem={renderCarouselItem}
+          />
         </View>
 
         <View style={Styles.productCategoryContainer}>

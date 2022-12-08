@@ -8,6 +8,7 @@ import BrakePadImage from '@app/assets/svg/BrakePad.svg';
 export default productCardData = [
   {
     id: 1,
+    productCardCategory:'HondaGearBoxImage1',
     productCardImage: <HondaGearBoxImage1 />,
     productCardTitle: 'Honda Gear Box',
     productCardSubTitle: 'Lorem ipsum',
@@ -15,27 +16,31 @@ export default productCardData = [
   },
   {
     id: 2,
+    productCardCategory:'HondaGearBoxImage2',
     productCardImage: <HondaGearBoxImage2 />,
-    productCardTitle: 'Brake Pad',
+    productCardTitle: 'Gear box 2',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 1999,
   },
   {
     id: 3,
+    productCardCategory:'HondaGearBoxImage3',
     productCardImage: <HondaGearBoxImage3 />,
-    productCardTitle: 'Engine Filter',
+    productCardTitle: 'gear box 3',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 1999,
   },
   {
     id: 4,
+    productCardCategory:'HondaGearBoxImage4',
     productCardImage: <HondaGearBoxImage4 />,
-    productCardTitle: 'Brake Pad',
+    productCardTitle: 'gear box 4',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 1999,
   },
   {
     id: 5,
+    productCardCategory:'EngineFilterImage',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
@@ -43,6 +48,7 @@ export default productCardData = [
   },
   {
     id: 6,
+    productCardCategory:'BrakePadImage',
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
@@ -50,6 +56,7 @@ export default productCardData = [
   },
   {
     id: 7,
+    productCardCategory:'EngineFilterImage',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
@@ -57,6 +64,7 @@ export default productCardData = [
   },
   {
     id: 8,
+    productCardCategory:'BrakePadImage',
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
