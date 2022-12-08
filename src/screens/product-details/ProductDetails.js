@@ -23,9 +23,7 @@ import {
 import getImage from '@app/utils/getImage';
 
 export default function ProductDetails({navigation}) {
-  const product = useSelector(state => state.product.productList);
   const currentProduct = useSelector(state => state.product.currentProduct);
-  console.log('fromredux--->', currentProduct);
   const productImage = getImage(currentProduct.imageId);
 
   useLayoutEffect(() => {
