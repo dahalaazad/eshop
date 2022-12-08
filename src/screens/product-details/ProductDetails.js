@@ -1,19 +1,21 @@
 import {View, Text, StyleSheet, Button, FlatList} from 'react-native';
 import React, {useLayoutEffect} from 'react';
-import {BackButton, PrimaryButton, ProductCounter} from '@app/commons';
+import {BackButton, PrimaryButton, ProductCounter,ProductHorizontalScroll} from '@app/commons';
 import {AllProductList, Colors} from '@app/constants';
-import {CommentIcon} from '@app/assets/svg';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import FA from 'react-native-vector-icons/FontAwesome';
 import DashAdCarouselPagination from '@app/screens/dashboard/components/DashAdCarouselPagination';
-import ProductHorizontalScroll from '@app/commons/ProductHorizontalScroll';
 import {useSelector} from 'react-redux';
-import {BrakePadImage} from '@app/assets/svg';
-import {EngineFilterImage} from '@app/assets/svg';
-import {HondaGearBoxImage1} from '@app/assets/svg';
-import {HondaGearBoxImage2} from '@app/assets/svg';
-import {HondaGearBoxImage3} from '@app/assets/svg';
-import {HondaGearBoxImage4} from '@app/assets/svg';
+import {
+  CommentIcon,
+  BrakePadImage,
+  EngineFilterImage,
+  HondaGearBoxImage1,
+  HondaGearBoxImage2,
+  HondaGearBoxImage3,
+  HondaGearBoxImage4,
+} from '@app/assets/svg';
+
 
 export default function ProductDetails({route, navigation}) {
   const {itemId, sourcePage} = route.params;
