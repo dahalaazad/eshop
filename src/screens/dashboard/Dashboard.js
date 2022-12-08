@@ -77,19 +77,19 @@ const adData = [
   {
     id: 1,
     adTitle: 'CASTROL MAGNATEC',
-    adSubTitle: 'Non-stop protection from every start',
+    adSubTitle: 'Non-stop Protection From Every Start',
     adImage: <CastrolImage />,
   },
   {
     id: 2,
     adTitle: 'LOREM IPSUM',
-    adSubTitle: 'Non-stop protection from every threat',
+    adSubTitle: 'Non-stop Protection From Every Start',
     adImage: <EngineFilterImage />,
   },
   {
     id: 3,
     adTitle: 'FIRE STYLE',
-    adSubTitle: 'Non-stop protection from every threat',
+    adSubTitle: 'Non-stop Protection From Every Start',
     adImage: <BrakePadImage />,
   },
 ];
@@ -102,7 +102,10 @@ export default function Dashboard({navigation}) {
   );
 
   const onProductCardPress = itemId => {
-    navigation.navigate('ProductDetails', {itemId: itemId,sourcePage:'dashboard'});
+    navigation.navigate('ProductDetails', {
+      itemId: itemId,
+      sourcePage: 'dashboard',
+    });
   };
 
   const productCategoryStatusChange = itemId => {
@@ -127,7 +130,7 @@ export default function Dashboard({navigation}) {
   );
 
   const renderCarouselItem = ({item}) => (
-    <View>
+    <View style={{marginRight:25}} >
       <DashAdCarousel
         key={item.id}
         adTitle={item.adTitle}
