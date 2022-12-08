@@ -43,6 +43,7 @@ import ProductCategoryBike from './DashboardCategoryBike.svg';
 import ProductCategoryScooter from './DashboardCategoryScooter.svg';
 import ProductCategoryCar from './DashboardCategoryCar.svg';
 import ProductCategoryAccessories from './DashboardCategoryAccessories.svg';
+import CastrolImage from './DashboardAdCastrol.svg';
 
 export {
   BrakePadImage,
@@ -90,4 +91,5 @@ export {
   ProductCategoryScooter,
   ProductCategoryCar,
   ProductCategoryAccessories,
+  CastrolImage,
 };

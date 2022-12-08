@@ -3,16 +3,18 @@ import {View, ScrollView, FlatList, Animated} from 'react-native';
 import {FilterButton, ProductCard, SearchBar} from '@app/commons';
 import {Colors} from '@app/constants';
 import {Styles} from '@app/screens/dashboard/DashboardStyles';
-import ProductCategoryBike from '@app/assets/svg/DashboardCategoryBike.svg';
-import ProductCategoryScooter from '@app/assets/svg/DashboardCategoryScooter.svg';
-import ProductCategoryCar from '@app/assets/svg/DashboardCategoryCar.svg';
-import ProductCategoryAccessories from '@app/assets/svg/DashboardCategoryAccessories.svg';
-import EngineFilterImage from '@app/assets/svg/EngineFilter.svg';
-import BrakePadImage from '@app/assets/svg/BrakePad.svg';
+import {
+  ProductCategoryBike,
+  ProductCategoryScooter,
+  ProductCategoryCar,
+  ProductCategoryAccessories,
+  EngineFilterImage,
+  BrakePadImage,
+  CastrolImage,
+} from '@app/assets/svg';
 import DashProductCategory from '@app/screens/dashboard/components/DashProductCategory';
 import DashProductSegmentedTab from '@app/screens/dashboard/components/DashProductSegmentedTab';
 import DashAdCarouselPagination from './components/DashAdCarouselPagination';
-import CastrolImage from '@app/assets/svg/DashboardAdCastrol.svg';
 import DashAdCarousel from '@app/screens/dashboard/components/DashAdCarousel';
 
 const productCategoryDataItems = [
@@ -130,7 +132,7 @@ export default function Dashboard({navigation}) {
   );
 
   const renderCarouselItem = ({item}) => (
-    <View style={{marginRight:25}} >
+    <View style={{marginRight: 25}}>
       <DashAdCarousel
         key={item.id}
         adTitle={item.adTitle}
