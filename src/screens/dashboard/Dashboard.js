@@ -1,17 +1,9 @@
 import React, {useRef, useState} from 'react';
 import {View, ScrollView, FlatList, Animated} from 'react-native';
 import {FilterButton, ProductCard, SearchBar} from '@app/commons';
-import {Colors} from '@app/constants';
+import {Colors, ProductCardData} from '@app/constants';
 import {Styles} from '@app/screens/dashboard/DashboardStyles';
-import {
-  ProductCategoryBike,
-  ProductCategoryScooter,
-  ProductCategoryCar,
-  ProductCategoryAccessories,
-  EngineFilterImage,
-  BrakePadImage,
-  CastrolImage,
-} from '@app/assets/svg';
+import {EngineFilterImage, BrakePadImage, CastrolImage} from '@app/assets/svg';
 import {
   DashProductCategory,
   DashProductSegmentedTab,
@@ -20,93 +12,8 @@ import {
 } from '@app/screens';
 import {useDispatch} from 'react-redux';
 import {setCurrentProduct} from '@app/redux/slices/displayProducts/productSlice';
-
-const productCategoryDataItems = [
-  {
-    id: 1,
-    categoryName: 'Bike',
-    categoryImage: <ProductCategoryBike width={50} height={45} />,
-    isActive: true,
-  },
-  {
-    id: 2,
-    categoryName: 'Scooter',
-    categoryImage: <ProductCategoryScooter width={50} height={45} />,
-    isActive: false,
-  },
-  {
-    id: 3,
-    categoryName: 'Car',
-    categoryImage: <ProductCategoryCar width={50} height={45} />,
-    isActive: false,
-  },
-  {
-    id: 4,
-    categoryName: 'Accessories',
-    categoryImage: <ProductCategoryAccessories width={50} height={45} />,
-    isActive: false,
-  },
-];
-
-const productCardData = [
-  {
-    id: 1,
-    imageId: 'engineFilter',
-    productCardCategory: 'engineFilter',
-    productCardImage: <EngineFilterImage />,
-    productCardTitle: 'Engine Filter',
-    productCardSubTitle: 'Lorem ipsum',
-    productCardPrice: 1999,
-  },
-  {
-    id: 2,
-    imageId: 'brakePad',
-    productCardCategory: 'brakePad',
-    productCardImage: <BrakePadImage />,
-    productCardTitle: 'Brake Pad',
-    productCardSubTitle: 'Lorem ipsum',
-    productCardPrice: 1999,
-  },
-  {
-    id: 3,
-    imageId: 'engineFilter',
-    productCardCategory: 'engineFilter',
-    productCardImage: <EngineFilterImage />,
-    productCardTitle: 'Engine Filter',
-    productCardSubTitle: 'Lorem ipsum',
-    productCardPrice: 1999,
-  },
-  {
-    id: 4,
-    imageId: 'brakePad',
-    productCardCategory: 'brakePad',
-    productCardImage: <BrakePadImage />,
-    productCardTitle: 'Brake Pad',
-    productCardSubTitle: 'Lorem ipsum',
-    productCardPrice: 1999,
-  },
-];
-
-const adData = [
-  {
-    id: 1,
-    adTitle: 'CASTROL MAGNATEC',
-    adSubTitle: 'Non-stop Protection From Every Start',
-    adImage: <CastrolImage />,
-  },
-  {
-    id: 2,
-    adTitle: 'LOREM IPSUM',
-    adSubTitle: 'Non-stop Protection From Every Start',
-    adImage: <EngineFilterImage />,
-  },
-  {
-    id: 3,
-    adTitle: 'FIRE STYLE',
-    adSubTitle: 'Non-stop Protection From Every Start',
-    adImage: <BrakePadImage />,
-  },
-];
+import {productCategoryDataItems} from '@app/constants/productCategoryData';
+import { adData } from '@app/constants';
 
 export default function Dashboard({navigation}) {
   const dispatch = useDispatch();
