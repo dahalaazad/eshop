@@ -1,13 +1,17 @@
-import HondaGearBoxImage1 from '@app/assets/svg/HondaGearBox1.svg';
-import HondaGearBoxImage2 from '@app/assets/svg/HondaGearBox2.svg';
-import HondaGearBoxImage3 from '@app/assets/svg/HondaGearBox3.svg';
-import HondaGearBoxImage4 from '@app/assets/svg/HondaGearBox4.svg';
-import EngineFilterImage from '@app/assets/svg/EngineFilter.svg';
-import BrakePadImage from '@app/assets/svg/BrakePad.svg';
+import {
+  EngineFilterImage,
+  BrakePadImage,
+  HondaGearBoxImage1,
+  HondaGearBoxImage2,
+  HondaGearBoxImage3,
+  HondaGearBoxImage4,
+} from '@app/assets/svg';
 
 export default productCardData = [
   {
     id: 1,
+    imageId:'hondaGearBoxImage1',
+    productCardCategory: 'HondaGearBoxImage1',
     productCardImage: <HondaGearBoxImage1 />,
     productCardTitle: 'Honda Gear Box',
     productCardSubTitle: 'Lorem ipsum',
@@ -15,27 +19,35 @@ export default productCardData = [
   },
   {
     id: 2,
+    imageId:'hondaGearBoxImage2',
+    productCardCategory: 'HondaGearBoxImage2',
     productCardImage: <HondaGearBoxImage2 />,
-    productCardTitle: 'Brake Pad',
+    productCardTitle: 'Gear box 2',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 1999,
   },
   {
     id: 3,
+    imageId:'hondaGearBoxImage3',
+    productCardCategory: 'HondaGearBoxImage3',
     productCardImage: <HondaGearBoxImage3 />,
-    productCardTitle: 'Engine Filter',
+    productCardTitle: 'gear box 3',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 1999,
   },
   {
     id: 4,
+    imageId:'hondaGearBoxImage4',
+    productCardCategory: 'HondaGearBoxImage4',
     productCardImage: <HondaGearBoxImage4 />,
-    productCardTitle: 'Brake Pad',
+    productCardTitle: 'gear box 4',
     productCardSubTitle: 'Lorem ipsum',
     productCardPrice: 1999,
   },
   {
     id: 5,
+    imageId:'engineFilter',
+    productCardCategory: 'EngineFilterImage',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
@@ -43,6 +55,8 @@ export default productCardData = [
   },
   {
     id: 6,
+    imageId:'brakepad',
+    productCardCategory: 'BrakePadImage',
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',
@@ -50,6 +64,8 @@ export default productCardData = [
   },
   {
     id: 7,
+    imageId:'engineFilter',
+    productCardCategory: 'EngineFilterImage',
     productCardImage: <EngineFilterImage />,
     productCardTitle: 'Engine Filter',
     productCardSubTitle: 'Lorem ipsum',
@@ -57,6 +73,8 @@ export default productCardData = [
   },
   {
     id: 8,
+    imageId:'brakepad',
+    productCardCategory: 'BrakePadImage',
     productCardImage: <BrakePadImage />,
     productCardTitle: 'Brake Pad',
     productCardSubTitle: 'Lorem ipsum',

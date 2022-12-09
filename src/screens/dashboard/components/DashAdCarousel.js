@@ -18,7 +18,7 @@ export default function DashAdCarousel({adTitle, adSubTitle, adImage}) {
             <Text style={Styles.adTitle}>{adTitle}</Text>
           </View>
 
-          <View>
+          <View style={{padding:5}} >
             <Text style={Styles.adSubTitle}>{adSubTitle}</Text>
           </View>
 

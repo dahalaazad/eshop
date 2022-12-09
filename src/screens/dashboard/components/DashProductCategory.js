@@ -8,15 +8,18 @@ export default function DashProductCategory({
   categoryImage,
   isActive,
   statusChangeHandler,
+  style
 }) {
   return (
     <View style={Styles.mainContainer}>
       <TouchableOpacity
         activeOpacity={0.4}
-        style={isActive ? Styles.activeImageContainer : Styles.imageContainer}
-        onPress={() => {
-          statusChangeHandler(categoryId);
-        }}>
+        style={style}
+        // {isActive ? Styles.activeImageContainer : Styles.imageContainer}
+        // onPress={() => {
+        //   statusChangeHandler(categoryId);
+        // }}
+        >
         {categoryImage}
       </TouchableOpacity>
       <View style={Styles.categoryTextContainer}>
