@@ -2,7 +2,6 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Colors} from '@app/constants';
-import {CountryIconFrance, LanguageOptionCheck} from '@app/assets/svg';
 
 const Styles = StyleSheet.create({
   mainContainer: {

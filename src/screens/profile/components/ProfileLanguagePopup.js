@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, ScrollView, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
 import {Colors} from '@app/constants';
 import ProfileLanguageOption from './ProfileLanguageOption';

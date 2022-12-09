@@ -1,8 +1,8 @@
-import {View, Text, Button, StyleSheet, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import React, {useLayoutEffect, useState} from 'react';
 import {BackButton} from '@app/commons';
 import {Styles} from './UserSettingsStyles';
-import {UserSettingMenuItem, UserSettingToggleButton} from './components';
+import {UserSettingMenuItem} from './components';
 import {UserSettingMenuItemData} from '@app/constants';
 import ProfileLogoutModal from '../components/ProfileLogoutModal';
 import ProfileLanguagePopup from '../components/ProfileLanguagePopup';
