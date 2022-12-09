@@ -74,6 +74,9 @@ const MainStack = ({navigation}) => {
         name="ChangePassword"
         component={ChangePassword}
         options={{
+          headerStyle:{
+            backgroundColor:Colors.whiteColor
+          },
           headerTitle: 'Change Password',
           headerTitleStyle: {
             color:Colors.changePasswordHeaderColor,
@@ -88,6 +91,9 @@ const MainStack = ({navigation}) => {
         name="EditProfile"
         component={EditProfile}
         options={{
+          headerStyle:{
+            backgroundColor:Colors.whiteColor
+          },
           headerTitle: 'Edit Profile',
         }}
       />

@@ -21,7 +21,7 @@ export default function InputField({
       mode="outlined"
       label={labelText}
       secureTextEntry={hidePassword}
-      outlineColor="transparent"
+      outlineColor={borderColor}
       activeOutlineColor={Colors.textLinkColor}
       onBlur={onBlur}
       onChangeText={onChange}
@@ -40,7 +40,7 @@ export default function InputField({
           />
         )
       }
-      style={{backgroundColor: Colors.whiteColor,borderWidth:borderWidth,borderColor:borderColor}}
+      style={{backgroundColor: Colors.whiteColor,}}
     />
   );
 }
