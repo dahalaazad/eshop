@@ -35,12 +35,13 @@ export default function UserSettings({navigation}) {
 
   const menuItemRender = ({item}) => (
     <UserSettingMenuItem
+      itemId={item.id}
       menuText={item.text}
       menuLeft={item.left}
       menuRight={
         <item.right isSwitchOn={switchStatus} onToggleSwitch={onToggleSwitch} />
       }
-      toggleModal={toggleModal}
+      onPress={item.id === 2 ? toggleModal : () => {}}
     />
   );
 

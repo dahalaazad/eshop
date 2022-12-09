@@ -6,13 +6,13 @@ export default function UserSettingMenuItem({
   menuText,
   menuLeft,
   menuRight,
-  toggleModal,
+  onPress,
 }) {
   return (
     <TouchableOpacity
       style={Styles.mainContainer}
       activeOpacity={0.5}
-      onPress={toggleModal}>
+      onPress={onPress}>
       <View style={Styles.leftContainer}>
         <View style={Styles.leftImageContainer}>{menuLeft}</View>
 
