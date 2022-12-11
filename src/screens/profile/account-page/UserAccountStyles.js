@@ -31,6 +31,11 @@ export const Styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'relative',
   },
+  middleContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+    // backgroundColor: 'pink',
+  },
   checkImageContainer: {
     position: 'absolute',
     left: 130,
@@ -62,14 +67,14 @@ export const Styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
   botContainer: {
-    position: 'absolute',
+    // position: 'absolute',
     paddingHorizontal: 20,
-    bottom: 0,
+    // bottom: 0,
     width: '100%',
   },
   horizontalLine: {
-    position: 'absolute',
-    bottom: 90,
+    // position: 'absolute',
+    // bottom: 90,
     width: '90%',
     alignSelf: 'center',
     borderBottomColor: Colors.inactiveIconGrayColor,

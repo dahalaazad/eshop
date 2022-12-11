@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Colors} from '@app/constants';
@@ -27,9 +27,13 @@ export default function ProfileLanguageOption({
   countryName,
   countryFlag,
   isSelected,
+  toggleStatus,
 }) {
   return (
-    <View style={Styles.mainContainer}>
+    <TouchableOpacity
+      style={Styles.mainContainer}
+      activeOpacity={0.5}
+      onPress={toggleStatus}>
       <View>
         {isSelected ? languageSelectedIcon : <View style={{width: 20}} />}
       </View>
@@ -39,6 +43,6 @@ export default function ProfileLanguageOption({
       </View>
 
       <View>{countryFlag}</View>
-    </View>
+    </TouchableOpacity>
   );
 }
