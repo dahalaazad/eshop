@@ -17,7 +17,7 @@ export default function ChangePassword({navigation}) {
       <View>
         <View style={styles.topTextContainer}>
           <Text style={styles.textStyle}>Current Password</Text>
-          
+
           <Text style={styles.blueTextStyle}>Forgot Password?</Text>
         </View>
 
@@ -26,6 +26,8 @@ export default function ChangePassword({navigation}) {
             labelText="Password"
             isPassword={true}
             passwordIcon={true}
+            borderWidth={1.5}
+            borderColor={Colors.changePasswordInputBorderColor}
           />
         </View>
       </View>
@@ -37,6 +39,8 @@ export default function ChangePassword({navigation}) {
           labelText="Password"
           isPassword={true}
           passwordIcon={true}
+          borderWidth={1.5}
+          borderColor={Colors.changePasswordInputBorderColor}
         />
       </View>
 
