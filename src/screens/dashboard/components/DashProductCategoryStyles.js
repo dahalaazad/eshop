@@ -9,15 +9,14 @@ export const Styles = StyleSheet.create({
     // padding:10,
   },
   imageContainer: {
-    backgroundColor: Colors.whiteColor,
-    // dashboardProductCategoryColor,
-    padding: 20,
+    backgroundColor: Colors.dashboardProductCategoryColor,
+    padding: 10,
     width: '100%',
     borderRadius: 16,
   },
   activeImageContainer: {
     backgroundColor: Colors.dashboardProductCategoryActiveColor,
-    padding: 20,
+    padding: 10,
     width: '100%',
     borderRadius: 16,
     borderWidth: 1,

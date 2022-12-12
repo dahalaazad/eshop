@@ -102,6 +102,7 @@ export default function ProductDetails({navigation}) {
               buttonRadius={10}
               buttonStyle={styles.primaryButtonStyles}
               onPressHandler={() => alert('Add to Cart')}
+              buttonHeight={50}
             />
           </View>
         </View>
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-evenly',
     backgroundColor: Colors.whiteColor,
-    // width: '100%',
+    width: '100%',
     paddingVertical: 20,
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
