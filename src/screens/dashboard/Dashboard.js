@@ -13,7 +13,7 @@ import {
 import {useDispatch} from 'react-redux';
 import {setCurrentProduct} from '@app/redux/slices/displayProducts/productSlice';
 import {productCategoryDataItems} from '@app/constants/productCategoryData';
-import { adData } from '@app/constants';
+import {adData} from '@app/constants';
 
 export default function Dashboard({navigation}) {
   const dispatch = useDispatch();
@@ -53,12 +53,12 @@ export default function Dashboard({navigation}) {
       categoryImage={item.categoryImage}
       isActive={item.isActive}
       statusChangeHandler={productCategoryStatusChange}
-      style={Styles.dashboardProductCategoryStyles}
+      // style={Styles.dashboardProductCategoryStyles}
     />
   );
 
   const renderCarouselItem = ({item}) => (
-    <View style={{marginRight: 25}}>
+    <View style={{marginRight: 5}}>
       <DashAdCarousel
         key={item.id}
         adTitle={item.adTitle}

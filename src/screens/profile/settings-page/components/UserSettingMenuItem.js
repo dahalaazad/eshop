@@ -6,7 +6,7 @@ export default function UserSettingMenuItem({
   menuText,
   menuLeft,
   menuRight,
-  onPress
+  onPress,
 }) {
   return (
     <TouchableOpacity
