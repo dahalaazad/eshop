@@ -24,10 +24,10 @@ export default function UserSettings({navigation}) {
 
   const menuItemRender = ({item}) => (
     <UserSettingMenuItem
-      menuText={item.text}
-      menuLeft={item.left}
+      menuText={item?.text}
+      menuLeft={item?.left}
       navigation={navigation}
-      navigationRoute={item.navigationRoute}
+      navigationRoute={item?.navigationRoute}
       menuRight={
         <item.right isSwitchOn={switchStatus} onToggleSwitch={onToggleSwitch} />
       }
