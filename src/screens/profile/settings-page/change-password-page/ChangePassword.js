@@ -11,17 +11,11 @@ export default function ChangePassword({navigation}) {
       ),
     });
   }, [navigation]);
-  
+
   return (
     <View style={styles.container}>
       <View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingTop: 30,
-          }}>
+        <View style={styles.topTextContainer}>
           <Text style={styles.textStyle}>Current Password</Text>
           <Text style={styles.blueTextStyle}>Forgot Password?</Text>
         </View>
@@ -75,6 +69,12 @@ const styles = StyleSheet.create({
     marginTop: 50,
     paddingHorizontal: 25,
     backgroundColor: Colors.whiteColor,
+  },
+  topTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 30,
   },
   textStyle: {
     color: Colors.changePasswordTextColor,
