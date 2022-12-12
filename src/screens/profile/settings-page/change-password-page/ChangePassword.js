@@ -11,6 +11,7 @@ export default function ChangePassword({navigation}) {
       ),
     });
   }, [navigation]);
+  
   return (
     <View style={styles.container}>
       <View>
@@ -19,13 +20,13 @@ export default function ChangePassword({navigation}) {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
-            paddingTop:30,
+            paddingTop: 30,
           }}>
           <Text style={styles.textStyle}>Current Password</Text>
           <Text style={styles.blueTextStyle}>Forgot Password?</Text>
         </View>
 
-        <View  >
+        <View>
           <InputField
             labelText="Password"
             isPassword={true}
@@ -33,7 +34,8 @@ export default function ChangePassword({navigation}) {
           />
         </View>
       </View>
-      <View style={{paddingVertical:15}}>
+
+      <View style={{paddingVertical: 15}}>
         <Text style={styles.textStyle}>New Password</Text>
 
         <InputField
@@ -42,7 +44,8 @@ export default function ChangePassword({navigation}) {
           passwordIcon={true}
         />
       </View>
-      <View style={{paddingVertical:10}}>
+
+      <View style={{paddingVertical: 10}}>
         <Text style={styles.textStyle}>Confirm Password</Text>
 
         <InputField
@@ -54,7 +57,7 @@ export default function ChangePassword({navigation}) {
         />
       </View>
 
-      <View style={{marginVertical: 100,paddingHorizontal:10}}>
+      <View style={{marginVertical: 100, paddingHorizontal: 10}}>
         <PrimaryButton
           buttonLabel="Save Changes"
           buttonRadius={35}
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 50,
     paddingHorizontal: 25,
-    backgroundColor:Colors.whiteColor
+    backgroundColor: Colors.whiteColor,
   },
   textStyle: {
     color: Colors.changePasswordTextColor,
