@@ -1,6 +1,6 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {Styles} from './UserSettingMenuItemStyles';
+import {Styles} from '@app/styles/UserSettingMenuItemStyles';
 
 export default function UserSettingMenuItem({
   menuText,
