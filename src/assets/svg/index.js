@@ -45,6 +45,7 @@ import ProductCategoryCar from './DashboardCategoryCar.svg';
 import ProductCategoryAccessories from './DashboardCategoryAccessories.svg';
 import CastrolImage from './DashboardAdCastrol.svg';
 import RegularServiceImage from './RegularServiceImage.svg';
+
 export {
   BrakePadImage,
   EngineFilterImage,

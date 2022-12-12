@@ -29,7 +29,7 @@ const MainStack = ({navigation}) => {
           fontWeight: '500',
           fontFamily: 'Poppins',
         },
-        headerTransparent:true,
+        headerTransparent: true,
       }}>
       <Stack.Screen
         name="BottomTabNav"
@@ -87,6 +87,9 @@ const MainStack = ({navigation}) => {
         name="EditProfile"
         component={EditProfile}
         options={{
+          headerStyle: {
+            backgroundColor: Colors.whiteColor,
+          },
           headerTitle: 'Edit Profile',
         }}
       />

@@ -32,15 +32,10 @@ export default function PrimaryButton({
       mode="contained"
       color={Colors.textLinkColor}
       uppercase={false}
-      style={
-        buttonStyle
-      //   {
-      //   ...Styles.buttonStyles,
-      //   height: buttonHeight,
-      //   width: buttonWidth,
-      //   borderRadius: buttonRadius,
-      // }
-    }
+      style={[
+        Styles.buttonStyles,
+        {height: buttonHeight, width: buttonWidth, borderRadius: buttonRadius},
+      ]}
       labelStyle={Styles.labelStyles}
       contentStyle={Styles.contentStyles}
       icon={({size, color}) => (
