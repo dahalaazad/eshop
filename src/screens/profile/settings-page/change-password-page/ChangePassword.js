@@ -4,8 +4,15 @@ import {BackButton, InputField, PrimaryButton} from '@app/commons';
 import {Colors} from '@app/constants';
 import {useForm, Controller} from 'react-hook-form';
 import {Styles} from '@app/screens/login/LoginStyles';
+import {useHeaderHeight} from '@react-navigation/elements';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default function ChangePassword({navigation}) {
+  const headerHeight = useHeaderHeight();
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: (...props) => (
@@ -32,7 +39,7 @@ export default function ChangePassword({navigation}) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{marginTop:headerHeight}]}>
       <View>
         <View style={styles.topTextContainer}>
           <Text style={styles.textStyle}>Current Password</Text>
@@ -159,7 +166,6 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-start',
     flex: 1,
-    marginTop: 50,
     paddingHorizontal: 25,
     backgroundColor: Colors.whiteColor,
   },

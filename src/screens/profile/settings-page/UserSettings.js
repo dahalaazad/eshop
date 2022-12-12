@@ -6,8 +6,11 @@ import {UserSettingMenuItem} from './components';
 import {UserSettingMenuItemData} from '@app/constants';
 import ProfileLogoutModal from '../components/ProfileLogoutModal';
 import ProfileLanguagePopup from '../components/ProfileLanguagePopup';
+import {useHeaderHeight} from '@react-navigation/elements';
 
 export default function UserSettings({navigation}) {
+  const headerHeight = useHeaderHeight();
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: (...props) => (
@@ -54,7 +57,7 @@ export default function UserSettings({navigation}) {
   );
 
   return (
-    <View style={Styles.mainContainer}>
+    <View style={[Styles.mainContainer,{marginTop:headerHeight}]}>
       <FlatList
         ItemSeparatorComponent={() => <View style={{height: 30}} />}
         contentContainerStyle={{paddingTop: 20, paddingBottom: 20}}
