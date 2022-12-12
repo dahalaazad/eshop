@@ -15,7 +15,9 @@ export default function UserProfile({navigation}) {
     });
   }, [navigation]);
 
-  const editProfileHandler = () => {};
+  const editProfileHandler = () => {
+    navigation.navigate('EditProfile');
+  };
 
   return (
     <View style={Styles.mainContainer}>

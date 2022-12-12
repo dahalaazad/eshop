@@ -58,6 +58,7 @@ export default function ChangePassword({navigation}) {
                 passwordIcon={true}
                 onBlur={onBlur}
                 onChange={onChange}
+                outlineColor={Colors.changePasswordInputBorderColor}
                 value={value}
               />
             )}
@@ -94,6 +95,7 @@ export default function ChangePassword({navigation}) {
               onBlur={onBlur}
               onChange={onChange}
               value={value}
+              outlineColor={Colors.changePasswordInputBorderColor}
             />
           )}
           name="newPassword"
@@ -127,6 +129,7 @@ export default function ChangePassword({navigation}) {
                 onBlur={onBlur}
                 onChange={onChange}
                 value={value}
+                outlineColor={Colors.changePasswordInputBorderColor}
               />
             )}
             name="confirmPassword"
