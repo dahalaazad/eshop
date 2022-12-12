@@ -75,4 +75,9 @@ export const Styles = StyleSheet.create({
     borderBottomColor: Colors.inactiveIconGrayColor,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  modalBackdropContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
 });

@@ -39,12 +39,15 @@ import UserAccountSettingIcon from './UserAccountSettingIcon.svg';
 import UserAccountShareIcon from './UserAccountShareIcon.svg';
 import UserAccountAboutIcon from './UserAccountAboutIcon.svg';
 import UserAccountLogout from './UserAccountLogout.svg';
+import CountryIconFrance from './CountryIconFrance.svg';
+import LanguageOptionCheck from './LanguageOptionCheck.svg';
 import ProductCategoryBike from './DashboardCategoryBike.svg';
 import ProductCategoryScooter from './DashboardCategoryScooter.svg';
 import ProductCategoryCar from './DashboardCategoryCar.svg';
 import ProductCategoryAccessories from './DashboardCategoryAccessories.svg';
 import CastrolImage from './DashboardAdCastrol.svg';
 import RegularServiceImage from './RegularServiceImage.svg';
+
 export {
   BrakePadImage,
   EngineFilterImage,
@@ -87,6 +90,8 @@ export {
   UserAccountShareIcon,
   UserAccountAboutIcon,
   UserAccountLogout,
+  CountryIconFrance,
+  LanguageOptionCheck,
   ProductCategoryBike,
   ProductCategoryScooter,
   ProductCategoryCar,

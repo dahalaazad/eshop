@@ -1,9 +1,11 @@
-import {View, Text, Button, StyleSheet, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import React, {useLayoutEffect, useState} from 'react';
 import {BackButton} from '@app/commons';
 import {Styles} from './UserSettingsStyles';
-import {UserSettingMenuItem, UserSettingToggleButton} from './components';
+import {UserSettingMenuItem} from './components';
 import {UserSettingMenuItemData} from '@app/constants';
+import ProfileLogoutModal from '../components/ProfileLogoutModal';
+import ProfileLanguagePopup from '../components/ProfileLanguagePopup';
 
 export default function UserSettings({navigation}) {
   useLayoutEffect(() => {
@@ -15,6 +17,15 @@ export default function UserSettings({navigation}) {
   }, [navigation]);
 
   const [switchStatus, setSwitchStatus] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   const [settingMenuData, setSettingMenuData] = useState(
     UserSettingMenuItemData,
@@ -24,11 +35,13 @@ export default function UserSettings({navigation}) {
 
   const menuItemRender = ({item}) => (
     <UserSettingMenuItem
+      itemId={item.id}
       menuText={item.text}
       menuLeft={item.left}
       menuRight={
         <item.right isSwitchOn={switchStatus} onToggleSwitch={onToggleSwitch} />
       }
+      onPress={item.id === 2 ? toggleModal : () => {}}
     />
   );
 
@@ -41,6 +54,15 @@ export default function UserSettings({navigation}) {
         keyExtractor={data => data.id}
         renderItem={menuItemRender}
       />
+
+      <ProfileLogoutModal
+        modalVisible={modalVisible}
+        toggleLogoutModal={toggleModal}
+        closeLogoutModal={closeModal}
+        // animationType="fade"
+      >
+        <ProfileLanguagePopup closeLanguageModal={closeModal} />
+      </ProfileLogoutModal>
     </View>
   );
 }

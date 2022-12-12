@@ -12,6 +12,7 @@ import {
 export default function UserAccountMenuItemGroup({
   navigateInformation,
   navigateSettings,
+  onShare,
 }) {
   return (
     <View>
@@ -36,6 +37,7 @@ export default function UserAccountMenuItemGroup({
         menuLeft={<UserAccountShareIcon />}
         menuRight={<UserSettingMenuRightArrow />}
         menuSubText="Lorem ipsum available"
+        onPress={onShare}
       />
 
       <UserAccountMenuItem
