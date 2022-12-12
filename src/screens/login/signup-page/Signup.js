@@ -64,7 +64,7 @@ export default function Signup({navigation}) {
                   onBlur={onBlur}
                   onChange={onChange}
                   value={value}
-                  outlineColor="transparent"
+                  
                 />
               )}
               name="email"
@@ -95,7 +95,7 @@ export default function Signup({navigation}) {
                   onBlur={onBlur}
                   onChange={onChange}
                   value={value}
-                  outlineColor="transparent"
+                 
                 />
               )}
               name="password"
@@ -122,7 +122,7 @@ export default function Signup({navigation}) {
                   onBlur={onBlur}
                   onChange={onChange}
                   value={value}
-                  outlineColor="transparent"
+                  
                 />
               )}
               rules={{

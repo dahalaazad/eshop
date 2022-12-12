@@ -63,7 +63,6 @@ export default function Login({navigation}) {
                   onBlur={onBlur}
                   onChange={onChange}
                   value={value}
-                  outlineColor="transparent"
                 />
               )}
               name="email"
@@ -94,7 +93,6 @@ export default function Login({navigation}) {
                   onBlur={onBlur}
                   onChange={onChange}
                   value={value}
-                  outlineColor="transparent"
                 />
               )}
               name="password"
