@@ -22,15 +22,23 @@ export default function UserSettings({navigation}) {
 
   const onToggleSwitch = () => setSwitchStatus(!switchStatus);
 
+  const changePasswordScreenNavigator = () => {
+    navigation.navigate('ChangePassword');
+  };
+
   const menuItemRender = ({item}) => (
     <UserSettingMenuItem
-      menuText={item?.text}
-      menuLeft={item?.left}
-      navigation={navigation}
-      navigationRoute={item?.navigationRoute}
+      menuText={item?.text || 'Menu Item'}
+      menuLeft={item?.left || 'left-icon'}
       menuRight={
-        <item.right isSwitchOn={switchStatus} onToggleSwitch={onToggleSwitch} />
+        (
+          <item.right
+            isSwitchOn={switchStatus}
+            onToggleSwitch={onToggleSwitch}
+          />
+        ) || 'right-icon'
       }
+      onPress={item?.id === 1 ? changePasswordScreenNavigator : () => {}}
     />
   );
 

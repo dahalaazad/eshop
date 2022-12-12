@@ -6,14 +6,13 @@ export default function UserSettingMenuItem({
   menuText,
   menuLeft,
   menuRight,
-  navigation,
-  navigationRoute,
+  onPress
 }) {
   return (
     <TouchableOpacity
       style={Styles.mainContainer}
       activeOpacity={0.5}
-      onPress={() => navigation.navigate(navigationRoute)}>
+      onPress={onPress}>
       <View style={Styles.leftContainer}>
         <View style={Styles.leftImageContainer}>{menuLeft}</View>
 
