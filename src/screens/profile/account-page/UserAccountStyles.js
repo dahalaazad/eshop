@@ -56,24 +56,6 @@ export const Styles = StyleSheet.create({
     fontWeight: '500',
     color: Colors.blackColor,
   },
-  // midContainer: {
-  //   marginTop: 45,
-  //   paddingHorizontal: 20,
-  // },
-  // botContainer: {
-  //   position: 'absolute',
-  //   paddingHorizontal: 20,
-  //   bottom: 0,
-  //   width: '100%',
-  // },
-  // horizontalLine: {
-  //   position: 'absolute',
-  //   bottom: 90,
-  //   width: '90%',
-  //   alignSelf: 'center',
-  //   borderBottomColor: Colors.inactiveIconGrayColor,
-  //   borderBottomWidth: StyleSheet.hairlineWidth,
-  // },
   modalBackdropContainer: {
     flex: 1,
     justifyContent: 'flex-end',
