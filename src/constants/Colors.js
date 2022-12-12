@@ -32,4 +32,5 @@ export const Colors = {
   languageOptionsBorderColor: '#E3E3E3',
   editProfileTextColor: '#6E7489',
   inputFieldOutlineColor:'#C4C7D0',
+  profilePageBorderColor:'#E0E0E0',
 };
