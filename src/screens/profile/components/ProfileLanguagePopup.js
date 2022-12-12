@@ -34,7 +34,7 @@ export default function ProfileLanguagePopup() {
       languageData.map(item =>
         item.countryName === countryName
           ? {...item, isSelected: !item.isSelected}
-          : item,
+          : {...item, isSelected: false},
       ),
     );
   };
