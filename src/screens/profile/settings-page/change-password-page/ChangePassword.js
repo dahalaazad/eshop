@@ -2,6 +2,8 @@ import {View, Text, Button, StyleSheet, Alert} from 'react-native';
 import React, {useLayoutEffect} from 'react';
 import {BackButton, InputField, PrimaryButton} from '@app/commons';
 import {Colors} from '@app/constants';
+import {useForm, Controller} from 'react-hook-form';
+import {Styles} from '@app/screens/login/LoginStyles';
 
 export default function ChangePassword({navigation}) {
   useLayoutEffect(() => {
@@ -11,6 +13,23 @@ export default function ChangePassword({navigation}) {
       ),
     });
   }, [navigation]);
+
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+    watch,
+  } = useForm({
+    defaultValues: {
+      currentPassword: '',
+      newPassword: '',
+      confirmPassword: '',
+    },
+  });
+
+  const signupButtonHandler = signupData => {
+    alert('Changes saved');
+  };
 
   return (
     <View style={styles.container}>
@@ -22,47 +41,113 @@ export default function ChangePassword({navigation}) {
         </View>
 
         <View>
-          <InputField
-            labelText="Password"
-            isPassword={true}
-            passwordIcon={true}
-            borderWidth={1.5}
-            borderColor={Colors.changePasswordInputBorderColor}
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+              minLength: 8,
+              pattern: {
+                value:
+                  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+              },
+            }}
+            render={({field: {onChange, onBlur, value}}) => (
+              <InputField
+                labelText="Current Password"
+                isPassword={true}
+                passwordIcon={true}
+                onBlur={onBlur}
+                onChange={onChange}
+                value={value}
+              />
+            )}
+            name="currentPassword"
           />
+          {errors.currentPassword?.type === 'required' ? (
+            <Text style={Styles.errorText}>Enter your current password</Text>
+          ) : errors.currentPassword?.type === 'pattern' ? (
+            <Text style={Styles.errorText}>Password pattern doesn't match</Text>
+          ) : errors.currentPassword?.type === 'minLength' ? (
+            <Text style={Styles.errorText}>Too short</Text>
+          ) : null}
         </View>
       </View>
 
       <View style={{paddingVertical: 15}}>
         <Text style={styles.textStyle}>New Password</Text>
 
-        <InputField
-          labelText="Password"
-          isPassword={true}
-          passwordIcon={true}
-          borderWidth={1.5}
-          borderColor={Colors.changePasswordInputBorderColor}
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+            minLength: 8,
+            pattern: {
+              value:
+                /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+            },
+          }}
+          render={({field: {onChange, onBlur, value}}) => (
+            <InputField
+              labelText="New Password"
+              isPassword={true}
+              passwordIcon={true}
+              onBlur={onBlur}
+              onChange={onChange}
+              value={value}
+            />
+          )}
+          name="newPassword"
         />
-      </View>
+        {errors.newPassword?.type === 'required' ? (
+          <Text style={Styles.errorText}>Enter new password</Text>
+        ) : errors.newPassword?.type === 'pattern' ? (
+          <Text style={Styles.errorText}>Password pattern doesn't match</Text>
+        ) : errors.newPassword?.type === 'minLength' ? (
+          <Text style={Styles.errorText}>Too short</Text>
+        ) : null}
 
-      <View style={{paddingVertical: 10}}>
-        <Text style={styles.textStyle}>Confirm Password</Text>
+        <View style={{paddingVertical: 10}}>
+          <Text style={styles.textStyle}>Confirm Password</Text>
 
-        <InputField
-          labelText="Password"
-          isPassword={true}
-          passwordIcon={true}
-          borderWidth={1.5}
-          borderColor={Colors.changePasswordInputBorderColor}
-        />
-      </View>
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+              minLength: 8,
+              pattern: {
+                value:
+                  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+              },
+            }}
+            render={({field: {onChange, onBlur, value}}) => (
+              <InputField
+                labelText="Confirm Password"
+                isPassword={true}
+                passwordIcon={true}
+                onBlur={onBlur}
+                onChange={onChange}
+                value={value}
+              />
+            )}
+            name="confirmPassword"
+          />
+          {errors.confirmPassword?.type === 'required' ? (
+            <Text style={Styles.errorText}>Enter your current password</Text>
+          ) : errors.confirmPassword?.type === 'pattern' ? (
+            <Text style={Styles.errorText}>Password pattern doesn't match</Text>
+          ) : errors.confirmPassword?.type === 'minLength' ? (
+            <Text style={Styles.errorText}>Too short</Text>
+          ) : null}
+        </View>
 
-      <View style={{marginVertical: 100, paddingHorizontal: 10}}>
-        <PrimaryButton
-          buttonLabel="Save Changes"
-          buttonRadius={35}
-          buttonHeight={65}
-          onPressHandler={() => alert('Changes saved')}
-        />
+        <View style={{marginVertical: 100, paddingHorizontal: 10}}>
+          <PrimaryButton
+            buttonLabel="Save Changes"
+            buttonRadius={35}
+            buttonHeight={65}
+            onPressHandler={handleSubmit(signupButtonHandler)}
+          />
+        </View>
       </View>
     </View>
   );

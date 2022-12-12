@@ -22,8 +22,8 @@ export default function UserSettings({navigation}) {
 
   const onToggleSwitch = () => setSwitchStatus(!switchStatus);
 
-  const changePasswordScreenNavigator = () => {
-    navigation.navigate('ChangePassword');
+  const changePasswordScreenNavigator = item => {
+    item?.id === 1 ? navigation.navigate('ChangePassword') : () => {};
   };
 
   const menuItemRender = ({item}) => (
@@ -38,7 +38,7 @@ export default function UserSettings({navigation}) {
           />
         ) || 'right-icon'
       }
-      onPress={item?.id === 1 ? changePasswordScreenNavigator : () => {}}
+      onPress={() => changePasswordScreenNavigator(item)}
     />
   );
 
