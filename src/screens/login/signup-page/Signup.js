@@ -63,8 +63,7 @@ export default function Signup({navigation}) {
                   isPassword={false}
                   onBlur={onBlur}
                   onChange={onChange}
-                  value={value}
-                  
+                  value={value}                  
                 />
               )}
               name="email"
@@ -94,8 +93,7 @@ export default function Signup({navigation}) {
                   passwordIcon={true}
                   onBlur={onBlur}
                   onChange={onChange}
-                  value={value}
-                 
+                  value={value}                 
                 />
               )}
               name="password"
@@ -121,8 +119,7 @@ export default function Signup({navigation}) {
                   passwordIcon={true}
                   onBlur={onBlur}
                   onChange={onChange}
-                  value={value}
-                  
+                  value={value}                  
                 />
               )}
               rules={{
