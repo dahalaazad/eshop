@@ -5,11 +5,8 @@ import {Styles} from './UserProfileStyles';
 import {UserProfileInfoCard} from './components';
 import Images from '@app/constants/Images';
 import {UserSettingToggleButton} from '../settings-page/components';
-import {useHeaderHeight} from '@react-navigation/elements';
 
 export default function UserProfile({navigation}) {
-  const headerHeight = useHeaderHeight();
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: (...props) => (
@@ -23,7 +20,7 @@ export default function UserProfile({navigation}) {
   };
 
   return (
-    <View style={[Styles.mainContainer,{marginTop:headerHeight}]}>
+    <View style={Styles.mainContainer}>
       <View style={Styles.topContainer}>
         <View>
           {/* <UserProfileWomanGlasses /> */}
