@@ -23,6 +23,7 @@ const MainStack = ({navigation}) => {
         headerStyle: {
           backgroundColor: Colors.loginBackgroundColor,
         },
+        headerShadowVisible:false,
         headerTitleAlign: 'center',
         headerTitleStyle: {
           fontSize: 24,
