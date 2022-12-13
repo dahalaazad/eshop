@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import UserAccountMenuItem from './UserAccountMenuItem';
 import {
@@ -8,6 +8,11 @@ import {
   UserAccountAboutIcon,
   UserSettingMenuRightArrow,
 } from '@app/assets/svg';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import {Colors} from '@app/constants';
 
 export default function UserAccountMenuItemGroup({
   navigateInformation,
@@ -15,7 +20,7 @@ export default function UserAccountMenuItemGroup({
   onShare,
 }) {
   return (
-    <View>
+    <View style={styles.container}>
       <UserAccountMenuItem
         menuText="My Information"
         menuLeft={<UserAccountIcon />}
@@ -49,3 +54,11 @@ export default function UserAccountMenuItemGroup({
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: hp('5%'),
+    borderBottomColor: Colors.profilePageBorderColor,
+    borderBottomWidth: 1,
+  },
+});

@@ -10,12 +10,9 @@ import React, {useLayoutEffect} from 'react';
 import {BackButton, InputField, PrimaryButton} from '@app/commons';
 import {Colors} from '@app/constants';
 import Images from '@app/constants/Images';
-import {useHeaderHeight} from '@react-navigation/elements';
 import Feather from 'react-native-vector-icons/Feather';
 
 export default function EditProfile({navigation}) {
-  const headerHeight = useHeaderHeight();
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: (...props) => (
@@ -23,8 +20,9 @@ export default function EditProfile({navigation}) {
       ),
     });
   }, [navigation]);
+  
   return (
-    <ScrollView style={[styles.container, {marginTop: headerHeight}]}>
+    <ScrollView style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
           source={Images.profileManImage}

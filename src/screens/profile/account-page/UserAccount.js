@@ -1,4 +1,4 @@
-import {View, Text, Image, Share} from 'react-native';
+import {View, Text, Image, Share, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Styles} from './UserAccountStyles';
@@ -12,6 +12,10 @@ import {AccountRewardPointCard, UserAccountMenuItemGroup} from './components';
 import UserAccountMenuItem from './components/UserAccountMenuItem';
 import ProfileLogoutModal from '../components/ProfileLogoutModal';
 import {ProfileLogoutCard} from '@app/screens/profile';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default function UserAccount({navigation}) {
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
@@ -44,7 +48,7 @@ export default function UserAccount({navigation}) {
   };
 
   return (
-    <View style={Styles.mainContainer}>
+    <ScrollView style={Styles.mainContainer}>
       <LinearGradient
         start={{x: 0.5, y: 0.1}}
         // end={{x: 1, y: 0}}
@@ -103,6 +107,6 @@ export default function UserAccount({navigation}) {
         closeLogoutModal={closeLogoutModal}>
         <ProfileLogoutCard closeLogoutModal={closeLogoutModal} />
       </ProfileLogoutModal>
-    </View>
+    </ScrollView>
   );
 }
