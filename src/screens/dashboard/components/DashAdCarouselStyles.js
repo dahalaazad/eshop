@@ -1,5 +1,6 @@
 import {Colors} from '@app/constants';
 import {StyleSheet} from 'react-native';
+import {TextStyle} from '@app/constants';
 
 export const Styles = StyleSheet.create({
   mainContainer: {
@@ -23,17 +24,14 @@ export const Styles = StyleSheet.create({
     paddingLeft: 25,
   },
   adTitle: {
-    fontFamily: 'Poppins',
-    fontSize: 14,
+    ...TextStyle.poppinsRegularNormal,
     color: Colors.dashboardAdTitleColor,
   },
   adSubTitle: {
-    fontFamily: 'Poppins',
-    fontSize: 16,
+    ...TextStyle.poppinsLargeBold,
     color: Colors.whiteColor,
-    fontWeight: '600',
     zIndex: 1,
-    paddingRight:10,
+    paddingRight: 10,
   },
   buttonContainer: {
     paddingTop: 10,

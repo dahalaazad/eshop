@@ -1,7 +1,7 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 const Styles = StyleSheet.create({
   mainContainer: {
@@ -21,16 +21,12 @@ const Styles = StyleSheet.create({
     paddingLeft: 15,
   },
   settingText: {
-    fontFamily: 'Poppins',
-    fontWeight: '500',
+    ...TextStyle.poppinsLargeNormal,
     color: Colors.blackColor,
-    fontSize: 16,
   },
   subText: {
-    fontFamily: 'Poppins',
-    fontWeight: '400',
+    ...TextStyle.poppinsSmallLight,
     color: Colors.checkoutPriceText,
-    fontSize: 12,
   },
   imageContainer: {
     justifyContent: 'center',

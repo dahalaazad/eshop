@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 export default function ProductCard({
   product,
@@ -48,17 +48,10 @@ const Styles = StyleSheet.create({
     paddingTop: 10,
     paddingLeft: 20,
   },
-  titleText: {
-    fontFamily: 'Poppins',
-    color: Colors.blackColor,
-    fontWeight: '500',
-    fontSize: 14,
-  },
+  titleText: {...TextStyle.poppinsRegularNormal, color: Colors.blackColor},
   subTitleText: {
-    fontFamily: 'Poppins',
+    ...TextStyle.poppinsRegularLight,
     color: Colors.productCardSubtitleColor,
-    fontWeight: '400',
-    fontSize: 14,
   },
   priceText: {
     fontFamily: 'Poppins',

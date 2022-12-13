@@ -1,4 +1,4 @@
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import {StyleSheet} from 'react-native';
 
 export const Styles = StyleSheet.create({
@@ -26,15 +26,11 @@ export const Styles = StyleSheet.create({
     paddingTop: 4,
   },
   categoryText: {
-    fontFamily: 'Poppins',
-    fontWeight: '400',
-    fontSize: 12,
+    ...TextStyle.poppinsSmallLight,
     color: Colors.blackColor,
   },
   activeCategoryText: {
-    fontFamily: 'Poppins',
-    fontWeight: '400',
-    fontSize: 12,
+    ...TextStyle.poppinsSmallLight,
     color: Colors.textLinkColor,
   },
 });

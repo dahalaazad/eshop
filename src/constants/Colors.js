@@ -23,6 +23,7 @@ export const Colors = {
   dashboardProductCategoryActiveColor: '#C3C8E3',
   backButtonBlueColor: '#41416E',
   inactiveIconGrayColor: '#818181',
+  languageOptionsBorderColor: '#E3E3E3',
   startIconYellow: '#F2994A',
   borderBottomColor: 'rgba(189, 189, 189, 0.4)',
   changePasswordHeaderColor: '#1A1D26',
@@ -31,5 +32,5 @@ export const Colors = {
   changePasswordInputBorderColor: '#C4C7D0',
   languageOptionsBorderColor: '#E3E3E3',
   editProfileTextColor: '#6E7489',
-  inputFieldOutlineColor:'#C4C7D0',
+  inputFieldOutlineColor: '#C4C7D0',
 };
