@@ -8,7 +8,6 @@ export default function DashProductCategory({
   categoryImage,
   isActive,
   statusChangeHandler,
-  style,
 }) {
   return (
     <View style={Styles.mainContainer}>

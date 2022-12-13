@@ -1,23 +1,19 @@
 import React, {useState} from 'react';
 import {StyleSheet} from 'react-native';
 import SegmentedControl from '@react-native-segmented-control/segmented-control';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 const Styles = StyleSheet.create({
   mainContainer: {
     height: 45,
   },
   inactiveFont: {
+    ...TextStyle.poppinsSmallLight,
     color: 'black',
-    fontFamily: 'Poppins',
-    fontSize: 13,
-    fontWeight: '400',
   },
   activeFont: {
+    ...TextStyle.poppinsSmallNormal,
     color: 'white',
-    fontFamily: 'Poppins',
-    fontSize: 12,
-    fontWeight: '500',
   },
 });
 

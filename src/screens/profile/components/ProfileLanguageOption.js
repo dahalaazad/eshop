@@ -1,7 +1,7 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 const Styles = StyleSheet.create({
   mainContainer: {
@@ -15,9 +15,7 @@ const Styles = StyleSheet.create({
     marginBottom: 10,
   },
   languageText: {
-    fontFamily: 'Poppins',
-    fontSize: 22,
-    fontWeight: '400',
+    ...TextStyle.poppinsExtraLargerLight,
     color: Colors.blackColor,
   },
 });

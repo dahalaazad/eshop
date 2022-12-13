@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import React, {useState} from 'react';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import ProfileLanguageOption from './ProfileLanguageOption';
 import {CountryIconFrance, LanguageOptionCheck} from '@app/assets/svg';
 
@@ -15,9 +15,7 @@ const Styles = StyleSheet.create({
     paddingTop: 20,
   },
   mainText: {
-    fontFamily: 'Poppins',
-    fontSize: 22,
-    fontWeight: '500',
+    ...TextStyle.poppinsExtraLargerNormal,
     color: Colors.blackColor,
     textAlign: 'center',
   },

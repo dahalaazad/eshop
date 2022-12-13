@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import {PrimaryButton} from '@app/commons';
 import {useNavigation} from '@react-navigation/native';
 
@@ -22,15 +22,11 @@ const Styles = StyleSheet.create({
   },
   text: {
     color: Colors.checkoutPriceText,
-    fontFamily: 'Poppins',
-    fontWeight: '400',
-    fontSize: 18,
+    ...TextStyle.poppinsExtraLargeLight,
   },
   price: {
     color: Colors.blackColor,
-    fontFamily: 'Poppins',
-    fontWeight: '500',
-    fontSize: 18,
+    ...TextStyle.poppinsExtraLargeNormal,
   },
 });
 

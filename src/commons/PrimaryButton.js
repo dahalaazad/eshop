@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Button} from 'react-native-paper';
-import {Colors} from '@app/constants';
+import {Button, Text} from 'react-native-paper';
+import {Colors, TextStyle} from '@app/constants';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Styles = StyleSheet.create({
   buttonStyles: {
     width: 'auto',
   },
-  labelStyles: {fontFamily: 'Poppins', fontSize: 18, fontWeight: '500'},
+  labelStyles: TextStyle.poppinsExtraLargeNormal,
   contentStyles: {
     height: '100%',
   },

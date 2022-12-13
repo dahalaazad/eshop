@@ -3,7 +3,6 @@ import {View, ScrollView, FlatList, Animated} from 'react-native';
 import {FilterButton, ProductCard, SearchBar} from '@app/commons';
 import {Colors, ProductCardData} from '@app/constants';
 import {Styles} from '@app/screens/dashboard/DashboardStyles';
-import {EngineFilterImage, BrakePadImage, CastrolImage} from '@app/assets/svg';
 import {
   DashProductCategory,
   DashProductSegmentedTab,
@@ -17,7 +16,6 @@ import {adData} from '@app/constants';
 
 export default function Dashboard({navigation}) {
   const dispatch = useDispatch();
-  const scrollX = useRef(new Animated.Value(0)).current;
 
   const [productCategoryData, setProductCategoryData] = useState(
     productCategoryDataItems,
