@@ -1,6 +1,6 @@
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import {MinusIcon, PlusIcon} from '@app/assets/svg';
 
 const Styles = StyleSheet.create({
@@ -18,9 +18,7 @@ const Styles = StyleSheet.create({
     paddingTop: 3,
   },
   counterText: {
-    fontFamily: 'Poppins',
-    fontSize: 14,
-    fontWeight: '500',
+    ...TextStyle.poppinsRegularNormal,
     color: Colors.textLinkColor,
   },
 });

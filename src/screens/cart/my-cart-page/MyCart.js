@@ -26,8 +26,8 @@ export default function MyCart({navigation}) {
       svgImage={<item.shoppingCartImage height={80} width={80} />}
       titleText={item?.shoppingCartTitle || 'Title'}
       subTitleText={item?.shoppingCartSubTitle || 'Subtitle'}
-      itemPrice={item?.shoppingCartPrice || '0'}
-      itemDiscountedPrice={item?.shoppingCartDiscountedPrice || '0'}
+      itemPrice={item?.shoppingCartPrice || ''}
+      itemDiscountedPrice={item?.shoppingCartDiscountedPrice || ''}
     />
   );
 

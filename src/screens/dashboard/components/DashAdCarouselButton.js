@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Button} from 'react-native-paper';
-import {Colors} from '@app/constants';
+import {Button, Text} from 'react-native-paper';
+import {Colors, TextStyle} from '@app/constants';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Styles = StyleSheet.create({
@@ -10,9 +10,7 @@ const Styles = StyleSheet.create({
     width: 'auto',
   },
   labelStyles: {
-    fontFamily: 'Poppins',
-    fontSize: 16,
-    fontWeight: '500',
+    ...TextStyle.poppinsLargeNormal,
     color: Colors.whiteColor,
   },
   contentStyles: {

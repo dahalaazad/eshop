@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 export const Styles = StyleSheet.create({
   mainContainer: {
@@ -16,17 +16,13 @@ export const Styles = StyleSheet.create({
     marginTop: 40,
   },
   userNameText: {
-    fontFamily: 'Poppins',
-    fontWeight: '500',
+    ...TextStyle.poppinsLargeNormal,
     color: Colors.blackColor,
-    fontSize: 16,
     textAlign: 'center',
   },
   emailText: {
-    fontFamily: 'Poppins',
-    fontWeight: '400',
+    ...TextStyle.poppinsRegularLight,
     color: Colors.productCardSubtitleColor,
-    fontSize: 14,
     textAlign: 'center',
   },
 });

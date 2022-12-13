@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 export const Styles = StyleSheet.create({
   mainContainer: {
@@ -16,16 +16,9 @@ export const Styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 15,
   },
-  logoutText: {
-    fontFamily: 'Poppins',
-    fontSize: 16,
-    fontWeight: '500',
-    color: Colors.blackColor,
-  },
+  logoutText: {...TextStyle.poppinsLargeNormal, color: Colors.blackColor},
   confirmText: {
-    fontFamily: 'Poppins',
-    fontSize: 16,
-    fontWeight: '400',
+    ...TextStyle.poppinsLargeLight,
     color: Colors.checkoutPriceText,
   },
 });

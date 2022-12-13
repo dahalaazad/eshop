@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 export const Styles = StyleSheet.create({
   mainContainer: {
@@ -18,17 +18,13 @@ export const Styles = StyleSheet.create({
     marginBottom: 15,
   },
   labelText: {
-    fontFamily: 'Poppins',
-    fontWeight: '400',
+    ...TextStyle.poppinsRegularLight,
     color: Colors.checkoutPriceText,
-    fontSize: 14,
     textAlign: 'left',
   },
   infoText: {
-    fontFamily: 'Poppins',
-    fontWeight: '500',
+    ...TextStyle.poppinsLargeNormal,
     color: Colors.blackColor,
-    fontSize: 16,
     textAlign: 'left',
   },
 });

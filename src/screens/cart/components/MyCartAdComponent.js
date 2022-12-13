@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import LinearGradient from 'react-native-linear-gradient';
 import {MyCartAdButton} from '@app/screens/cart/components';
 import {MyCartAdMainImage} from '@app/assets/svg';
@@ -31,9 +31,7 @@ export const Styles = StyleSheet.create({
     paddingLeft: 20,
   },
   adTextOne: {
-    fontFamily: 'Poppins',
-    fontWeight: '500',
-    fontSize: 12,
+    ...TextStyle.poppinsSmallNormal,
     color: Colors.myCartAdTextOne,
   },
   adTextOneContainer: {
@@ -42,9 +40,7 @@ export const Styles = StyleSheet.create({
     left: 20,
   },
   adTextTwo: {
-    fontFamily: 'Poppins',
-    fontWeight: '800',
-    fontSize: 30,
+    ...TextStyle.poppinsExtraLargeBold,
     color: Colors.whiteColor,
   },
   adTextTwoContainer: {
@@ -53,9 +49,7 @@ export const Styles = StyleSheet.create({
     left: 20,
   },
   adTextThree: {
-    fontFamily: 'Poppins',
-    fontWeight: '600',
-    fontSize: 12,
+    ...TextStyle.poppinsSmallBold,
     color: Colors.whiteColor,
   },
   adTextThreeContainer: {
@@ -64,9 +58,7 @@ export const Styles = StyleSheet.create({
     left: 20,
   },
   adTextFour: {
-    fontFamily: 'Poppins',
-    fontWeight: '400',
-    fontSize: 12,
+    ...TextStyle.poppinsSmallLight,
     color: Colors.whiteColor,
   },
   adTextFourContainer: {

@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import {AccountRibbon} from '@app/assets/svg';
 
 export const Styles = StyleSheet.create({
@@ -18,15 +18,11 @@ export const Styles = StyleSheet.create({
     alignItems: 'center',
   },
   pointText: {
-    fontFamily: 'Poppins',
-    fontSize: 18,
-    fontWeight: '500',
+    ...TextStyle.poppinsExtraLargeNormal,
     color: Colors.blackColor,
   },
   rewardText: {
-    fontFamily: 'Poppins',
-    fontSize: 12,
-    fontWeight: '400',
+    ...TextStyle.poppinsSmallLight,
     color: Colors.checkoutPriceText,
   },
 });

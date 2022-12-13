@@ -5,8 +5,8 @@ import ShoppingCartData from './ShoppingCartData';
 import MyCartData from './MyCartData';
 import UserSettingMenuItemData from './UserSettingMenuItemData';
 import {AllProductList} from './AllProductList';
-import { adData } from './AdvertisementData';
-
+import {adData} from './AdvertisementData';
+import {TextStyle} from './TextStyle';
 
 export {
   Colors,
@@ -16,5 +16,6 @@ export {
   MyCartData,
   UserSettingMenuItemData,
   AllProductList,
-  adData
+  adData,
+  TextStyle,
 };
