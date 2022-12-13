@@ -20,6 +20,7 @@ export default function EditProfile({navigation}) {
       ),
     });
   }, [navigation]);
+  
   return (
     <ScrollView style={styles.container}>
       <View style={styles.imageContainer}>
