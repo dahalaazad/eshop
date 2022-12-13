@@ -1,6 +1,5 @@
-import {View, Text, Modal, TouchableOpacity} from 'react-native';
+import {Modal, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {ProfileLogoutCard} from '@app/screens/profile';
 import {Styles} from '../account-page/UserAccountStyles';
 
 export default function ProfileLogoutModal({

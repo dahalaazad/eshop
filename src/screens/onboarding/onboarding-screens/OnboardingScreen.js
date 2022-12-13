@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import AD from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -109,9 +109,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   skipButtonText: {
-    fontFamily: 'Roboto',
-    fontSize: 22,
-    fontWeight: '500',
+    ...TextStyle.robotoLargeNormal,
     color: Colors.whiteColor,
   },
   bottomHalfContainer: {
@@ -133,13 +131,11 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   titleText: {
-    fontSize: 32,
-    fontWeight: '500',
+    ...TextStyle.poppinsExtraLargerNormal,
     padding: 10,
   },
   descriptionText: {
-    fontSize: 16,
-    fontWeight: '400',
+    ...TextStyle.poppinsLargeLight,
     paddingHorizontal: 55,
     paddingBottom: 40,
   },

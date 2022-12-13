@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 export const Styles = StyleSheet.create({
   mainContainer: {
@@ -12,28 +12,22 @@ export const Styles = StyleSheet.create({
     paddingBottom: 5,
   },
   headingText: {
+    ...TextStyle.lexendLargeBold,
     color: Colors.blackColor,
-    fontFamily: 'Lexend',
-    fontWeight: '700',
-    fontSize: 26,
   },
   subtitleText: {
+    ...TextStyle.poppinsLargeLight,
     color: Colors.subtitleTextColor,
     textAlign: 'center',
-    fontFamily: 'Poppins',
-    fontWeight: '400',
     paddingTop: 6,
-    fontSize: 16,
   },
   footerText: {
+    ...TextStyle.poppinsRegularLight,
     color: Colors.footerTextColor,
-    fontFamily: 'Poppins',
-    fontSize: 14,
   },
   footerLinkText: {
+    ...TextStyle.poppinsRegularLight,
     color: Colors.textLinkColor,
-    fontFamily: 'Poppins',
-    fontSize: 14,
   },
   footerContainer: {
     flex: 1,
@@ -48,9 +42,8 @@ export const Styles = StyleSheet.create({
     paddingBottom: 50,
   },
   forgotPasswordLink: {
-    fontFamily: 'Poppins',
+    ...TextStyle.poppinsLargeLight,
     color: Colors.textLinkColor,
-    fontSize: 16,
     alignSelf: 'center',
     paddingTop: 15,
   },
@@ -61,9 +54,8 @@ export const Styles = StyleSheet.create({
     paddingTop: 30,
   },
   errorText: {
-    paddingLeft: 16,
+    ...TextStyle.poppinsLargeLight,
     fontSize: 12,
-    fontFamily: 'Poppins',
     color: Colors.errorTextColor,
   },
   privacyPolicyContainer: {
@@ -73,15 +65,12 @@ export const Styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   policyText: {
+    ...TextStyle.poppinsRegularLight,
     color: Colors.subtitleTextColor,
-    fontFamily: 'Poppins',
-    fontWeight: '400',
     paddingTop: 6,
-    fontSize: 14,
   },
   policyLinkText: {
+    ...TextStyle.poppinsRegularLight,
     color: Colors.textLinkColor,
-    fontFamily: 'Poppins',
-    fontSize: 14,
   },
 });

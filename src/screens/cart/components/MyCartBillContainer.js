@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 export const Styles = StyleSheet.create({
   mainContainer: {
@@ -20,22 +20,16 @@ export const Styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   textOne: {
-    fontFamily: 'Poppins',
-    fontWeight: '400',
-    fontSize: 12,
+    ...TextStyle.poppinsSmallLight,
     color: Colors.productCardSubtitleColor,
   },
   textTwo: {
-    fontFamily: 'Poppins',
-    fontWeight: '500',
-    fontSize: 14,
+    ...TextStyle.poppinsRegularNormal,
     color: Colors.blackColor,
   },
   headingText: {
+    ...TextStyle.poppinsExtraLargeNormal,
     color: Colors.blackColor,
-    fontSize: 18,
-    fontWeight: '500',
-    fontFamily: 'Poppins',
   },
 });
 

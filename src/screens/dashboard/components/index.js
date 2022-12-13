@@ -5,7 +5,6 @@ import DashAdCarouselStyles from './DashAdCarouselStyles';
 import DashProductCategory from './DashProductCategory';
 import DashProductCategoryStyles from './DashProductCategoryStyles';
 import DashProductSegmentedTab from './DashProductSegmentedTab';
-import DashProductSort from './DashProductSort';
 
 export {
   DashAdCarousel,
@@ -15,5 +14,4 @@ export {
   DashProductCategory,
   DashProductCategoryStyles,
   DashProductSegmentedTab,
-  DashProductSort,
 };

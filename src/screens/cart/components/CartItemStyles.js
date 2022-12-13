@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 export const Styles = StyleSheet.create({
   mainContainer: {
@@ -23,27 +23,21 @@ export const Styles = StyleSheet.create({
     // width: 150,
   },
   titleText: {
-    fontFamily: 'Poppins',
-    fontSize: 18,
+    ...TextStyle.poppinsExtraLargeNormal,
     color: Colors.blackColor,
     position: 'absolute',
-    fontWeight: '500',
     top: 0,
   },
   subTitleText: {
+    ...TextStyle.poppinsSmallLight,
     position: 'absolute',
     top: 28,
-    fontFamily: 'Poppins',
-    fontSize: 12,
     color: Colors.productCardSubtitleColor,
-    fontWeight: '400',
   },
   priceText: {
+    ...TextStyle.poppinsExtraLargeNormal,
     position: 'absolute',
     bottom: 0,
-    fontFamily: 'Poppins',
-    fontSize: 18,
-    fontWeight: '500',
     color: Colors.blackColor,
   },
   discountedItemPriceContainer: {
@@ -52,13 +46,11 @@ export const Styles = StyleSheet.create({
     bottom: 3,
   },
   discountedPriceText: {
+    ...TextStyle.poppinsLargeNormal,
     color: Colors.productCardSubtitleColor,
     position: 'absolute',
     bottom: 0,
     textDecorationLine: 'line-through',
-    fontFamily: 'Poppins',
-    fontSize: 15,
-    fontWeight: '500',
   },
   rightButtonContainer: {
     position: 'relative',

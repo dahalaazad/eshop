@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import {MyCartPromotion} from '@app/assets/svg';
 
 export const Styles = StyleSheet.create({
@@ -19,9 +19,8 @@ export const Styles = StyleSheet.create({
     paddingBottom: 2,
   },
   adText: {
+    ...TextStyle.poppinsSmallLight,
     color: Colors.checkoutPriceText,
-    fontSize: 13,
-    fontFamily: 'Poppins',
   },
 });
 

@@ -1,7 +1,7 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import LinearGradient from 'react-native-linear-gradient';
 
 export const Styles = StyleSheet.create({
@@ -15,9 +15,7 @@ export const Styles = StyleSheet.create({
     alignItems: 'center',
   },
   adText: {
-    fontFamily: 'Poppins',
-    fontWeight: '600',
-    fontSize: 12,
+    ...TextStyle.poppinsSmallBold,
     color: Colors.whiteColor,
   },
 });

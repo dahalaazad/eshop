@@ -3,7 +3,6 @@ import {View, ScrollView, FlatList, Animated} from 'react-native';
 import {FilterButton, ProductCard, SearchBar} from '@app/commons';
 import {Colors, ProductCardData} from '@app/constants';
 import {Styles} from '@app/screens/dashboard/DashboardStyles';
-import {EngineFilterImage, BrakePadImage, CastrolImage} from '@app/assets/svg';
 import {
   DashProductCategory,
   DashProductSegmentedTab,
@@ -17,7 +16,6 @@ import {adData} from '@app/constants';
 
 export default function Dashboard({navigation}) {
   const dispatch = useDispatch();
-  const scrollX = useRef(new Animated.Value(0)).current;
 
   const [productCategoryData, setProductCategoryData] = useState(
     productCategoryDataItems,
@@ -37,13 +35,13 @@ export default function Dashboard({navigation}) {
   };
 
   const productCategoryStatusChange = itemId => {
-    // productCategoryData.filter(
-    //   item =>
-    //     item.id === itemId &&
-    //     setProductCategoryData((prevState, props) =>
-    //       console.log(...prevState.item),
-    //     ),
-    // );
+    setProductCategoryData(
+      productCategoryData.map(item =>
+        item.id === itemId
+          ? {...item, isActive: !item.isActive}
+          : {...item, isActive: false},
+      ),
+    );
   };
 
   const productCategoryRender = ({item}) => (
@@ -52,7 +50,9 @@ export default function Dashboard({navigation}) {
       categoryName={item.categoryName}
       categoryImage={item.categoryImage}
       isActive={item.isActive}
-      statusChangeHandler={productCategoryStatusChange}
+      statusChangeHandler={() => {
+        productCategoryStatusChange(item.id);
+      }}
       // style={Styles.dashboardProductCategoryStyles}
     />
   );

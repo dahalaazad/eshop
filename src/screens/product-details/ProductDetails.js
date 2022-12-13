@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Button, FlatList} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React, {useLayoutEffect} from 'react';
 import {
   BackButton,
@@ -6,20 +6,12 @@ import {
   ProductCounter,
   ProductHorizontalScroll,
 } from '@app/commons';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import FA from 'react-native-vector-icons/FontAwesome';
 import {DashAdCarouselPagination} from '@app/screens';
 import {useSelector} from 'react-redux';
-import {
-  CommentIcon,
-  BrakePadImage,
-  EngineFilterImage,
-  HondaGearBoxImage1,
-  HondaGearBoxImage2,
-  HondaGearBoxImage3,
-  HondaGearBoxImage4,
-} from '@app/assets/svg';
+import {CommentIcon, BrakePadImage, EngineFilterImage} from '@app/assets/svg';
 import getImage from '@app/utils/getImage';
 
 export default function ProductDetails({navigation}) {
@@ -164,28 +156,21 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   topLine: {
+    ...TextStyle.poppinsLargeLight,
     color: Colors.productCardSubtitleColor,
-    fontFamily: 'Poppins',
-    fontSize: 16,
     paddingTop: 20,
   },
   secondLine: {
+    ...TextStyle.poppinsExtraLargeBold,
     color: Colors.blackColor,
-    fontFamily: 'Poppins',
-    fontSize: 24,
-    fontWeight: 'bold',
   },
   horizontalScrollTitle: {
+    ...TextStyle.poppinsLargeBold,
     paddingTop: 10,
     color: Colors.blackColor,
-    fontFamily: 'Poppins',
-    fontSize: 16,
-    fontWeight: '600',
   },
   primaryButtonStyles: {
-    fontFamily: 'Poppins',
-    fontSize: 16,
-    fontWeight: '500',
+    ...TextStyle.poppinsLargeNormal,
     paddingTop: 5,
     borderRadius: 10,
   },

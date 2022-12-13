@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 
 export const Styles = StyleSheet.create({
   mainContainer: {
@@ -31,6 +31,11 @@ export const Styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'relative',
   },
+  middleContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+    // backgroundColor: 'pink',
+  },
   checkImageContainer: {
     position: 'absolute',
     left: 130,
@@ -45,15 +50,11 @@ export const Styles = StyleSheet.create({
     marginTop: 5,
   },
   emailText: {
-    fontFamily: 'Poppins',
-    fontSize: 14,
-    fontWeight: '400',
+    ...TextStyle.poppinsRegularLight,
     color: Colors.checkoutPriceText,
   },
   nameText: {
-    fontFamily: 'Poppins',
-    fontSize: 26,
-    fontWeight: '500',
+    ...TextStyle.poppinsExtraLargeBold,
     color: Colors.blackColor,
   },
   midContainer: {
@@ -62,14 +63,14 @@ export const Styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
   botContainer: {
-    position: 'absolute',
+    // position: 'absolute',
     paddingHorizontal: 20,
-    bottom: 0,
+    // bottom: 0,
     width: '100%',
   },
   horizontalLine: {
-    position: 'absolute',
-    bottom: 90,
+    // position: 'absolute',
+    // bottom: 90,
     width: '90%',
     alignSelf: 'center',
     borderBottomColor: Colors.inactiveIconGrayColor,

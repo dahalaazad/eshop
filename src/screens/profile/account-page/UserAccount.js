@@ -75,24 +75,26 @@ export default function UserAccount({navigation}) {
         </View>
       </LinearGradient>
 
-      <View style={Styles.midContainer}>
-        <UserAccountMenuItemGroup
-          navigateInformation={handleOnPressInformation}
-          navigateSettings={handleOnPressSettings}
-          onShare={onShare}
-        />
-      </View>
+      <View style={Styles.middleContainer}>
+        <View style={Styles.midContainer}>
+          <UserAccountMenuItemGroup
+            navigateInformation={handleOnPressInformation}
+            navigateSettings={handleOnPressSettings}
+            onShare={onShare}
+          />
+        </View>
 
-      <View style={Styles.horizontalLine} />
+        <View style={Styles.horizontalLine} />
 
-      <View style={Styles.botContainer}>
-        <UserAccountMenuItem
-          menuText="Logout"
-          menuLeft={<UserAccountLogout />}
-          menuRight={<UserSettingMenuRightArrow />}
-          menuSubText="Change your app settings"
-          onPress={toggleLogoutModal}
-        />
+        <View style={Styles.botContainer}>
+          <UserAccountMenuItem
+            menuText="Logout"
+            menuLeft={<UserAccountLogout />}
+            menuRight={<UserSettingMenuRightArrow />}
+            menuSubText="Change your app settings"
+            onPress={toggleLogoutModal}
+          />
+        </View>
       </View>
 
       <ProfileLogoutModal
