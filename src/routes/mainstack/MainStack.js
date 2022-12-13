@@ -29,6 +29,7 @@ const MainStack = ({navigation}) => {
           fontWeight: '500',
           fontFamily: 'Poppins',
         },
+        headerTransparent: true,
       }}>
       <Stack.Screen
         name="BottomTabNav"
