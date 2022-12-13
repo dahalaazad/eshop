@@ -33,15 +33,28 @@ export default function UserSettings({navigation}) {
 
   const onToggleSwitch = () => setSwitchStatus(!switchStatus);
 
+  const changePasswordScreenNavigator = item => {
+    item?.id === 1
+      ? navigation.navigate('ChangePassword')
+      : item.id === 2
+      ? toggleModal()
+      : () => {};
+  };
+
   const menuItemRender = ({item}) => (
     <UserSettingMenuItem
       itemId={item.id}
-      menuText={item.text}
-      menuLeft={item.left}
+      menuText={item?.text || 'Menu Item'}
+      menuLeft={item?.left || 'left-icon'}
       menuRight={
-        <item.right isSwitchOn={switchStatus} onToggleSwitch={onToggleSwitch} />
+        (
+          <item.right
+            isSwitchOn={switchStatus}
+            onToggleSwitch={onToggleSwitch}
+          />
+        ) || 'right-icon'
       }
-      onPress={item.id === 2 ? toggleModal : () => {}}
+      onPress={() => changePasswordScreenNavigator(item)}
     />
   );
 
@@ -58,7 +71,8 @@ export default function UserSettings({navigation}) {
       <ProfileLogoutModal
         modalVisible={modalVisible}
         toggleLogoutModal={toggleModal}
-        closeLogoutModal={closeModal}>
+        closeLogoutModal={closeModal}
+        animationType="fade">
         <ProfileLanguagePopup closeLanguageModal={closeModal} />
       </ProfileLogoutModal>
     </View>

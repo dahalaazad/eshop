@@ -26,4 +26,11 @@ export const Colors = {
   languageOptionsBorderColor: '#E3E3E3',
   startIconYellow: '#F2994A',
   borderBottomColor: 'rgba(189, 189, 189, 0.4)',
+  changePasswordHeaderColor: '#1A1D26',
+  changePasswordTextColor: '#6E7489',
+  changePasswordBlueColor: '#2F80ED',
+  changePasswordInputBorderColor: '#C4C7D0',
+  languageOptionsBorderColor: '#E3E3E3',
+  editProfileTextColor: '#6E7489',
+  inputFieldOutlineColor: '#C4C7D0',
 };

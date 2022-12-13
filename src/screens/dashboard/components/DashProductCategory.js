@@ -17,6 +17,7 @@ export default function DashProductCategory({
         onPress={statusChangeHandler}>
         {categoryImage}
       </TouchableOpacity>
+
       <View style={Styles.categoryTextContainer}>
         <Text
           style={isActive ? Styles.activeCategoryText : Styles.categoryText}>

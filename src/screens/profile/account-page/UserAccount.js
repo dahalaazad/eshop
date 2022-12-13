@@ -34,20 +34,10 @@ export default function UserAccount({navigation}) {
 
   const onShare = async () => {
     try {
-      const result = await Share.share({
+      await Share.share({
         title: 'This is Share Title',
         message: 'https://www.google.com/',
       });
-
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
     } catch (error) {
       alert(error.message);
     }

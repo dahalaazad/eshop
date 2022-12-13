@@ -7,6 +7,7 @@ export default function ProfileLogoutModal({
   toggleLogoutModal,
   closeLogoutModal,
   children,
+  ...props
 }) {
   return (
     <Modal
@@ -15,7 +16,8 @@ export default function ProfileLogoutModal({
       visible={modalVisible}
       onRequestClose={toggleLogoutModal}
       statusBarTranslucent={true}
-      hardwareAccelerated={true}>
+      hardwareAccelerated={true}
+      {...props}>
       <TouchableOpacity
         activeOpacity={1}
         style={Styles.modalBackdropContainer}

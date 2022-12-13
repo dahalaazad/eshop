@@ -19,6 +19,7 @@ export default function ProfileLogoutCard({closeLogoutModal}) {
           isOutlined
           onPressHandler={closeLogoutModal}
         />
+
         <PrimaryButton
           buttonHeight={44}
           buttonWidth="48%"

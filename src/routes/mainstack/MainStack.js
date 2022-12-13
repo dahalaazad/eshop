@@ -29,7 +29,7 @@ const MainStack = ({navigation}) => {
           fontWeight: '500',
           fontFamily: 'Poppins',
         },
-        headerTransparent:true,
+        headerTransparent: true,
       }}>
       <Stack.Screen
         name="BottomTabNav"
@@ -74,11 +74,15 @@ const MainStack = ({navigation}) => {
         name="ChangePassword"
         component={ChangePassword}
         options={{
+          headerStyle:{
+            backgroundColor:Colors.whiteColor
+          },
           headerTitle: 'Change Password',
           headerTitleStyle: {
+            color:Colors.changePasswordHeaderColor,
             fontFamily: 'Sofia Pro',
             fontSize: 20,
-            fontWeight: '500',
+            fontWeight: 'bold',
           },
         }}
       />
@@ -87,6 +91,9 @@ const MainStack = ({navigation}) => {
         name="EditProfile"
         component={EditProfile}
         options={{
+          headerStyle: {
+            backgroundColor: Colors.whiteColor,
+          },
           headerTitle: 'Edit Profile',
         }}
       />

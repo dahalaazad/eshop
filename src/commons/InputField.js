@@ -9,6 +9,9 @@ export default function InputField({
   onBlur,
   onChange,
   value,
+  borderWidth,
+  borderColor,
+  outlineColor = 'transparent',
 }) {
   const [hidePassword, setHidePassword] = useState(isPassword);
   const [eyeIcon, setEyeIcon] = useState(passwordIcon);
@@ -19,7 +22,7 @@ export default function InputField({
       mode="outlined"
       label={labelText}
       secureTextEntry={hidePassword}
-      outlineColor="transparent"
+      outlineColor={outlineColor}
       activeOutlineColor={Colors.textLinkColor}
       onBlur={onBlur}
       onChangeText={onChange}
@@ -38,7 +41,7 @@ export default function InputField({
           />
         )
       }
-      style={{backgroundColor: Colors.whiteColor}}
+      style={{backgroundColor: Colors.whiteColor,}}
     />
   );
 }
