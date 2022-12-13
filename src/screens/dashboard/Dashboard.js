@@ -35,13 +35,13 @@ export default function Dashboard({navigation}) {
   };
 
   const productCategoryStatusChange = itemId => {
-    // productCategoryData.filter(
-    //   item =>
-    //     item.id === itemId &&
-    //     setProductCategoryData((prevState, props) =>
-    //       console.log(...prevState.item),
-    //     ),
-    // );
+    setProductCategoryData(
+      productCategoryData.map(item =>
+        item.id === itemId
+          ? {...item, isActive: !item.isActive}
+          : {...item, isActive: false},
+      ),
+    );
   };
 
   const productCategoryRender = ({item}) => (
@@ -50,7 +50,9 @@ export default function Dashboard({navigation}) {
       categoryName={item.categoryName}
       categoryImage={item.categoryImage}
       isActive={item.isActive}
-      statusChangeHandler={productCategoryStatusChange}
+      statusChangeHandler={() => {
+        productCategoryStatusChange(item.id);
+      }}
       // style={Styles.dashboardProductCategoryStyles}
     />
   );
