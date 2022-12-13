@@ -21,13 +21,10 @@ import {
   HondaGearBoxImage4,
 } from '@app/assets/svg';
 import getImage from '@app/utils/getImage';
-import {useHeaderHeight} from '@react-navigation/elements';
 
 export default function ProductDetails({navigation}) {
   const currentProduct = useSelector(state => state.product.currentProduct);
   const productImage = getImage(currentProduct?.imageId);
-
-  const headerHeight = useHeaderHeight();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -40,7 +37,7 @@ export default function ProductDetails({navigation}) {
   const renderCarouselItem = ({item}) => item;
 
   return (
-    <View style={[styles.container,{marginTop:headerHeight}]}>
+    <View style={styles.container}>
       <View style={styles.topContainer}>
         <DashAdCarouselPagination
           dataArr={[productImage, <EngineFilterImage />, <BrakePadImage />]}
