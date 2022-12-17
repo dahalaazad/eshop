@@ -4,6 +4,10 @@ import {BackButton, InputField, PrimaryButton} from '@app/commons';
 import {Colors} from '@app/constants';
 import {useForm, Controller} from 'react-hook-form';
 import {Styles} from '@app/screens/login/LoginStyles';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default function ChangePassword({navigation}) {
   useLayoutEffect(() => {
@@ -159,7 +163,6 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-start',
     flex: 1,
-    marginTop: 50,
     paddingHorizontal: 25,
     backgroundColor: Colors.whiteColor,
   },

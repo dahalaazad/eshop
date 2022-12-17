@@ -59,12 +59,11 @@ export const Styles = StyleSheet.create({
   },
   midContainer: {
     marginTop: 45,
-    paddingHorizontal: 20,
-    // backgroundColor: 'red',
   },
   botContainer: {
     // position: 'absolute',
     paddingHorizontal: 20,
+    paddingTop: 15,
     // bottom: 0,
     width: '100%',
   },

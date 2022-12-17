@@ -23,13 +23,13 @@ const MainStack = ({navigation}) => {
         headerStyle: {
           backgroundColor: Colors.loginBackgroundColor,
         },
+        headerShadowVisible:false,
         headerTitleAlign: 'center',
         headerTitleStyle: {
           fontSize: 24,
           fontWeight: '500',
           fontFamily: 'Poppins',
         },
-        headerTransparent: true,
       }}>
       <Stack.Screen
         name="BottomTabNav"
