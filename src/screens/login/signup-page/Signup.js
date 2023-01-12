@@ -12,11 +12,12 @@ export default function Signup({navigation}) {
   const {
     control,
     handleSubmit,
-    formState: {errors},
     watch,
+    formState: {errors},
   } = useForm({
     defaultValues: {
       email: '',
+      fullName: '',
       password: '',
       confirmPassword: '',
     },
@@ -63,7 +64,7 @@ export default function Signup({navigation}) {
                   isPassword={false}
                   onBlur={onBlur}
                   onChange={onChange}
-                  value={value}                  
+                  value={value}
                 />
               )}
               name="email"
@@ -72,6 +73,41 @@ export default function Signup({navigation}) {
               <Text style={Styles.errorText}>Enter your email</Text>
             ) : errors.email?.type === 'pattern' ? (
               <Text style={Styles.errorText}>Enter a valid email address</Text>
+            ) : null}
+          </View>
+
+          <View style={{paddingBottom: 5}}>
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+                minLength: 6,
+                pattern: {
+                  value: /^([A-Za-z]{3,}) ([A-Za-z]{3,})$/,
+                },
+                validate: value => {
+                  return !!value.trim();
+                },
+              }}
+              render={({field: {onChange, onBlur, value}}) => (
+                <InputField
+                  labelText="Full Name"
+                  isPassword={false}
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  value={value}
+                />
+              )}
+              name="fullName"
+            />
+            {errors.fullName?.type === 'required' ? (
+              <Text style={Styles.errorText}>Enter your full name</Text>
+            ) : errors.fullName?.type === 'minLength' ? (
+              <Text style={Styles.errorText}>Too short</Text>
+            ) : errors.fullName?.type === 'pattern' ? (
+              <Text style={Styles.errorText}>
+                At least 3 letters first and last name only
+              </Text>
             ) : null}
           </View>
 
@@ -93,7 +129,7 @@ export default function Signup({navigation}) {
                   passwordIcon={true}
                   onBlur={onBlur}
                   onChange={onChange}
-                  value={value}                 
+                  value={value}
                 />
               )}
               name="password"
@@ -119,18 +155,19 @@ export default function Signup({navigation}) {
                   passwordIcon={true}
                   onBlur={onBlur}
                   onChange={onChange}
-                  value={value}                  
+                  value={value}
                 />
               )}
               rules={{
                 required: true,
-                validate: value =>
-                  value === watch('password') || 'The passwords do not match',
+                validate: value => value === watch('password'),
               }}
               name="confirmPassword"
             />
             {errors.confirmPassword?.type === 'required' ? (
               <Text style={Styles.errorText}>Confirm your password</Text>
+            ) : errors.confirmPassword?.type === 'validate' ? (
+              <Text style={Styles.errorText}>The passwords do not match</Text>
             ) : null}
           </View>
         </View>
