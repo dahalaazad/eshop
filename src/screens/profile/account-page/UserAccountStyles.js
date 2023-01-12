@@ -1,4 +1,8 @@
 import {StyleSheet} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import {Colors, TextStyle} from '@app/constants';
 
 export const Styles = StyleSheet.create({
@@ -8,7 +12,7 @@ export const Styles = StyleSheet.create({
     // marginTop: 50,
   },
   topContainer: {
-    height: 300,
+    height: hp('38%'),
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
     alignItems: 'center',
@@ -31,11 +35,6 @@ export const Styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'relative',
   },
-  middleContainer: {
-    flex: 1,
-    justifyContent: 'space-between',
-    // backgroundColor: 'pink',
-  },
   checkImageContainer: {
     position: 'absolute',
     left: 130,
@@ -57,8 +56,13 @@ export const Styles = StyleSheet.create({
     ...TextStyle.poppinsExtraLargeBold,
     color: Colors.blackColor,
   },
+  middleContainer: {
+    justifyContent: 'space-between',
+    height: hp('51%'),
+  },
   midContainer: {
-    marginTop: 45,
+    marginTop: hp('1%'),
+    // backgroundColor: 'red',
   },
   botContainer: {
     // position: 'absolute',

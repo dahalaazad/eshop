@@ -57,8 +57,8 @@ export default function UserAccountMenuItemGroup({
 
 const styles = StyleSheet.create({
   container: {
-    padding: hp('5%'),
+    marginTop: hp('6%'),
+    paddingHorizontal: wp('5%'),
     borderBottomColor: Colors.profilePageBorderColor,
-    borderBottomWidth: 1,
   },
 });
