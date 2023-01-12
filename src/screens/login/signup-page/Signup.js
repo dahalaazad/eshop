@@ -106,7 +106,7 @@ export default function Signup({navigation}) {
               <Text style={Styles.errorText}>Too short</Text>
             ) : errors.fullName?.type === 'pattern' ? (
               <Text style={Styles.errorText}>
-                At least 3 letters first and last name only
+                At least 3 letters each first and last name
               </Text>
             ) : null}
           </View>
