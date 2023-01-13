@@ -82,9 +82,6 @@ export default function Signup({navigation}) {
               rules={{
                 required: true,
                 minLength: 6,
-                pattern: {
-                  value: /^([A-Za-z]{3,}) ([A-Za-z]{3,})$/,
-                },
                 validate: value => {
                   return !!value.trim();
                 },
@@ -103,10 +100,8 @@ export default function Signup({navigation}) {
             {errors.fullName?.type === 'required' ? (
               <Text style={Styles.errorText}>Enter your full name</Text>
             ) : errors.fullName?.type === 'minLength' ? (
-              <Text style={Styles.errorText}>Too short</Text>
-            ) : errors.fullName?.type === 'pattern' ? (
               <Text style={Styles.errorText}>
-                At least 3 letters each first and last name
+                Minimum 6 characters required
               </Text>
             ) : null}
           </View>
