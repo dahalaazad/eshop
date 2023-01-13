@@ -123,7 +123,7 @@ export default function Signup({navigation}) {
                 pattern: {
                   value:
                     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-                  message: "Password pattern doesn't match",
+                  message: 'Password pattern is incorrect',
                 },
               }}
               render={({field: {onChange, onBlur, value}}) => (
