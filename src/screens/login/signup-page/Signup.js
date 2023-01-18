@@ -54,7 +54,36 @@ export default function Signup({navigation}) {
               rules={{
                 required: {
                   value: true,
-                  message: 'Provide an email address',
+                  message: 'Please enter your full name',
+                },
+                minLength: {
+                  value: 6,
+                  message: 'Minium 6 characters',
+                },
+              }}
+              render={({field: {onChange, onBlur, value}}) => (
+                <InputField
+                  labelText="Full Name"
+                  isPassword={false}
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  value={value}
+                />
+              )}
+              name="fullName"
+            />
+            {errors && (
+              <Text style={Styles.errorText}>{errors?.fullName?.message}</Text>
+            )}
+          </View>
+
+          <View style={{paddingBottom: 5}}>
+            <Controller
+              control={control}
+              rules={{
+                required: {
+                  value: true,
+                  message: 'Enter your email address',
                 },
                 pattern: {
                   value:
@@ -76,35 +105,6 @@ export default function Signup({navigation}) {
 
             {errors && (
               <Text style={Styles.errorText}>{errors?.email?.message}</Text>
-            )}
-          </View>
-
-          <View style={{paddingBottom: 5}}>
-            <Controller
-              control={control}
-              rules={{
-                required: {
-                  value: true,
-                  message: 'Please enter your full name',
-                },
-                minLength: {
-                  value: 6,
-                  message: 'Minium 6 characters',
-                },
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <InputField
-                  labelText="Full Name"
-                  isPassword={false}
-                  onBlur={onBlur}
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
-              name="fullName"
-            />
-            {errors && (
-              <Text style={Styles.errorText}>{errors?.fullName?.message}</Text>
             )}
           </View>
 
