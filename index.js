@@ -12,7 +12,6 @@ import {PersistGate} from 'redux-persist/integration/react';
 function Root() {
   return (
     <Provider store={store}>
-      <App />
       <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>
