@@ -7,6 +7,7 @@ import UserSettingMenuItemData from './UserSettingMenuItemData';
 import {AllProductList} from './AllProductList';
 import {adData} from './AdvertisementData';
 import {TextStyle} from './TextStyle';
+import {InputRules} from './InputRules';
 
 export {
   Colors,
@@ -18,4 +19,5 @@ export {
   AllProductList,
   adData,
   TextStyle,
+  InputRules,
 };

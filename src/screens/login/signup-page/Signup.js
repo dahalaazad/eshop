@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Checkbox} from 'react-native-paper';
-import {Colors} from '@app/constants';
+import {Colors, InputRules} from '@app/constants';
 import {PrimaryButton, InputField} from '@app/commons';
 import {Styles} from '@app/screens/login/LoginStyles';
 import {MainLogoColor} from '@app/assets/svg';
@@ -49,131 +49,56 @@ export default function Signup({navigation}) {
 
         <View style={{paddingTop: 20}}>
           <View style={{paddingBottom: 5}}>
-            <Controller
+            <InputField
               control={control}
-              rules={{
-                required: {
-                  value: true,
-                  message: 'Please enter your full name',
-                },
-                minLength: {
-                  value: 6,
-                  message: 'Minium 6 characters',
-                },
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <InputField
-                  labelText="Full Name"
-                  isPassword={false}
-                  onBlur={onBlur}
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
-              name="fullName"
+              errors={errors}
+              inputName="fullName"
+              rules={InputRules.fullName}
+              labelText="Full Name"
+              isPassword={false}
             />
-            {errors && (
-              <Text style={Styles.errorText}>{errors?.fullName?.message}</Text>
-            )}
           </View>
 
           <View style={{paddingBottom: 5}}>
-            <Controller
+            <InputField
               control={control}
-              rules={{
-                required: {
-                  value: true,
-                  message: 'Enter your email address',
-                },
-                pattern: {
-                  value:
-                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                  message: 'Enter a valid email address',
-                },
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <InputField
-                  labelText="Email Address"
-                  isPassword={false}
-                  onBlur={onBlur}
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
-              name="email"
+              errors={errors}
+              inputName="email"
+              rules={InputRules.email}
+              labelText="Email Address"
+              isPassword={false}
             />
-
-            {errors && (
-              <Text style={Styles.errorText}>{errors?.email?.message}</Text>
-            )}
           </View>
 
           <View style={{paddingBottom: 5}}>
-            <Controller
+            <InputField
               control={control}
-              rules={{
-                required: {
-                  value: true,
-                  message: 'Enter a password',
-                },
-                minLength: {
-                  value: 8,
-                  message: 'Minimum 8 characters',
-                },
-                pattern: {
-                  value:
-                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-                  message: 'Password pattern is incorrect',
-                },
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <InputField
-                  labelText="Password"
-                  isPassword={true}
-                  passwordIcon={true}
-                  onBlur={onBlur}
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
-              name="password"
+              errors={errors}
+              inputName="password"
+              rules={InputRules.password}
+              labelText="Password"
+              isPassword={true}
+              passwordIcon={true}
             />
-            {errors && (
-              <Text style={Styles.errorText}>{errors?.password?.message}</Text>
-            )}
           </View>
 
           <View>
-            <Controller
+            <InputField
               control={control}
-              render={({field: {onChange, onBlur, value}}) => (
-                <InputField
-                  labelText="Confirm Password"
-                  isPassword={true}
-                  passwordIcon={true}
-                  onBlur={onBlur}
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
+              errors={errors}
+              inputName="confirmPassword"
               rules={{
-                required: {
-                  value: true,
-                  message: 'Confirm your password',
-                },
+                ...InputRules.confirmPassword,
                 validate: value => {
                   if (value !== watch('password')) {
                     return 'Password does not match';
                   }
                 },
               }}
-              name="confirmPassword"
+              labelText="Confirm Password"
+              isPassword={true}
+              passwordIcon={true}
             />
-            {errors && (
-              <Text style={Styles.errorText}>
-                {errors?.confirmPassword?.message}
-              </Text>
-            )}
           </View>
         </View>
 
