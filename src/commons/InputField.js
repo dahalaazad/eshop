@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {TextInput} from 'react-native-paper';
 import {Controller} from 'react-hook-form';
 import {Colors, TextStyle} from '@app/constants';
-import {StyleSheet,Text} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 
 export default function InputField({
   control,
