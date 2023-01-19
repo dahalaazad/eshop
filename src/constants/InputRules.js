@@ -29,10 +29,6 @@ export const InputRules = {
       value: 8,
       message: 'Minimum 8 characters',
     },
-    pattern: {
-      value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-      message: 'Password pattern is incorrect',
-    },
   },
   confirmPassword: {
     required: {
