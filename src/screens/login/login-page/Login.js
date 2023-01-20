@@ -9,6 +9,7 @@ import {
 import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {InputField, PrimaryButton} from '@app/commons';
+import {InputRules} from '@app/constants';
 import {Styles} from '@app/screens/login/LoginStyles';
 import {MainLogoColor} from '@app/assets/svg';
 
@@ -47,65 +48,24 @@ export default function Login({navigation}) {
         </View>
         <View style={{paddingBottom: 45, paddingTop: 40}}>
           <View style={{paddingBottom: 10}}>
-            <Controller
+            <InputField
               control={control}
-              rules={{
-                required: true,
-                pattern: {
-                  value:
-                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                },
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <InputField
-                  labelText="Email Address"
-                  isPassword={false}
-                  onBlur={onBlur}
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
-              name="email"
+              errors={errors}
+              inputName="email"
+              rules={InputRules.email}
+              labelText="Email Address"
+              isPassword={false}
             />
-            {errors.email?.type === 'required' ? (
-              <Text style={Styles.errorText}>Enter your email</Text>
-            ) : errors.email?.type === 'pattern' ? (
-              <Text style={Styles.errorText}>Enter a valid email address</Text>
-            ) : null}
-          </View>
 
-          <View>
-            <Controller
+            <InputField
               control={control}
-              rules={{
-                required: true,
-                minLength: 8,
-                pattern: {
-                  value:
-                    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-                },
-              }}
-              render={({field: {onChange, onBlur, value}}) => (
-                <InputField
-                  labelText="Password"
-                  isPassword={true}
-                  passwordIcon={true}
-                  onBlur={onBlur}
-                  onChange={onChange}
-                  value={value}
-                />
-              )}
-              name="password"
+              errors={errors}
+              inputName="password"
+              rules={InputRules.password}
+              labelText="Password"
+              isPassword={true}
+              passwordIcon={true}
             />
-            {errors.password?.type === 'required' ? (
-              <Text style={Styles.errorText}>Enter your password</Text>
-            ) : errors.password?.type === 'pattern' ? (
-              <Text style={Styles.errorText}>
-                Password pattern doesn't match
-              </Text>
-            ) : errors.password?.type === 'minLength' ? (
-              <Text style={Styles.errorText}>Too short</Text>
-            ) : null}
           </View>
 
           <TouchableOpacity onPress={() => {}}>
