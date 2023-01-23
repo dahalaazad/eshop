@@ -92,7 +92,8 @@ export default function Signup({navigation}) {
           <Text style={Styles.headingText}>Create a New Account</Text>
 
           <Text style={Styles.subtitleText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            An online retailer and spare parts delivery service at your
+            fingertips
           </Text>
         </View>
 
@@ -188,7 +189,7 @@ export default function Signup({navigation}) {
                 : () => {
                     Alert.alert(
                       'Terms of Service',
-                      'You must agreee to the Terms of Service',
+                      'You must first agreee to the Terms of Service',
                     );
                   }
             }
