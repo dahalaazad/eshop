@@ -9,9 +9,9 @@ const AuthStack = () => {
 
   return (
     <Stack.Navigator name="AuthStack" screenOptions={{headerShown: false}}>
-      {firstLoad ? (
+      {firstLoad && (
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
-      ) : null}
+      )}
       <Stack.Screen name="SignupPage" component={Signup} />
 
       <Stack.Screen name="LoginPage" component={Login} />
