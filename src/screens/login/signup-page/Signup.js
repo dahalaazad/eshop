@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import React, {useState} from 'react';
 import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -182,7 +182,16 @@ export default function Signup({navigation}) {
             buttonRadius={10}
             buttonLabel="Signup"
             buttonHeight={60}
-            onPressHandler={handleSubmit(signupButtonHandler)}
+            onPressHandler={
+              checked
+                ? handleSubmit(signupButtonHandler)
+                : () => {
+                    Alert.alert(
+                      'Terms of Service',
+                      'You must agreee to the Terms of Service',
+                    );
+                  }
+            }
           />
         </View>
       </View>
