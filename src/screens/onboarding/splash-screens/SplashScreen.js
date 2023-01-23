@@ -5,7 +5,6 @@ import {MainLogo} from '@app/assets/svg';
 import {useSelector} from 'react-redux';
 
 export default function SplashScreen({navigation}) {
-  const firstLoad = useSelector(state => state?.auth?.firstLoad);
   const isLoggedIn = useSelector(state => state?.auth?.isLoggedIn);
 
   const [bottomValue, setBottomValue] = useState(new Animated.Value(100));
@@ -21,14 +20,7 @@ export default function SplashScreen({navigation}) {
     }).start();
 
     setTimeout(
-      () =>
-        navigation.navigate(
-          isLoggedIn
-            ? 'MainStack'
-            : firstLoad
-            ? 'OnboardingScreen'
-            : 'LoginPage',
-        ),
+      () => navigation.navigate(isLoggedIn ? 'MainStack' : 'AuthStack'),
       1500,
     );
   };
