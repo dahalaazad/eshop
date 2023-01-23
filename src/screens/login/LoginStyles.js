@@ -5,7 +5,7 @@ export const Styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: Colors.loginBackgroundColor,
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
   },
   inputFieldContainer: {
     width: '100%',
@@ -62,7 +62,7 @@ export const Styles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 14,
     width: '95%',
-    alignItems: 'flex-start',
+    alignItems: 'center',
   },
   policyText: {
     ...TextStyle.poppinsRegularLight,
