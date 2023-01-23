@@ -7,17 +7,24 @@ import {Colors, InputRules} from '@app/constants';
 import {PrimaryButton, InputField} from '@app/commons';
 import {Styles} from '@app/screens/login/LoginStyles';
 import {MainLogoColor} from '@app/assets/svg';
+import {useDispatch, useSelector} from 'react-redux';
+import {signupUser} from '@app/redux/slices/auth/authSlice';
+import {showToast} from '@app/utils/showToast';
 
 export default function Signup({navigation}) {
+  const dispatch = useDispatch();
+  const isSignedUp = useSelector(state => state?.auth?.isSignedUp);
+
   const {
     control,
     handleSubmit,
     watch,
+    setError,
     formState: {errors},
   } = useForm({
     defaultValues: {
-      email: '',
       fullName: '',
+      email: '',
       password: '',
       confirmPassword: '',
     },
@@ -26,7 +33,45 @@ export default function Signup({navigation}) {
   const [checked, setChecked] = useState(false);
 
   const signupButtonHandler = signupData => {
-    navigation.navigate('LoginPage');
+    const {fullName, email, password, confirmPassword} = signupData;
+    // console.log(fullName, email, password);
+    dispatch(
+      signupUser({
+        customer: {
+          full_name: fullName,
+          email: email,
+          password: password,
+        },
+      }),
+    )
+      .unwrap()
+      .then(originalPromiseResult => {
+        console.log(originalPromiseResult);
+        const statusCode = originalPromiseResult?.data?.status?.code;
+        if (statusCode === 200) {
+          navigation.navigate('MainStack');
+          showToast('success', 'Success', 'Welcome to E-Mistiri');
+        }
+      })
+      .catch(rejectedValueOrSerializedError => {
+        const errorMessage =
+          rejectedValueOrSerializedError?.data?.status?.errors;
+        console.log(errorMessage);
+
+        Array.isArray(errorMessage) && errorMessage.length
+          ? errorMessage.map(item => {
+              const fieldName = item.toLowerCase().includes('email')
+                ? 'email'
+                : item.toLowerCase().includes('name')
+                ? 'fullName'
+                : null;
+              setError(fieldName, {
+                type: 'manual',
+                message: item || 'Action object error',
+              });
+            })
+          : [];
+      });
   };
 
   return (
