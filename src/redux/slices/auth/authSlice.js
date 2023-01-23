@@ -19,12 +19,6 @@ export const signupUser = createAsyncThunk(
   'auth/signupUser',
   async (userSignUpInfo, {rejectWithValue}) => {
     try {
-      // const config = {
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      // };
-      // console.log('userInfo', userSignUpInfo);
       const signUpResponse = await axios.post(
         `${baseURL}/customers`,
         userSignUpInfo,
