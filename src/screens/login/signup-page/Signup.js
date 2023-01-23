@@ -1,4 +1,10 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+  StyleSheet,
+} from 'react-native';
 import React, {useState} from 'react';
 import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -80,6 +86,10 @@ export default function Signup({navigation}) {
       enableOnAndroid={false}
       keyboardShouldPersistTaps="handled">
       <View>
+        <View style={styles.loading}>
+          <ActivityIndicator size={100} />
+        </View>
+
         <View style={{alignItems: 'center'}}>
           <View style={{paddingTop: 45, paddingBottom: 32}}>
             <MainLogoColor />
@@ -197,3 +207,15 @@ export default function Signup({navigation}) {
     </KeyboardAwareScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  loading: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
