@@ -19,7 +19,7 @@ export default function OnboardingScreen({navigation}) {
   const moveToNextScreen = () => {
     onboardScreenIndex < onboardingValues.length - 1
       ? setOnboardScreenIndex(onboardScreenIndex + 1)
-      : navigation.navigate('LoginStack');
+      : navigation.navigate('SignupPage');
   };
 
   const moveToBackScreen = () => {
@@ -49,7 +49,7 @@ export default function OnboardingScreen({navigation}) {
             )}
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('LoginStack')}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignupPage')}>
             <Text style={styles.skipButtonText}>Skip</Text>
           </TouchableOpacity>
         </View>
