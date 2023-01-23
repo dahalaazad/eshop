@@ -14,6 +14,7 @@ const initialState = {
 };
 
 const baseURL = 'https://1677-103-41-172-114.in.ngrok.io';
+
 export const signupUser = createAsyncThunk(
   'auth/signupUser',
   async (userSignUpInfo, {rejectWithValue}) => {
