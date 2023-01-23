@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ActivityIndicator,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -16,10 +10,11 @@ import {MainLogoColor} from '@app/assets/svg';
 import {useDispatch, useSelector} from 'react-redux';
 import {signupUser} from '@app/redux/slices/auth/authSlice';
 import {showToast} from '@app/utils/showToast';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 export default function Signup({navigation}) {
   const dispatch = useDispatch();
-  const isSignedUp = useSelector(state => state?.auth?.isSignedUp);
+  const loading = useSelector(state => state?.auth?.loading);
 
   const {
     control,
@@ -40,7 +35,6 @@ export default function Signup({navigation}) {
 
   const signupButtonHandler = signupData => {
     const {fullName, email, password, confirmPassword} = signupData;
-    // console.log(fullName, email, password);
     dispatch(
       signupUser({
         customer: {
@@ -52,7 +46,6 @@ export default function Signup({navigation}) {
     )
       .unwrap()
       .then(originalPromiseResult => {
-        console.log(originalPromiseResult);
         const statusCode = originalPromiseResult?.data?.status?.code;
         if (statusCode === 200) {
           navigation.navigate('MainStack');
@@ -62,7 +55,6 @@ export default function Signup({navigation}) {
       .catch(rejectedValueOrSerializedError => {
         const errorMessage =
           rejectedValueOrSerializedError?.data?.status?.errors;
-        console.log(errorMessage);
 
         Array.isArray(errorMessage) && errorMessage.length
           ? errorMessage.map(item => {
@@ -85,11 +77,13 @@ export default function Signup({navigation}) {
       style={Styles.mainContainer}
       enableOnAndroid={false}
       keyboardShouldPersistTaps="handled">
+      <Spinner
+        visible={loading}
+        color={Colors.whiteColor}
+        overlayColor={Colors.loadingOverlayColor}
+        animation="fade"
+      />
       <View>
-        <View style={styles.loading}>
-          <ActivityIndicator size={100} />
-        </View>
-
         <View style={{alignItems: 'center'}}>
           <View style={{paddingTop: 45, paddingBottom: 32}}>
             <MainLogoColor />
@@ -207,15 +201,3 @@ export default function Signup({navigation}) {
     </KeyboardAwareScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  loading: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
