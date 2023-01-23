@@ -26,18 +26,13 @@ const App = () => {
               <Stack.Screen name="MainStack" component={MainStack} />
             ) : (
               <Stack.Group>
-                <Stack.Screen name="SplashScreen" component={SplashScreen} />
-
                 {firstLoad ? (
-                  <Stack.Group>
-                    <Stack.Screen
-                      name="OnboardingScreen"
-                      component={OnboardingScreen}
-                    />
-
-                    <Stack.Screen name="SignupPage" component={Signup} />
-                  </Stack.Group>
+                  <Stack.Screen
+                    name="OnboardingScreen"
+                    component={OnboardingScreen}
+                  />
                 ) : null}
+                <Stack.Screen name="SignupPage" component={Signup} />
 
                 <Stack.Screen name="LoginPage" component={Login} />
               </Stack.Group>

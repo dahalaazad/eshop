@@ -37,7 +37,11 @@ export const signupUser = createAsyncThunk(
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    setFirstLoad: (state, action) => {
+      return {...state, firstLoad: action.payload};
+    },
+  },
   extraReducers: builder => {
     // register user
     builder
@@ -59,5 +63,7 @@ export const authSlice = createSlice({
       });
   },
 });
+
+export const {setFirstLoad} = authSlice.actions;
 
 export default authSlice.reducer;
