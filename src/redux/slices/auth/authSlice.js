@@ -22,16 +22,13 @@ export const signupUser = createAsyncThunk(
       const signUpResponse = await axios.post(
         `${baseURL}/customers`,
         userSignUpInfo,
-        // config,
       );
       return signUpResponse;
     } catch (error) {
       // return custom error message from backend if present
-      if (error.response && error.response.data.message) {
-        console.log(error);
+      if (error?.response && error?.response?.data?.message) {
         return rejectWithValue(error);
       } else {
-        // console.log(error);
         return rejectWithValue(error.response);
       }
     }
