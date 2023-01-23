@@ -4,7 +4,6 @@ import {StatusBar} from 'react-native';
 import {AuthStack, MainStack} from '@app/routes';
 import {Colors} from '@app/constants';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {useSelector} from 'react-redux';
 
 const App = () => {
   return (
