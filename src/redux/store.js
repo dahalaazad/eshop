@@ -1,20 +1,21 @@
-import {configureStore} from '@reduxjs/toolkit';
-import {productReducer} from './slices';
+import {combineReducers, configureStore} from '@reduxjs/toolkit';
+import {authReducer, productReducer} from './slices';
 import {persistReducer, persistStore} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['productList'],
+  whitelist: ['firstLoad', 'isLoggedIn'],
 };
 
-const persistedReducer = persistReducer(persistConfig, productReducer);
+const rootReducer = combineReducers({
+  product: productReducer,
+  auth: persistReducer(persistConfig, authReducer),
+});
 
 export const store = configureStore({
-  reducer: {
-    product: persistedReducer,
-  },
+  reducer: rootReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,

@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import React, {useState} from 'react';
 import {useForm, Controller} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -7,17 +7,25 @@ import {Colors, InputRules} from '@app/constants';
 import {PrimaryButton, InputField} from '@app/commons';
 import {Styles} from '@app/screens/login/LoginStyles';
 import {MainLogoColor} from '@app/assets/svg';
+import {useDispatch, useSelector} from 'react-redux';
+import {signupUser} from '@app/redux/slices/auth/authSlice';
+import {showToast} from '@app/utils/showToast';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 export default function Signup({navigation}) {
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state?.auth?.loading);
+
   const {
     control,
     handleSubmit,
     watch,
+    setError,
     formState: {errors},
   } = useForm({
     defaultValues: {
-      email: '',
       fullName: '',
+      email: '',
       password: '',
       confirmPassword: '',
     },
@@ -26,7 +34,42 @@ export default function Signup({navigation}) {
   const [checked, setChecked] = useState(false);
 
   const signupButtonHandler = signupData => {
-    navigation.navigate('LoginPage');
+    const {fullName, email, password, confirmPassword} = signupData;
+    dispatch(
+      signupUser({
+        customer: {
+          full_name: fullName,
+          email: email,
+          password: password,
+        },
+      }),
+    )
+      .unwrap()
+      .then(originalPromiseResult => {
+        const statusCode = originalPromiseResult?.data?.status?.code;
+        if (statusCode === 200) {
+          navigation.navigate('MainStack');
+          showToast('success', 'Success', 'Welcome to E-Mistiri');
+        }
+      })
+      .catch(rejectedValueOrSerializedError => {
+        const errorMessage =
+          rejectedValueOrSerializedError?.data?.status?.errors;
+
+        Array.isArray(errorMessage) && errorMessage.length
+          ? errorMessage.map(item => {
+              const fieldName = item.toLowerCase().includes('email')
+                ? 'email'
+                : item.toLowerCase().includes('name')
+                ? 'fullName'
+                : null;
+              setError(fieldName, {
+                type: 'manual',
+                message: item || 'Action object error',
+              });
+            })
+          : [];
+      });
   };
 
   return (
@@ -34,6 +77,12 @@ export default function Signup({navigation}) {
       style={Styles.mainContainer}
       enableOnAndroid={false}
       keyboardShouldPersistTaps="handled">
+      <Spinner
+        visible={loading}
+        color={Colors.whiteColor}
+        overlayColor={Colors.loadingOverlayColor}
+        animation="fade"
+      />
       <View>
         <View style={{alignItems: 'center'}}>
           <View style={{paddingTop: 45, paddingBottom: 32}}>
@@ -43,7 +92,8 @@ export default function Signup({navigation}) {
           <Text style={Styles.headingText}>Create a New Account</Text>
 
           <Text style={Styles.subtitleText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            An online retailer and spare parts delivery service at your
+            fingertips
           </Text>
         </View>
 
@@ -133,7 +183,16 @@ export default function Signup({navigation}) {
             buttonRadius={10}
             buttonLabel="Signup"
             buttonHeight={60}
-            onPressHandler={handleSubmit(signupButtonHandler)}
+            onPressHandler={
+              checked
+                ? handleSubmit(signupButtonHandler)
+                : () => {
+                    Alert.alert(
+                      'Terms of Service',
+                      'You must first agreee to the Terms of Service',
+                    );
+                  }
+            }
           />
         </View>
       </View>

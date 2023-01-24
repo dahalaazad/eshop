@@ -12,14 +12,23 @@ import AD from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import {onboardingValues} from './onboardingValues';
+import {useDispatch} from 'react-redux';
+import {setFirstLoad} from '@app/redux/slices/auth/authSlice';
 
 export default function OnboardingScreen({navigation}) {
+  const dispatch = useDispatch();
+
   const [onboardScreenIndex, setOnboardScreenIndex] = useState(0);
+
+  const navigateToSignupPage = () => {
+    dispatch(setFirstLoad(false));
+    navigation.navigate('SignupPage');
+  };
 
   const moveToNextScreen = () => {
     onboardScreenIndex < onboardingValues.length - 1
       ? setOnboardScreenIndex(onboardScreenIndex + 1)
-      : navigation.navigate('LoginStack');
+      : navigateToSignupPage();
   };
 
   const moveToBackScreen = () => {
@@ -49,7 +58,7 @@ export default function OnboardingScreen({navigation}) {
             )}
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('LoginStack')}>
+          <TouchableOpacity onPress={navigateToSignupPage}>
             <Text style={styles.skipButtonText}>Skip</Text>
           </TouchableOpacity>
         </View>

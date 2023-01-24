@@ -23,7 +23,7 @@ const MainStack = ({navigation}) => {
         headerStyle: {
           backgroundColor: Colors.loginBackgroundColor,
         },
-        headerShadowVisible:false,
+        headerShadowVisible: false,
         headerTitleAlign: 'center',
         headerTitleStyle: {
           fontSize: 24,
@@ -74,12 +74,12 @@ const MainStack = ({navigation}) => {
         name="ChangePassword"
         component={ChangePassword}
         options={{
-          headerStyle:{
-            backgroundColor:Colors.whiteColor
+          headerStyle: {
+            backgroundColor: Colors.whiteColor,
           },
           headerTitle: 'Change Password',
           headerTitleStyle: {
-            color:Colors.changePasswordHeaderColor,
+            color: Colors.changePasswordHeaderColor,
             fontFamily: 'Sofia Pro',
             fontSize: 20,
             fontWeight: 'bold',

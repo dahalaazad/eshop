@@ -2,8 +2,11 @@ import {View, Text, Button, StyleSheet, Animated} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Colors} from '@app/constants';
 import {MainLogo} from '@app/assets/svg';
+import {useSelector} from 'react-redux';
 
 export default function SplashScreen({navigation}) {
+  const isLoggedIn = useSelector(state => state?.auth?.isLoggedIn);
+
   const [bottomValue, setBottomValue] = useState(new Animated.Value(100));
   const animatedStyles = {
     transform: [{translateY: bottomValue}],
@@ -15,7 +18,11 @@ export default function SplashScreen({navigation}) {
       duration: 1000,
       useNativeDriver: true,
     }).start();
-    setTimeout(() => navigation.navigate('OnboardingScreen'), 1500);
+
+    setTimeout(
+      () => navigation.navigate(isLoggedIn ? 'MainStack' : 'AuthStack'),
+      1500,
+    );
   };
 
   useEffect(() => {
