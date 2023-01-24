@@ -13,16 +13,19 @@ const initialState = {
   userInfo: {},
 };
 
-const baseURL = 'https://1677-103-41-172-114.in.ngrok.io';
+const baseURL =
+  'https://1853-2404-7c00-41-a226-d0db-f6e3-58ed-7718.in.ngrok.io';
 
 export const signupUser = createAsyncThunk(
   'auth/signupUser',
-  async (userSignUpInfo, {rejectWithValue}) => {
+  async (userSignUpInfo, {dispatch, rejectWithValue}) => {
     try {
       const signUpResponse = await axios.post(
         `${baseURL}/customers`,
         userSignUpInfo,
       );
+      // console.log(signUpResponse?.headers?.authorization);
+      dispatch(setToken(signUpResponse?.headers?.authorization));
       return signUpResponse;
     } catch (error) {
       // return custom error message from backend if present
@@ -34,12 +37,48 @@ export const signupUser = createAsyncThunk(
     }
   },
 );
+
+export const signOutUser = createAsyncThunk(
+  'auth/signOutUser',
+  async (_, {getState, dispatch, rejectWithValue}) => {
+    try {
+      const state = getState();
+
+      const token = state?.auth?.userToken;
+
+      const signOutResponse = await axios.delete(
+        `${baseURL}/customers/sign_out`,
+        {
+          headers: {
+            authorization: token,
+          },
+        },
+      );
+      dispatch(setLoggedIn(false));
+      return signOutResponse;
+    } catch (error) {
+      // return custom error message from backend if present
+      if (error?.response && error?.response?.data?.message) {
+        return rejectWithValue(error);
+      } else {
+        return rejectWithValue(error.response);
+      }
+    }
+  },
+);
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     setFirstLoad: (state, action) => {
       return {...state, firstLoad: action.payload};
+    },
+    setLoggedIn: (state, action) => {
+      return {...state, isLoggedIn: action.payload};
+    },
+    setToken: (state, action) => {
+      return {...state, userToken: action.payload};
     },
   },
   extraReducers: builder => {
@@ -60,10 +99,25 @@ export const authSlice = createSlice({
       .addCase(signupUser.rejected, (state, {payload}) => {
         state.loading = false;
         state.error = payload;
+      })
+      .addCase(signOutUser.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(signOutUser.fulfilled, (state, {payload}) => {
+        // console.log(payload);
+        state.loading = false;
+        state.isLoggedIn = false;
+        state.userInfo = {};
+        state.userToken = null;
+      })
+      .addCase(signOutUser.rejected, (state, {payload}) => {
+        state.loading = false;
+        state.error = payload;
       });
   },
 });
 
-export const {setFirstLoad} = authSlice.actions;
+export const {setFirstLoad, setLoggedIn, setToken} = authSlice.actions;
 
 export default authSlice.reducer;
