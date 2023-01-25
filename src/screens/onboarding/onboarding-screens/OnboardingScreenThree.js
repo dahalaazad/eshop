@@ -5,17 +5,17 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  ImageBackground,
 } from 'react-native';
 import React, {useState} from 'react';
-import {Colors, Images, TextStyle} from '@app/constants';
+import {Colors, TextStyle} from '@app/constants';
 import AD from 'react-native-vector-icons/AntDesign';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import {onboardingValues} from './onboardingValues';
 import {useDispatch} from 'react-redux';
 import {setFirstLoad} from '@app/redux/slices/auth/authSlice';
 
-export default function OnboardingScreen({navigation}) {
+export default function OnboardingScreenTwo({navigation}) {
   const dispatch = useDispatch();
 
   const navigateToSignupPage = () => {
@@ -23,29 +23,47 @@ export default function OnboardingScreen({navigation}) {
     navigation.navigate('SignupPage');
   };
 
+  const moveToNextScreen = () => {};
+
+  const moveToBackScreen = () => {};
   return (
-    <ImageBackground
-      style={styles.container}
-      source={Images.OnboardOneBackground}
-      // imageStyle={{resizeMode: 'stretch'}}
-      >
+    <View style={styles.container}>
       <View style={styles.topHalfContainer}>
         <View style={styles.skipButtonLayout}>
-          <TouchableOpacity onPress={navigateToSignupPage}>
+          <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('OnboardingScreenTwo')}
+              style={{zIndex: 1}}>
+              <SimpleLineIcons
+                name="arrow-left-circle"
+                color={Colors.whiteColor}
+                size={45}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity disabled={true}>
+              <SimpleLineIcons
+                name="arrow-left-circle"
+                color={Colors.backButtonBlueColor}
+                size={45}
+              />
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity onPress={() => navigation.navigate('SignupPage')}>
             <Text style={styles.skipButtonText}>Skip</Text>
           </TouchableOpacity>
         </View>
 
-        {/* <View>{onboardingValues[0].svgIcon}</View> */}
+        <View>{onboardingValues[2].svgIcon}</View>
       </View>
 
       <View style={[styles.bottomHalfContainer, styles.centerStyle]}>
         <Text style={[styles.commonTextStyle, styles.titleText]}>
-          {onboardingValues[0].titleText}
+          {onboardingValues[2].titleText}
         </Text>
 
         <Text style={[styles.commonTextStyle, styles.descriptionText]}>
-          {onboardingValues[0].descriptionText}
+          {onboardingValues[2].descriptionText}
         </Text>
 
         <LinearGradient
@@ -60,12 +78,12 @@ export default function OnboardingScreen({navigation}) {
           style={{borderRadius: 50}}>
           <TouchableOpacity
             style={styles.nextButtonStyle}
-            onPress={() => navigation.navigate('OnboardingScreenTwo')}>
+            onPress={moveToNextScreen}>
             <AD name="right" size={20} color={Colors.whiteColor} />
           </TouchableOpacity>
         </LinearGradient>
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
@@ -75,19 +93,20 @@ const styles = StyleSheet.create({
   },
   centerStyle: {
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
   },
   topHalfContainer: {
     flex: 1,
+    backgroundColor: Colors.backButtonBlueColor,
   },
   skipButtonLayout: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: 20,
     marginBottom: -20,
     paddingHorizontal: 20,
-    // zIndex: 1,
+    zIndex: 1,
   },
   skipButtonText: {
     ...TextStyle.robotoLargeNormal,
@@ -96,7 +115,7 @@ const styles = StyleSheet.create({
   bottomHalfContainer: {
     flex: 1,
     flexDirection: 'column',
-    // backgroundColor: Colors.whiteColor,
+    backgroundColor: Colors.whiteColor,
     color: Colors.blackColor,
   },
   commonTextStyle: {
@@ -109,15 +128,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 80,
     height: 80,
-    // borderRadius: 40,
+    borderRadius: 40,
   },
   titleText: {
     ...TextStyle.poppinsExtraLargerNormal,
-    paddingHorizontal: 10,
+    padding: 10,
   },
   descriptionText: {
     ...TextStyle.poppinsLargeLight,
     paddingHorizontal: 55,
-    // paddingBottom: 40,
+    paddingBottom: 40,
   },
 });

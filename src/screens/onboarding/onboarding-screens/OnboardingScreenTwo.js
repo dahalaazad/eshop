@@ -10,12 +10,13 @@ import {
 import React, {useState} from 'react';
 import {Colors, Images, TextStyle} from '@app/constants';
 import AD from 'react-native-vector-icons/AntDesign';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import {onboardingValues} from './onboardingValues';
 import {useDispatch} from 'react-redux';
 import {setFirstLoad} from '@app/redux/slices/auth/authSlice';
 
-export default function OnboardingScreen({navigation}) {
+export default function OnboardingScreenTwo({navigation}) {
   const dispatch = useDispatch();
 
   const navigateToSignupPage = () => {
@@ -23,29 +24,43 @@ export default function OnboardingScreen({navigation}) {
     navigation.navigate('SignupPage');
   };
 
+  const moveToNextScreen = () => {};
+
+  const moveToBackScreen = () => {};
   return (
     <ImageBackground
       style={styles.container}
-      source={Images.OnboardOneBackground}
-      // imageStyle={{resizeMode: 'stretch'}}
-      >
+      source={Images.OnboardTwoBackground}>
       <View style={styles.topHalfContainer}>
         <View style={styles.skipButtonLayout}>
+          <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('OnboardingScreen')}
+              // style={{zIndex: 1}}
+            >
+              <SimpleLineIcons
+                name="arrow-left-circle"
+                color={Colors.whiteColor}
+                size={45}
+              />
+            </TouchableOpacity>
+          </View>
+
           <TouchableOpacity onPress={navigateToSignupPage}>
             <Text style={styles.skipButtonText}>Skip</Text>
           </TouchableOpacity>
         </View>
 
-        {/* <View>{onboardingValues[0].svgIcon}</View> */}
+        {/* <View>{onboardingValues[1].svgIcon}</View> */}
       </View>
 
       <View style={[styles.bottomHalfContainer, styles.centerStyle]}>
         <Text style={[styles.commonTextStyle, styles.titleText]}>
-          {onboardingValues[0].titleText}
+          {onboardingValues[1].titleText}
         </Text>
 
         <Text style={[styles.commonTextStyle, styles.descriptionText]}>
-          {onboardingValues[0].descriptionText}
+          {onboardingValues[1].descriptionText}
         </Text>
 
         <LinearGradient
@@ -60,7 +75,7 @@ export default function OnboardingScreen({navigation}) {
           style={{borderRadius: 50}}>
           <TouchableOpacity
             style={styles.nextButtonStyle}
-            onPress={() => navigation.navigate('OnboardingScreenTwo')}>
+            onPress={() => navigation.navigate('OnboardingScreenThree')}>
             <AD name="right" size={20} color={Colors.whiteColor} />
           </TouchableOpacity>
         </LinearGradient>
@@ -75,19 +90,20 @@ const styles = StyleSheet.create({
   },
   centerStyle: {
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
   },
   topHalfContainer: {
     flex: 1,
+    // backgroundColor: Colors.backButtonBlueColor,
   },
   skipButtonLayout: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: 20,
     marginBottom: -20,
     paddingHorizontal: 20,
-    // zIndex: 1,
+    zIndex: 1,
   },
   skipButtonText: {
     ...TextStyle.robotoLargeNormal,
@@ -96,7 +112,7 @@ const styles = StyleSheet.create({
   bottomHalfContainer: {
     flex: 1,
     flexDirection: 'column',
-    // backgroundColor: Colors.whiteColor,
+    backgroundColor: Colors.whiteColor,
     color: Colors.blackColor,
   },
   commonTextStyle: {
@@ -109,15 +125,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 80,
     height: 80,
-    // borderRadius: 40,
+    borderRadius: 40,
   },
   titleText: {
     ...TextStyle.poppinsExtraLargerNormal,
     paddingHorizontal: 10,
+    // paddingTop: 5,
   },
   descriptionText: {
     ...TextStyle.poppinsLargeLight,
     paddingHorizontal: 55,
-    // paddingBottom: 40,
+    paddingBottom: 40,
   },
 });
