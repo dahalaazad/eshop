@@ -13,8 +13,7 @@ const initialState = {
   userInfo: {},
 };
 
-const baseURL =
-  'https://1853-2404-7c00-41-a226-d0db-f6e3-58ed-7718.in.ngrok.io';
+const baseURL = 'https://cdcf-103-41-172-114.in.ngrok.io';
 
 export const signupUser = createAsyncThunk(
   'auth/signupUser',
@@ -24,7 +23,6 @@ export const signupUser = createAsyncThunk(
         `${baseURL}/customers`,
         userSignUpInfo,
       );
-      // console.log(signUpResponse?.headers?.authorization);
       dispatch(setToken(signUpResponse?.headers?.authorization));
       return signUpResponse;
     } catch (error) {
@@ -89,7 +87,6 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(signupUser.fulfilled, (state, {payload}) => {
-        // console.log(payload);
         state.loading = false;
         state.success = true; // registration successful
         state.firstLoad = false;
@@ -105,7 +102,6 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(signOutUser.fulfilled, (state, {payload}) => {
-        // console.log(payload);
         state.loading = false;
         state.isLoggedIn = false;
         state.userInfo = {};
