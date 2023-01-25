@@ -24,7 +24,7 @@ export const signupUser = createAsyncThunk(
         `${baseURL}/customers`,
         userSignUpInfo,
       );
-      dispatch(setToken(signUpResponse?.headers?.authorization));
+      dispatch(setToken(signUpResponse?.headers?.authorization || null));
       return signUpResponse;
     } catch (error) {
       // return custom error message from backend if present
