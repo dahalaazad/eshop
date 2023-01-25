@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {createAsyncThunk} from '@reduxjs/toolkit';
+import {showToast} from '@app/utils/showToast';
 import axios from 'axios';
 
 const initialState = {
@@ -57,8 +58,10 @@ export const signOutUser = createAsyncThunk(
     } catch (error) {
       // return custom error message from backend if present
       if (error?.response && error?.response?.data?.message) {
+        showToast('error', 'Error', `${error?.response?.data?.message}`);
         return rejectWithValue(error);
       } else {
+        showToast('error', 'Error', `${error?.message}`);
         return rejectWithValue(error.response);
       }
     }
