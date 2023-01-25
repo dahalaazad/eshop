@@ -19,7 +19,6 @@ export const authUser = createAsyncThunk(
   'auth/authUser',
   async (userInfoContainer, {dispatch, rejectWithValue}) => {
     try {
-      console.log(userInfoContainer);
       const authResponse = await axios.post(
         `${baseURL}/${userInfoContainer?.loginURL}`,
         userInfoContainer?.userDetails,
@@ -28,9 +27,13 @@ export const authUser = createAsyncThunk(
       return authResponse;
     } catch (error) {
       // return custom error message from backend if present
-      if (error?.response && error?.response?.data?.message) {
+      if (error?.response && error?.response?.data) {
+        // console.log(error);
+
         return rejectWithValue(error);
       } else {
+        // console.log(error);
+
         return rejectWithValue(error.response);
       }
     }
