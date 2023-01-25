@@ -3,7 +3,7 @@ import React from 'react';
 import {Styles} from './ProfileLogoutCardStyles';
 import {PrimaryButton} from '@app/commons';
 
-export default function ProfileLogoutCard({closeLogoutModal}) {
+export default function ProfileLogoutCard({closeLogoutModal, logout}) {
   return (
     <View style={Styles.mainContainer}>
       <Text style={Styles.logoutText}>Logout</Text>
@@ -25,6 +25,7 @@ export default function ProfileLogoutCard({closeLogoutModal}) {
           buttonWidth="48%"
           buttonLabel="Yes"
           buttonRadius={5}
+          onPressHandler={logout}
         />
       </View>
     </View>

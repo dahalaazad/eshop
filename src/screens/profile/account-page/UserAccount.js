@@ -12,12 +12,14 @@ import {AccountRewardPointCard, UserAccountMenuItemGroup} from './components';
 import UserAccountMenuItem from './components/UserAccountMenuItem';
 import ProfileLogoutModal from '../components/ProfileLogoutModal';
 import {ProfileLogoutCard} from '@app/screens/profile';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import {useDispatch, useSelector} from 'react-redux';
+import {signOutUser} from '@app/redux/slices/auth/authSlice';
 
 export default function UserAccount({navigation}) {
+  const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector(state => state?.auth?.isLoggedIn);
+
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
 
   const toggleLogoutModal = () => {
@@ -28,11 +30,11 @@ export default function UserAccount({navigation}) {
     setLogoutModalVisible(false);
   };
 
-  handleOnPressInformation = () => {
+  const handleOnPressInformation = () => {
     navigation.navigate('UserProfile');
   };
 
-  handleOnPressSettings = () => {
+  const handleOnPressSettings = () => {
     navigation.navigate('UserSettings');
   };
 
@@ -45,6 +47,18 @@ export default function UserAccount({navigation}) {
     } catch (error) {
       alert(error.message);
     }
+  };
+
+  const logout = () => {
+    dispatch(signOutUser())
+      .unwrap()
+      .then(originalPromiseResult => {
+        originalPromiseResult?.data?.status === 200 &&
+          navigation.navigate('AuthStack', {screen: 'LoginPage'});
+      })
+      .catch(rejectedValueOrSerializedError => {
+        console.log(rejectedValueOrSerializedError);
+      });
   };
 
   return (
@@ -105,7 +119,10 @@ export default function UserAccount({navigation}) {
         modalVisible={logoutModalVisible}
         toggleLogoutModal={toggleLogoutModal}
         closeLogoutModal={closeLogoutModal}>
-        <ProfileLogoutCard closeLogoutModal={closeLogoutModal} />
+        <ProfileLogoutCard
+          closeLogoutModal={closeLogoutModal}
+          logout={logout}
+        />
       </ProfileLogoutModal>
     </ScrollView>
   );
