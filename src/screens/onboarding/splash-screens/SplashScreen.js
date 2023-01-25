@@ -1,5 +1,5 @@
 import {View, Text, Button, StyleSheet, Animated} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {Colors} from '@app/constants';
 import {MainLogo} from '@app/assets/svg';
 import {useSelector} from 'react-redux';
@@ -12,7 +12,7 @@ export default function SplashScreen({navigation}) {
     transform: [{translateY: bottomValue}],
   };
 
-  const moveLogo = () => {
+  const moveLogo = useCallback(() => {
     Animated.timing(bottomValue, {
       toValue: -250,
       duration: 1000,
@@ -23,11 +23,11 @@ export default function SplashScreen({navigation}) {
       () => navigation.navigate(isLoggedIn ? 'MainStack' : 'AuthStack'),
       1500,
     );
-  };
+  }, [bottomValue, isLoggedIn, navigation]);
 
   useEffect(() => {
     moveLogo();
-  }, []);
+  }, [moveLogo]);
 
   return (
     <View style={styles.container}>
