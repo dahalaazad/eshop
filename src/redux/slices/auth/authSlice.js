@@ -7,7 +7,6 @@ const initialState = {
   firstLoad: true,
   isLoggedIn: false,
   loading: false,
-  // userInfo: null,
   userToken: null,
   error: null,
   success: false,
@@ -16,16 +15,17 @@ const initialState = {
 
 const baseURL = 'https://cdcf-103-41-172-114.in.ngrok.io';
 
-export const signupUser = createAsyncThunk(
-  'auth/signupUser',
-  async (userSignUpInfo, {dispatch, rejectWithValue}) => {
+export const authUser = createAsyncThunk(
+  'auth/authUser',
+  async (userInfoContainer, {dispatch, rejectWithValue}) => {
     try {
-      const signUpResponse = await axios.post(
-        `${baseURL}/customers`,
-        userSignUpInfo,
+      console.log(userInfoContainer);
+      const authResponse = await axios.post(
+        `${baseURL}/${userInfoContainer?.loginURL}`,
+        userInfoContainer?.userDetails,
       );
-      dispatch(setToken(signUpResponse?.headers?.authorization || null));
-      return signUpResponse;
+      dispatch(setToken(authResponse?.headers?.authorization || null));
+      return authResponse;
     } catch (error) {
       // return custom error message from backend if present
       if (error?.response && error?.response?.data?.message) {
@@ -85,18 +85,18 @@ export const authSlice = createSlice({
   extraReducers: builder => {
     // register user
     builder
-      .addCase(signupUser.pending, state => {
+      .addCase(authUser.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(signupUser.fulfilled, (state, {payload}) => {
+      .addCase(authUser.fulfilled, (state, {payload}) => {
         state.loading = false;
         state.success = true; // registration successful
         state.firstLoad = false;
         state.isLoggedIn = true;
         state.userInfo = payload?.data?.status?.data;
       })
-      .addCase(signupUser.rejected, (state, {payload}) => {
+      .addCase(authUser.rejected, (state, {payload}) => {
         state.loading = false;
         state.error = payload;
       })
