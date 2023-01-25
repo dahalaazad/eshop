@@ -26,8 +26,8 @@ export const InputRules = {
       message: 'Enter a password',
     },
     minLength: {
-      value: 8,
-      message: 'Minimum 8 characters',
+      value: 6,
+      message: 'Minimum 6 characters',
     },
   },
   confirmPassword: {
