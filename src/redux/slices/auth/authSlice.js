@@ -61,7 +61,7 @@ export const signOutUser = createAsyncThunk(
         showToast('error', 'Error', `${error?.response?.data?.message}`);
         return rejectWithValue(error);
       } else {
-        showToast('error', 'Error', `${error?.message}`);
+        showToast('error', 'Error', 'Oops! Something went wrong.');
         return rejectWithValue(error.response);
       }
     }
