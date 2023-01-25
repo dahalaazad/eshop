@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useLayoutEffect} from 'react';
+import {useForm} from 'react-hook-form';
 import {BackButton, InputField, PrimaryButton} from '@app/commons';
-import {Colors} from '@app/constants';
+import {Colors, InputRules} from '@app/constants';
 import Images from '@app/constants/Images';
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -20,7 +21,21 @@ export default function EditProfile({navigation}) {
       ),
     });
   }, [navigation]);
-  
+
+  const {
+    control,
+    handleSubmit,
+    setError,
+    formState: {errors},
+  } = useForm({
+    defaultValues: {
+      name: '',
+      phone: '',
+      address: '',
+      email: '',
+    },
+  });
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.imageContainer}>
@@ -44,7 +59,11 @@ export default function EditProfile({navigation}) {
           <Text style={styles.mainTextStyle}>Full Name</Text>
 
           <InputField
+            control={control}
+            errors={errors}
             labelText="Your Name"
+            inputName="name"
+            rules={InputRules.fullName}
             isPassword={false}
             passwordIcon={false}
             outlineColor={Colors.inputFieldOutlineColor}
@@ -55,7 +74,11 @@ export default function EditProfile({navigation}) {
           <Text style={styles.mainTextStyle}>Phone no.</Text>
 
           <InputField
+            control={control}
+            errors={errors}
             labelText="Your Phone No."
+            inputName="phone"
+            rules={InputRules.phone}
             isPassword={false}
             passwordIcon={false}
             outlineColor={Colors.inputFieldOutlineColor}
@@ -66,7 +89,11 @@ export default function EditProfile({navigation}) {
           <Text style={styles.mainTextStyle}>Address</Text>
 
           <InputField
+            control={control}
+            errors={errors}
             labelText="Your Address"
+            inputName="address"
+            rules={InputRules.address}
             isPassword={false}
             passwordIcon={false}
             outlineColor={Colors.inputFieldOutlineColor}
@@ -77,7 +104,11 @@ export default function EditProfile({navigation}) {
           <Text style={styles.mainTextStyle}>Email Address</Text>
 
           <InputField
+            control={control}
+            errors={errors}
             labelText="Your email"
+            inputName="email"
+            rules={InputRules.email}
             isPassword={false}
             passwordIcon={false}
             outlineColor={Colors.inputFieldOutlineColor}
