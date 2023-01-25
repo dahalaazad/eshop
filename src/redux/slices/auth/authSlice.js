@@ -28,12 +28,8 @@ export const authUser = createAsyncThunk(
     } catch (error) {
       // return custom error message from backend if present
       if (error?.response && error?.response?.data) {
-        // console.log(error);
-
         return rejectWithValue(error);
       } else {
-        // console.log(error);
-
         return rejectWithValue(error.response);
       }
     }
