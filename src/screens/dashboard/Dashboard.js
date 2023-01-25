@@ -1,5 +1,5 @@
-import React, {useRef, useState} from 'react';
-import {View, ScrollView, FlatList, Animated} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {View, ScrollView, FlatList, Animated, BackHandler} from 'react-native';
 import {FilterButton, ProductCard, SearchBar} from '@app/commons';
 import {Colors, ProductCardData} from '@app/constants';
 import {Styles} from '@app/screens/dashboard/DashboardStyles';
@@ -20,6 +20,17 @@ export default function Dashboard({navigation}) {
   const [productCategoryData, setProductCategoryData] = useState(
     productCategoryDataItems,
   );
+
+  useEffect(() => {
+    const backAction = () => {
+      BackHandler.exitApp();
+    };
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+    return () => backHandler.remove();
+  }, []);
 
   const onProductCardPress = item => {
     const currentObj = {
