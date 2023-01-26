@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['firstLoad', 'isLoggedIn', 'userToken'],
+  whitelist: ['firstLoad', 'isLoggedIn', 'userToken', 'userInfo'],
 };
 
 const rootReducer = combineReducers({

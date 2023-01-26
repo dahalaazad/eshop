@@ -5,8 +5,12 @@ import {Styles} from './UserProfileStyles';
 import {UserProfileInfoCard} from './components';
 import Images from '@app/constants/Images';
 import {UserSettingToggleButton} from '../settings-page/components';
+import {useSelector} from 'react-redux';
 
 export default function UserProfile({navigation}) {
+  const userInfo = useSelector(state => state?.auth?.userInfo);
+  const {fullName, phoneNumber, email, address} = userInfo;
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: (...props) => (
@@ -28,11 +32,11 @@ export default function UserProfile({navigation}) {
         </View>
 
         <View style={Styles.userNameContainer}>
-          <Text style={Styles.userNameText}>User Name</Text>
+          <Text style={Styles.userNameText}>{fullName}</Text>
         </View>
 
         <View>
-          <Text style={Styles.emailText}>random@email.com</Text>
+          <Text style={Styles.emailText}>{email}</Text>
         </View>
 
         <View>
@@ -47,7 +51,12 @@ export default function UserProfile({navigation}) {
       </View>
 
       <View style={Styles.botContainer}>
-        <UserProfileInfoCard />
+        <UserProfileInfoCard
+          fullName={fullName}
+          phone={phoneNumber}
+          email={email}
+          address={address}
+        />
       </View>
     </View>
   );

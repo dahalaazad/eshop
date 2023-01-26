@@ -29,27 +29,31 @@ export const Styles = StyleSheet.create({
   },
 });
 
-export default function UserProfileInfoCard() {
+export default function UserProfileInfoCard({fullName, phone, email, address}) {
   return (
     <View style={Styles.mainContainer}>
       <View style={Styles.textContainer}>
         <Text style={Styles.labelText}>Full Name</Text>
-        <Text style={Styles.infoText}>Kurosaki Ichigo</Text>
+        <Text style={Styles.infoText}>{fullName} </Text>
       </View>
 
       <View style={Styles.textContainer}>
         <Text style={Styles.labelText}>Phone Number</Text>
-        <Text style={Styles.infoText}>9818181823</Text>
+        <Text style={Styles.infoText}>
+          {phone === '0000000000' ? 'N/A' : phone}
+        </Text>
       </View>
 
       <View style={Styles.textContainer}>
         <Text style={Styles.labelText}>Email Address</Text>
-        <Text style={Styles.infoText}>random@email.com</Text>
+        <Text style={Styles.infoText}>{email}</Text>
       </View>
 
       <View style={Styles.textContainer}>
         <Text style={Styles.labelText}>Address</Text>
-        <Text style={Styles.infoText}>Bhaktapur, Nepal</Text>
+        <Text style={Styles.infoText}>
+          {address === null ? 'N/A' : address}
+        </Text>
       </View>
     </View>
   );
