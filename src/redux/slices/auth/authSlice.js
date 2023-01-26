@@ -2,6 +2,8 @@ import {createSlice} from '@reduxjs/toolkit';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {showToast} from '@app/utils/showToast';
 import axios from 'axios';
+import mapKeys from 'lodash.mapkeys';
+import toCamelCase from 'lodash.camelcase';
 
 const initialState = {
   firstLoad: true,
@@ -93,7 +95,10 @@ export const authSlice = createSlice({
         state.success = true; // registration successful
         state.firstLoad = false;
         state.isLoggedIn = true;
-        state.userInfo = payload?.data?.status?.data;
+        state.userInfo = mapKeys(
+          payload?.data?.status?.data,
+          (value, key) => toCamelCase(key) || {},
+        );
       })
       .addCase(authUser.rejected, (state, {payload}) => {
         state.loading = false;
