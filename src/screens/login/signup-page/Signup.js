@@ -1,6 +1,6 @@
 import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import React, {useState} from 'react';
-import {useForm, Controller} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Checkbox} from 'react-native-paper';
 import {Colors, InputRules} from '@app/constants';
@@ -8,7 +8,7 @@ import {PrimaryButton, InputField} from '@app/commons';
 import {Styles} from '@app/screens/login/LoginStyles';
 import {MainLogoColor} from '@app/assets/svg';
 import {useDispatch, useSelector} from 'react-redux';
-import {signupUser} from '@app/redux/slices/auth/authSlice';
+import {authUser} from '@app/redux/slices/auth/authSlice';
 import {showToast} from '@app/utils/showToast';
 import Spinner from 'react-native-loading-spinner-overlay';
 
@@ -36,12 +36,15 @@ export default function Signup({navigation}) {
   const signupButtonHandler = signupData => {
     const {fullName, email, password, confirmPassword} = signupData;
     dispatch(
-      signupUser({
-        customer: {
-          full_name: fullName,
-          email: email,
-          password: password,
+      authUser({
+        userDetails: {
+          customer: {
+            full_name: fullName,
+            email: email,
+            password: password,
+          },
         },
+        loginURL: 'customers',
       }),
     )
       .unwrap()
@@ -83,6 +86,7 @@ export default function Signup({navigation}) {
         overlayColor={Colors.loadingOverlayColor}
         animation="fade"
       />
+
       <View>
         <View style={{alignItems: 'center'}}>
           <View style={{paddingTop: 45, paddingBottom: 32}}>
