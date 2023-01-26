@@ -64,8 +64,6 @@ export default function EditProfile({navigation}) {
             labelText="Your Name"
             inputName="name"
             rules={InputRules.fullName}
-            isPassword={false}
-            passwordIcon={false}
             outlineColor={Colors.inputFieldOutlineColor}
           />
         </View>
@@ -79,8 +77,6 @@ export default function EditProfile({navigation}) {
             labelText="Your Phone No."
             inputName="phone"
             rules={InputRules.phone}
-            isPassword={false}
-            passwordIcon={false}
             outlineColor={Colors.inputFieldOutlineColor}
           />
         </View>
@@ -94,8 +90,6 @@ export default function EditProfile({navigation}) {
             labelText="Your Address"
             inputName="address"
             rules={InputRules.address}
-            isPassword={false}
-            passwordIcon={false}
             outlineColor={Colors.inputFieldOutlineColor}
           />
         </View>
@@ -109,8 +103,6 @@ export default function EditProfile({navigation}) {
             labelText="Your email"
             inputName="email"
             rules={InputRules.email}
-            isPassword={false}
-            passwordIcon={false}
             outlineColor={Colors.inputFieldOutlineColor}
           />
         </View>
