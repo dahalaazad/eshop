@@ -51,10 +51,7 @@ export default function Login({navigation}) {
       })
       .catch(rejectedValueOrSerializedError => {
         const errorMessage = rejectedValueOrSerializedError?.response?.data;
-        setError('password', {
-          type: 'manual',
-          message: errorMessage || 'Action object error',
-        });
+        showToast('error', 'Error', `${errorMessage}`);
       });
   };
 
