@@ -36,4 +36,20 @@ export const InputRules = {
       message: 'Confirm your password',
     },
   },
+  phone: {
+    required: {
+      value: true,
+      message: 'Provide enter phone number',
+    },
+    pattern: {
+      value: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/,
+      message: 'Enter a valid phone number',
+    },
+  },
+  address: {
+    required: {
+      value: true,
+      message: 'Provide enter your address',
+    },
+  },
 };
