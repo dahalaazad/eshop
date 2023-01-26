@@ -5,15 +5,19 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  PermissionsAndroid,
 } from 'react-native';
-import React, {useLayoutEffect} from 'react';
+import React, {useState, useLayoutEffect} from 'react';
 import {useForm} from 'react-hook-form';
 import {BackButton, InputField, PrimaryButton} from '@app/commons';
 import {Colors, InputRules} from '@app/constants';
 import Images from '@app/constants/Images';
 import Feather from 'react-native-vector-icons/Feather';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 export default function EditProfile({navigation}) {
+  const [selectedImageResponse, setSelectedImageResponse] = useState(null);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: (...props) => (
@@ -36,11 +40,53 @@ export default function EditProfile({navigation}) {
     },
   });
 
+  const requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        captureNewPhoto();
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
+  const changeProfilePhoto = () => {
+    launchImageLibrary(
+      {
+        selectionLimit: 1,
+        mediaType: 'photo',
+        includeBase64: false,
+        maxWidth: 122,
+        maxHeight: 122,
+      },
+      setSelectedImageResponse,
+    );
+  };
+
+  const captureNewPhoto = () => {
+    launchCamera(
+      {
+        saveToPhotos: true,
+        mediaType: 'photo',
+        includeBase64: false,
+        cameraType: 'front',
+      },
+      setSelectedImageResponse,
+    );
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          source={Images.profileManImage}
+          source={
+            Array.isArray(selectedImageResponse?.assets)
+              ? {uri: selectedImageResponse?.assets[0]?.uri}
+              : Images.profileManImage
+          }
           style={styles.imageStyle}
           resizeMode="cover"
         />
@@ -49,7 +95,7 @@ export default function EditProfile({navigation}) {
       <View style={styles.changePhotoTextContainer}>
         <Feather name="edit-3" size={15} color={Colors.checkoutPriceText} />
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={requestCameraPermission}>
           <Text style={styles.changePhotoTextStyle}>Change Photo</Text>
         </TouchableOpacity>
       </View>
@@ -137,10 +183,9 @@ const styles = StyleSheet.create({
     width: 122,
     overflow: 'hidden',
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: 'none',
     borderRadius: 80,
     alignSelf: 'center',
-    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 15,
