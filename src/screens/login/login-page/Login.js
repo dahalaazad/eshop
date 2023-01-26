@@ -79,7 +79,7 @@ export default function Login({navigation}) {
           <Text style={Styles.headingText}>Welcome Back</Text>
 
           <Text style={Styles.subtitleText}>
-            There are many variations of passages
+            Sign in to your E-Mistiri account
           </Text>
         </View>
         <View style={{paddingBottom: 45, paddingTop: 40}}>
