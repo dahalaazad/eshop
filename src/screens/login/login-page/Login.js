@@ -84,24 +84,28 @@ export default function Login({navigation}) {
         </View>
         <View style={{paddingBottom: 45, paddingTop: 40}}>
           <View style={{paddingBottom: 10}}>
-            <InputField
-              control={control}
-              errors={errors}
-              inputName="email"
-              rules={InputRules.email}
-              labelText="Email Address"
-              isPassword={false}
-            />
+            <View style={{paddingBottom: 5}}>
+              <InputField
+                control={control}
+                errors={errors}
+                inputName="email"
+                rules={InputRules.email}
+                labelText="Email Address"
+                isPassword={false}
+              />
+            </View>
 
-            <InputField
-              control={control}
-              errors={errors}
-              inputName="password"
-              rules={InputRules.password}
-              labelText="Password"
-              isPassword={true}
-              passwordIcon={true}
-            />
+            <View style={{paddingBottom: 5}}>
+              <InputField
+                control={control}
+                errors={errors}
+                inputName="password"
+                rules={InputRules.password}
+                labelText="Password"
+                isPassword={true}
+                passwordIcon={true}
+              />
+            </View>
           </View>
 
           <TouchableOpacity onPress={() => {}}>
