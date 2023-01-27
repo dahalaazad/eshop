@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux';
 
 export default function UserProfile({navigation}) {
   const userInfo = useSelector(state => state?.auth?.userInfo);
-  const {full_name, phone_number, email, address} = userInfo;
+  const {fullName, phoneNumber, email, address} = userInfo;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -32,7 +32,7 @@ export default function UserProfile({navigation}) {
         </View>
 
         <View style={Styles.userNameContainer}>
-          <Text style={Styles.userNameText}>{full_name}</Text>
+          <Text style={Styles.userNameText}>{fullName}</Text>
         </View>
 
         <View>
@@ -52,8 +52,8 @@ export default function UserProfile({navigation}) {
 
       <View style={Styles.botContainer}>
         <UserProfileInfoCard
-          fullName={full_name}
-          phone={phone_number}
+          fullName={fullName}
+          phone={phoneNumber}
           email={email}
           address={address}
         />

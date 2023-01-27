@@ -40,7 +40,7 @@ export default function UserProfileInfoCard({fullName, phone, email, address}) {
       <View style={Styles.textContainer}>
         <Text style={Styles.labelText}>Phone Number</Text>
         <Text style={Styles.infoText}>
-          {phone === '0000000000' ? '' : phone}
+          {phone === '0000000000' ? 'N/A' : phone}
         </Text>
       </View>
 
@@ -51,7 +51,9 @@ export default function UserProfileInfoCard({fullName, phone, email, address}) {
 
       <View style={Styles.textContainer}>
         <Text style={Styles.labelText}>Address</Text>
-        <Text style={Styles.infoText}>{address}</Text>
+        <Text style={Styles.infoText}>
+          {address === null ? 'N/A' : address}
+        </Text>
       </View>
     </View>
   );

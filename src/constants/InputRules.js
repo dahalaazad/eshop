@@ -39,7 +39,7 @@ export const InputRules = {
   phone: {
     required: {
       value: true,
-      message: 'Provide enter phone number',
+      message: 'Please enter your phone number',
     },
     pattern: {
       value: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/,
@@ -49,7 +49,7 @@ export const InputRules = {
   address: {
     required: {
       value: true,
-      message: 'Provide enter your address',
+      message: 'Please enter your address',
     },
   },
 };
