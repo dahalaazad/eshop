@@ -62,7 +62,7 @@ export default function ImageSelectModal({
 const styles = StyleSheet.create({
   mainContainer: {
     borderRadius: 12,
-    backgroundColor: '#3c4142',
+    backgroundColor: Colors.selectPictureBackgroundColor,
     height: hp('25%'),
     justifyContent: 'center',
   },
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   optionsText: {
-    color: Colors.whiteColor,
+    color: Colors.selectPictureColor,
     fontSize: 20,
     fontWeight: '600',
   },

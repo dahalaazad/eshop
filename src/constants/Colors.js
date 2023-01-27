@@ -34,4 +34,6 @@ export const Colors = {
   inputFieldOutlineColor: '#C4C7D0',
   profilePageBorderColor: '#E0E0E0',
   loadingOverlayColor: 'rgba(0,0,0,0.5)',
+  selectPictureBackgroundColor: '#3c4142',
+  selectPictureColor: '#f6dce5',
 };
