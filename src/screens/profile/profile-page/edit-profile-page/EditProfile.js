@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  PermissionsAndroid,
 } from 'react-native';
 import React, {useState, useLayoutEffect} from 'react';
 import {useForm} from 'react-hook-form';
@@ -13,10 +12,11 @@ import {BackButton, InputField, PrimaryButton} from '@app/commons';
 import {Colors, InputRules} from '@app/constants';
 import Images from '@app/constants/Images';
 import Feather from 'react-native-vector-icons/Feather';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import ImageSelectModal from '../components/ImageSelectModal';
 
 export default function EditProfile({navigation}) {
   const [selectedImageResponse, setSelectedImageResponse] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -40,46 +40,14 @@ export default function EditProfile({navigation}) {
     },
   });
 
-  const requestCameraPermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        captureNewPhoto();
-      }
-    } catch (err) {
-      console.warn(err);
-    }
-  };
-
-  const changeProfilePhoto = () => {
-    launchImageLibrary(
-      {
-        selectionLimit: 1,
-        mediaType: 'photo',
-        includeBase64: false,
-        maxWidth: 122,
-        maxHeight: 122,
-      },
-      setSelectedImageResponse,
-    );
-  };
-
-  const captureNewPhoto = () => {
-    launchCamera(
-      {
-        saveToPhotos: true,
-        mediaType: 'photo',
-        includeBase64: false,
-        cameraType: 'front',
-      },
-      setSelectedImageResponse,
-    );
-  };
-
   return (
     <ScrollView style={styles.container}>
+      <ImageSelectModal
+        modalState={isModalVisible}
+        modalChange={setIsModalVisible}
+        setSelectedImageResponse={setSelectedImageResponse}
+      />
+
       <View style={styles.imageContainer}>
         <Image
           source={
@@ -95,7 +63,7 @@ export default function EditProfile({navigation}) {
       <View style={styles.changePhotoTextContainer}>
         <Feather name="edit-3" size={15} color={Colors.checkoutPriceText} />
 
-        <TouchableOpacity onPress={requestCameraPermission}>
+        <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
           <Text style={styles.changePhotoTextStyle}>Change Photo</Text>
         </TouchableOpacity>
       </View>
@@ -217,4 +185,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 70,
   },
 });
-ScrollView;
