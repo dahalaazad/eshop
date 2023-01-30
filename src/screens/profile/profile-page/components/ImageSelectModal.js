@@ -11,7 +11,6 @@ import {
   changeProfilePhoto,
   requestCameraPermission,
 } from '@app/utils/profilePhoto';
-import {PrimaryButton} from '@app/commons';
 
 export default function ImageSelectModal({
   modalState,
