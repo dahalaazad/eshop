@@ -84,7 +84,7 @@ export default function EditProfile({navigation}) {
           originalPromiseResult?.userData?.status === 200 &&
           originalPromiseResult?.userProfilePic?.status === 200
         ) {
-          showToast('success', 'Success', 'Welcome to E-Mistiri');
+          showToast('success', 'Success', 'Changes made to the profile');
           navigation.navigate('MainStack', {screen: 'UserProfile'});
         }
       })
