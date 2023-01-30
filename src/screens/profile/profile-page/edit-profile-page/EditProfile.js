@@ -116,7 +116,9 @@ export default function EditProfile({navigation}) {
           source={
             Array.isArray(selectedImageResponse?.assets)
               ? {uri: selectedImageResponse?.assets[0]?.uri}
-              : {uri: userInfo?.displayPicturePath}
+              : userInfo?.displayPicturePath
+              ? {uri: userInfo?.displayPicturePath}
+              : Images.profilePlaceholderImage
           }
           style={styles.imageStyle}
           resizeMode="cover"

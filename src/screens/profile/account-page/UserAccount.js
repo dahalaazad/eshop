@@ -73,7 +73,11 @@ export default function UserAccount({navigation}) {
         style={Styles.topContainer}>
         <View style={Styles.imageContainer}>
           <Image
-            source={{uri: displayPicturePath} || Images.profilePlaceholderImage}
+            source={
+              displayPicturePath
+                ? {uri: displayPicturePath}
+                : Images.profilePlaceholderImage
+            }
             style={Styles.imageStyle}
             resizeMode="cover"
           />

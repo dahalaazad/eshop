@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux';
 
 export default function UserProfile({navigation}) {
   const userInfo = useSelector(state => state?.auth?.userInfo);
-  const {fullName, phoneNumber, email, address} = userInfo;
+  const {fullName, phoneNumber, email, address, displayPicturePath} = userInfo;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -26,9 +26,16 @@ export default function UserProfile({navigation}) {
   return (
     <View style={Styles.mainContainer}>
       <View style={Styles.topContainer}>
-        <View>
-          {/* <UserProfileWomanGlasses /> */}
-          <Image source={Images.profileBeardedMan} resizeMode="cover" />
+        <View style={Styles.imageContainer}>
+          <Image
+            source={
+              displayPicturePath
+                ? {uri: displayPicturePath}
+                : Images.profilePlaceholderImage
+            }
+            style={Styles.imageStyle}
+            resizeMode="cover"
+          />
         </View>
 
         <View style={Styles.userNameContainer}>
