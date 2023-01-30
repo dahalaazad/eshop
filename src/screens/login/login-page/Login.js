@@ -46,6 +46,7 @@ export default function Login({navigation}) {
         const statusCode = originalPromiseResult?.data?.status?.code;
         if (statusCode === 200) {
           navigation.navigate('MainStack');
+
           showToast('success', 'Success', 'Welcome to E-Mistiri');
         }
       })
