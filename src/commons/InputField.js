@@ -15,6 +15,8 @@ export default function InputField({
   borderWidth,
   borderColor,
   outlineColor = 'transparent',
+  placeholderText,
+  ...props
 }) {
   const [hidePassword, setHidePassword] = useState(isPassword);
   const [eyeIcon, setEyeIcon] = useState(passwordIcon);
@@ -29,6 +31,7 @@ export default function InputField({
           <TextInput
             theme={{roundness: 12}}
             mode="outlined"
+            placeholder={placeholderText}
             label={labelText}
             secureTextEntry={hidePassword}
             outlineColor={outlineColor}
@@ -51,6 +54,7 @@ export default function InputField({
               )
             }
             style={{backgroundColor: Colors.whiteColor}}
+            {...props}
           />
         )}
       />
