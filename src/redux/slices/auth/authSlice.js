@@ -176,11 +176,12 @@ export const authSlice = createSlice({
       })
       .addCase(editProfile.fulfilled, (state, {payload}) => {
         state.loading = false;
-        console.log(payload);
+
         state.userInfo = mapKeys(
           payload?.userData?.data,
           (value, key) => toCamelCase(key) || {},
         );
+
         state.userInfo.displayPicturePath =
           payload?.userProfilePic?.data?.display_picture_path.replace(
             'http://localhost:3000',
