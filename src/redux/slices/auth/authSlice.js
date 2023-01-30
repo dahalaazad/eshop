@@ -11,7 +11,6 @@ const initialState = {
   loading: false,
   userToken: null,
   error: null,
-  success: false,
   userInfo: {},
 };
 
@@ -69,6 +68,62 @@ export const signOutUser = createAsyncThunk(
   },
 );
 
+export const editProfile = createAsyncThunk(
+  'auth/editProfile',
+  async (editInfoContainer, {getState, dispatch, rejectWithValue}) => {
+    try {
+      const state = getState();
+
+      const userID = state?.auth?.userInfo?.id;
+      // console.log(userID);
+      const token = state?.auth?.userToken;
+      console.log(editInfoContainer?.profilePic);
+
+      const editProfileResponse = await axios.patch(
+        `${baseURL}/api/v1/customers/${userID}`,
+        editInfoContainer?.userDetails,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            authorization: token,
+          },
+        },
+      );
+      // console.log(editProfileResponse);
+
+      const editProfilePicResponse = await axios.post(
+        `${baseURL}/api/v1/customers/attach_picture`,
+        editInfoContainer?.profilePic,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            authorization: token,
+          },
+        },
+      );
+      console.log(editProfilePicResponse);
+
+      const editResponse = {
+        userData: editProfileResponse,
+        userProfilePic: editProfilePicResponse,
+      };
+
+      return editResponse;
+    } catch (error) {
+      console.log(error);
+      // return custom error message from backend if present
+      if (error?.response && error?.response?.data?.message) {
+        // console.log(error);
+        showToast('error', 'Error', `${error?.response?.data?.message}`);
+        return rejectWithValue(error);
+      } else {
+        showToast('error', 'Error', 'Oops! Something went wrong.');
+        return rejectWithValue(error.response);
+      }
+    }
+  },
+);
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -82,6 +137,9 @@ export const authSlice = createSlice({
     setToken: (state, action) => {
       return {...state, userToken: action.payload};
     },
+    setUserInfo: (state, action) => {
+      return {...state, userInfo: action.payload};
+    },
   },
   extraReducers: builder => {
     // register user
@@ -92,7 +150,6 @@ export const authSlice = createSlice({
       })
       .addCase(authUser.fulfilled, (state, {payload}) => {
         state.loading = false;
-        state.success = true; // registration successful
         state.firstLoad = false;
         state.isLoggedIn = true;
         state.userInfo = mapKeys(
@@ -117,10 +174,33 @@ export const authSlice = createSlice({
       .addCase(signOutUser.rejected, (state, {payload}) => {
         state.loading = false;
         state.error = payload;
+      })
+      .addCase(editProfile.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(editProfile.fulfilled, (state, {payload}) => {
+        state.loading = false;
+        console.log(payload);
+        state.userInfo = mapKeys(
+          payload?.userData?.data,
+          (value, key) => toCamelCase(key) || {},
+        );
+        state.userInfo.displayPicturePath =
+          payload?.userData?.data?.display_picture_path.replace(
+            'http://localhost:3000',
+            `${baseURL}`,
+          );
+      })
+      .addCase(editProfile.rejected, (state, {payload}) => {
+        state.loading = false;
+        state.error = payload;
+        state.isLoggedIn = false;
       });
   },
 });
 
-export const {setFirstLoad, setLoggedIn, setToken} = authSlice.actions;
+export const {setFirstLoad, setLoggedIn, setToken, setUserInfo} =
+  authSlice.actions;
 
 export default authSlice.reducer;
