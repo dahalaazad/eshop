@@ -75,9 +75,8 @@ export const editProfile = createAsyncThunk(
       const state = getState();
 
       const userID = state?.auth?.userInfo?.id;
-      // console.log(userID);
+
       const token = state?.auth?.userToken;
-      console.log(editInfoContainer?.profilePic);
 
       const editProfileResponse = await axios.patch(
         `${baseURL}/api/v1/customers/${userID}`,
@@ -89,7 +88,6 @@ export const editProfile = createAsyncThunk(
           },
         },
       );
-      // console.log(editProfileResponse);
 
       const editProfilePicResponse = await axios.post(
         `${baseURL}/api/v1/customers/attach_picture`,
@@ -101,7 +99,6 @@ export const editProfile = createAsyncThunk(
           },
         },
       );
-      console.log(editProfilePicResponse);
 
       const editResponse = {
         userData: editProfileResponse,
@@ -110,10 +107,8 @@ export const editProfile = createAsyncThunk(
 
       return editResponse;
     } catch (error) {
-      console.log(error);
       // return custom error message from backend if present
       if (error?.response && error?.response?.data?.message) {
-        // console.log(error);
         showToast('error', 'Error', `${error?.response?.data?.message}`);
         return rejectWithValue(error);
       } else {
