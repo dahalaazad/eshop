@@ -182,7 +182,7 @@ export const authSlice = createSlice({
           (value, key) => toCamelCase(key) || {},
         );
         state.userInfo.displayPicturePath =
-          payload?.userData?.data?.display_picture_path.replace(
+          payload?.userProfilePic?.data?.display_picture_path.replace(
             'http://localhost:3000',
             `${baseURL}`,
           );
