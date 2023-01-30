@@ -19,6 +19,9 @@ export default function UserAccount({navigation}) {
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(state => state?.auth?.isLoggedIn);
+  const {fullName, email, displayPicturePath} = useSelector(
+    state => state?.auth?.userInfo,
+  );
 
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
 
@@ -70,7 +73,7 @@ export default function UserAccount({navigation}) {
         style={Styles.topContainer}>
         <View style={Styles.imageContainer}>
           <Image
-            source={Images.profilePlaceholderImage}
+            source={{uri: displayPicturePath} || Images.profilePlaceholderImage}
             style={Styles.imageStyle}
             resizeMode="cover"
           />
@@ -81,11 +84,11 @@ export default function UserAccount({navigation}) {
         </View>
 
         <View style={Styles.nameTextContainer}>
-          <Text style={Styles.nameText}>Jenny Wilson</Text>
+          <Text style={Styles.nameText}>{fullName} </Text>
         </View>
 
         <View style={Styles.emailTextContainer}>
-          <Text style={Styles.emailText}>example@mail.com</Text>
+          <Text style={Styles.emailText}>{email} </Text>
         </View>
 
         <View>
