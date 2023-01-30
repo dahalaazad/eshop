@@ -70,7 +70,7 @@ export default function UserAccount({navigation}) {
         style={Styles.topContainer}>
         <View style={Styles.imageContainer}>
           <Image
-            source={Images.profileManImage}
+            source={Images.profilePlaceholderImage}
             style={Styles.imageStyle}
             resizeMode="cover"
           />
