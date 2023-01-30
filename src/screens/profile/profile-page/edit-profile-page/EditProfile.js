@@ -6,14 +6,18 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import React, {useLayoutEffect} from 'react';
+import React, {useState, useLayoutEffect} from 'react';
 import {useForm} from 'react-hook-form';
 import {BackButton, InputField, PrimaryButton} from '@app/commons';
 import {Colors, InputRules} from '@app/constants';
 import Images from '@app/constants/Images';
 import Feather from 'react-native-vector-icons/Feather';
+import ImageSelectModal from '../components/ImageSelectModal';
 
 export default function EditProfile({navigation}) {
+  const [selectedImageResponse, setSelectedImageResponse] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: (...props) => (
@@ -38,9 +42,19 @@ export default function EditProfile({navigation}) {
 
   return (
     <ScrollView style={styles.container}>
+      <ImageSelectModal
+        modalState={isModalVisible}
+        modalChange={setIsModalVisible}
+        setSelectedImageResponse={setSelectedImageResponse}
+      />
+
       <View style={styles.imageContainer}>
         <Image
-          source={Images.profileManImage}
+          source={
+            Array.isArray(selectedImageResponse?.assets)
+              ? {uri: selectedImageResponse?.assets[0]?.uri}
+              : Images.profileManImage
+          }
           style={styles.imageStyle}
           resizeMode="cover"
         />
@@ -49,7 +63,7 @@ export default function EditProfile({navigation}) {
       <View style={styles.changePhotoTextContainer}>
         <Feather name="edit-3" size={15} color={Colors.checkoutPriceText} />
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
           <Text style={styles.changePhotoTextStyle}>Change Photo</Text>
         </TouchableOpacity>
       </View>
@@ -129,10 +143,9 @@ const styles = StyleSheet.create({
     width: 122,
     overflow: 'hidden',
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: 'none',
     borderRadius: 80,
     alignSelf: 'center',
-    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 15,
@@ -172,4 +185,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 70,
   },
 });
-ScrollView;

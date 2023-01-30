@@ -15,7 +15,7 @@ const initialState = {
   userInfo: {},
 };
 
-const baseURL = 'https://cdcf-103-41-172-114.in.ngrok.io';
+const baseURL = 'https://0a75-103-41-172-114.in.ngrok.io';
 
 export const authUser = createAsyncThunk(
   'auth/authUser',
