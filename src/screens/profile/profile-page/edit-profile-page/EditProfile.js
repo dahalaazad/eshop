@@ -63,7 +63,7 @@ export default function EditProfile({navigation}) {
             name: selectedImageResponse?.assets[0]?.fileName,
             type: selectedImageResponse?.assets[0]?.type,
           }
-        : Images.profilePlaceholderImage,
+        : null,
     );
 
     dispatch(
@@ -82,9 +82,11 @@ export default function EditProfile({navigation}) {
       .then(originalPromiseResult => {
         if (
           originalPromiseResult?.userData?.status === 200 &&
-          originalPromiseResult?.userProfilePic?.status === 200
+          (form?._parts[0][1]?.uri
+            ? originalPromiseResult?.userProfilePic?.status === 200
+            : true)
         ) {
-          showToast('success', 'Success', 'Changes made to the profile');
+          showToast('success', 'Success', 'Profile Successfully Updated!');
           navigation.navigate('MainStack', {screen: 'UserProfile'});
         }
       })
@@ -155,7 +157,8 @@ export default function EditProfile({navigation}) {
             errors={errors}
             placeholderText="Your Phone No."
             inputName="phoneNumber"
-            // rules={InputRules.phone}
+            keyboardType="phone-pad"
+            rules={InputRules.phone}
             outlineColor={Colors.inputFieldOutlineColor}
           />
         </View>
