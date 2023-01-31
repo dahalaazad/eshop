@@ -5,7 +5,7 @@ export const showToast = (type, title, subTitle) => {
     type: type,
     text1: title,
     text2: subTitle,
-    visibilityTime: 2000,
+    visibilityTime: 4500,
     autoHide: true,
   });
 };
