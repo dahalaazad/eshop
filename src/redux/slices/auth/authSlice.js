@@ -77,7 +77,6 @@ export const editProfile = createAsyncThunk(
       const userID = state?.auth?.userInfo?.id;
 
       const token = state?.auth?.userToken;
-      // console.log(editInfoContainer?.profilePic?._parts[0][1]?.uri);
 
       const editProfileResponse = await axios.patch(
         `${baseURL}/api/v1/customers/${userID}`,
@@ -89,7 +88,7 @@ export const editProfile = createAsyncThunk(
           },
         },
       );
-      console.log(editInfoContainer?.profilePic?._parts[0][1]);
+
       if (editInfoContainer?.profilePic?._parts[0][1]?.uri) {
         const editProfilePicResponse = await axios.post(
           `${baseURL}/api/v1/customers/attach_picture`,
@@ -201,7 +200,6 @@ export const authSlice = createSlice({
       .addCase(editProfile.rejected, (state, {payload}) => {
         state.loading = false;
         state.error = payload;
-        // state.isLoggedIn = false;
       });
   },
 });
