@@ -10,6 +10,7 @@ export default function InputField({
   rules,
   inputName,
   labelText,
+  keyboardType = 'default',
   isPassword = false,
   passwordIcon = false,
   borderWidth,
@@ -35,6 +36,7 @@ export default function InputField({
             label={labelText}
             secureTextEntry={hidePassword}
             outlineColor={outlineColor}
+            keyboardType={keyboardType}
             activeOutlineColor={Colors.textLinkColor}
             onBlur={onBlur}
             onChangeText={onChange}
