@@ -77,6 +77,7 @@ export const editProfile = createAsyncThunk(
       const userID = state?.auth?.userInfo?.id;
 
       const token = state?.auth?.userToken;
+      // console.log(editInfoContainer?.profilePic?._parts[0][1]?.uri);
 
       const editProfileResponse = await axios.patch(
         `${baseURL}/api/v1/customers/${userID}`,
@@ -88,24 +89,30 @@ export const editProfile = createAsyncThunk(
           },
         },
       );
-
-      const editProfilePicResponse = await axios.post(
-        `${baseURL}/api/v1/customers/attach_picture`,
-        editInfoContainer?.profilePic,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            authorization: token,
+      console.log(editInfoContainer?.profilePic?._parts[0][1]);
+      if (editInfoContainer?.profilePic?._parts[0][1]?.uri) {
+        const editProfilePicResponse = await axios.post(
+          `${baseURL}/api/v1/customers/attach_picture`,
+          editInfoContainer?.profilePic,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              authorization: token,
+            },
           },
-        },
-      );
+        );
+        const editResponse = {
+          userData: editProfileResponse,
+          userProfilePic: editProfilePicResponse,
+        };
+        return editResponse;
+      } else {
+        const editResponse = {
+          userData: editProfileResponse,
+        };
 
-      const editResponse = {
-        userData: editProfileResponse,
-        userProfilePic: editProfilePicResponse,
-      };
-
-      return editResponse;
+        return editResponse;
+      }
     } catch (error) {
       // return custom error message from backend if present
       if (error?.response && error?.response?.data?.message) {
@@ -181,17 +188,20 @@ export const authSlice = createSlice({
           payload?.userData?.data,
           (value, key) => toCamelCase(key) || {},
         );
-
-        state.userInfo.displayPicturePath =
-          payload?.userProfilePic?.data?.display_picture_path.replace(
-            'http://localhost:3000',
-            `${baseURL}`,
-          );
+        state.userInfo.displayPicturePath = payload?.userProfilePic
+          ? payload?.userProfilePic?.data?.display_picture_path.replace(
+              'http://localhost:3000',
+              `${baseURL}`,
+            )
+          : state.userInfo.displayPicturePath.replace(
+              'http://localhost:3000',
+              `${baseURL}`,
+            );
       })
       .addCase(editProfile.rejected, (state, {payload}) => {
         state.loading = false;
         state.error = payload;
-        state.isLoggedIn = false;
+        // state.isLoggedIn = false;
       });
   },
 });
