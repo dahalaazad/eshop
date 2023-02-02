@@ -3,7 +3,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {showToast} from '@app/utils/showToast';
 import mapKeys from 'lodash.mapkeys';
 import toCamelCase from 'lodash.camelcase';
-import {emistiriAPI} from '@app/utils/api';
+import {emistiriAPI, emistiriPhotoAPI} from '@app/utils/api';
 
 const initialState = {
   firstLoad: true,
@@ -71,7 +71,7 @@ export const editProfile = createAsyncThunk(
       );
 
       if (editInfoContainer?.profilePic?._parts[0][1]?.uri) {
-        const editProfilePicResponse = await emistiriAPI.post(
+        const editProfilePicResponse = await emistiriPhotoAPI.post(
           'api/v1/customers/attach_picture',
           editInfoContainer?.profilePic,
         );
