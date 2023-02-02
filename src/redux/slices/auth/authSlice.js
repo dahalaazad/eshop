@@ -1,9 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {showToast} from '@app/utils/showToast';
-import axios from 'axios';
 import mapKeys from 'lodash.mapkeys';
 import toCamelCase from 'lodash.camelcase';
+import {emistiriAPI} from '@app/utils/api';
 
 const initialState = {
   firstLoad: true,
@@ -14,14 +14,14 @@ const initialState = {
   userInfo: {},
 };
 
-const baseURL = 'https://0a75-103-41-172-114.in.ngrok.io';
+const baseURL = 'https://7433-103-41-172-114.in.ngrok.io';
 
 export const authUser = createAsyncThunk(
   'auth/authUser',
   async (userInfoContainer, {dispatch, rejectWithValue}) => {
     try {
-      const authResponse = await axios.post(
-        `${baseURL}/${userInfoContainer?.loginURL}`,
+      const authResponse = await emistiriAPI.post(
+        `${userInfoContainer?.loginURL}`,
         userInfoContainer?.userDetails,
       );
       dispatch(setToken(authResponse?.headers?.authorization || null));
@@ -41,18 +41,7 @@ export const signOutUser = createAsyncThunk(
   'auth/signOutUser',
   async (_, {getState, dispatch, rejectWithValue}) => {
     try {
-      const state = getState();
-
-      const token = state?.auth?.userToken;
-
-      const signOutResponse = await axios.delete(
-        `${baseURL}/customers/sign_out`,
-        {
-          headers: {
-            authorization: token,
-          },
-        },
-      );
+      const signOutResponse = await emistiriAPI.delete('customers/sign_out');
       dispatch(setLoggedIn(false));
       return signOutResponse;
     } catch (error) {
@@ -76,29 +65,15 @@ export const editProfile = createAsyncThunk(
 
       const userID = state?.auth?.userInfo?.id;
 
-      const token = state?.auth?.userToken;
-
-      const editProfileResponse = await axios.patch(
-        `${baseURL}/api/v1/customers/${userID}`,
+      const editProfileResponse = await emistiriAPI.patch(
+        `api/v1/customers/${userID}`,
         editInfoContainer?.userDetails,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            authorization: token,
-          },
-        },
       );
 
       if (editInfoContainer?.profilePic?._parts[0][1]?.uri) {
-        const editProfilePicResponse = await axios.post(
-          `${baseURL}/api/v1/customers/attach_picture`,
+        const editProfilePicResponse = await emistiriAPI.post(
+          'api/v1/customers/attach_picture',
           editInfoContainer?.profilePic,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-              authorization: token,
-            },
-          },
         );
         const editResponse = {
           userData: editProfileResponse,
