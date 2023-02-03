@@ -3,7 +3,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {showToast} from '@app/utils/showToast';
 import mapKeys from 'lodash.mapkeys';
 import toCamelCase from 'lodash.camelcase';
-import {emistiriAPI, emistiriPhotoAPI} from '@app/utils/api';
+import {emistiriAPI} from '@app/utils/api';
 
 const initialState = {
   firstLoad: true,
@@ -14,7 +14,7 @@ const initialState = {
   userInfo: {},
 };
 
-const baseURL = 'https://7433-103-41-172-114.in.ngrok.io';
+const baseURL = 'https://c588-103-41-172-114.in.ngrok.io';
 
 export const authUser = createAsyncThunk(
   'auth/authUser',
@@ -71,9 +71,14 @@ export const editProfile = createAsyncThunk(
       );
 
       if (editInfoContainer?.profilePic?._parts[0][1]?.uri) {
-        const editProfilePicResponse = await emistiriPhotoAPI.post(
+        const editProfilePicResponse = await emistiriAPI.post(
           'api/v1/customers/attach_picture',
           editInfoContainer?.profilePic,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          },
         );
         const editResponse = {
           userData: editProfileResponse,
