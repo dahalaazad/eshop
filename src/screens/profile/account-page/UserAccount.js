@@ -14,6 +14,8 @@ import ProfileLogoutModal from '../components/ProfileLogoutModal';
 import {ProfileLogoutCard} from '@app/screens/profile';
 import {useDispatch, useSelector} from 'react-redux';
 import {signOutUser} from '@app/redux/slices/auth/authSlice';
+import Spinner from 'react-native-loading-spinner-overlay';
+import {Colors} from '@app/constants';
 
 export default function UserAccount({navigation}) {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ export default function UserAccount({navigation}) {
   const {fullName, email, displayPicturePath} = useSelector(
     state => state?.auth?.userInfo,
   );
+  const loading = useSelector(state => state?.auth?.loading);
 
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
 
@@ -66,6 +69,13 @@ export default function UserAccount({navigation}) {
 
   return (
     <ScrollView style={Styles.mainContainer}>
+      <Spinner
+        visible={loading}
+        color={Colors.whiteColor}
+        overlayColor={Colors.loadingOverlayColor}
+        animation="fade"
+      />
+
       <LinearGradient
         start={{x: 0.5, y: 0.1}}
         // end={{x: 1, y: 0}}
