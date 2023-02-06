@@ -16,11 +16,13 @@ import ImageSelectModal from '../components/ImageSelectModal';
 import {useDispatch, useSelector} from 'react-redux';
 import {editProfile} from '@app/redux/slices/auth/authSlice';
 import {showToast} from '@app/utils/showToast';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 export default function EditProfile({navigation}) {
   const dispatch = useDispatch();
 
   const userInfo = useSelector(state => state?.auth?.userInfo);
+  const loading = useSelector(state => state?.auth?.loading);
 
   const [selectedImageResponse, setSelectedImageResponse] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -91,6 +93,13 @@ export default function EditProfile({navigation}) {
   };
   return (
     <ScrollView style={styles.container}>
+      <Spinner
+        visible={loading}
+        color={Colors.whiteColor}
+        overlayColor={Colors.loadingOverlayColor}
+        animation="fade"
+      />
+
       <ImageSelectModal
         modalState={isModalVisible}
         modalChange={setIsModalVisible}
