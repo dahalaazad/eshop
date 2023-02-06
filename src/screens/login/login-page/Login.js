@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
-import {useForm, Controller} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {InputField, PrimaryButton} from '@app/commons';
 import {Colors, InputRules} from '@app/constants';
@@ -51,8 +51,7 @@ export default function Login({navigation}) {
         }
       })
       .catch(rejectedValueOrSerializedError => {
-        const errorMessage = rejectedValueOrSerializedError?.response?.data;
-        showToast('error', 'Error', `${errorMessage}`);
+        return rejectedValueOrSerializedError;
       });
   };
 
