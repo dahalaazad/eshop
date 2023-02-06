@@ -14,12 +14,7 @@ import Images from '@app/constants/Images';
 import Feather from 'react-native-vector-icons/Feather';
 import ImageSelectModal from '../components/ImageSelectModal';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  editProfile,
-  setLoggedIn,
-  setToken,
-  setUserInfo,
-} from '@app/redux/slices/auth/authSlice';
+import {editProfile} from '@app/redux/slices/auth/authSlice';
 import {showToast} from '@app/utils/showToast';
 
 export default function EditProfile({navigation}) {
@@ -91,18 +86,7 @@ export default function EditProfile({navigation}) {
         }
       })
       .catch(rejectedValueOrSerializedError => {
-        const statusCode = rejectedValueOrSerializedError?.status;
-        if (statusCode === 401) {
-          dispatch(setLoggedIn(false));
-          dispatch(setUserInfo({}));
-          dispatch(setToken(null));
-          showToast(
-            'error',
-            'Warning',
-            'Session Timed Out. Please login again!',
-          );
-          navigation.navigate('AuthStack', {screen: 'LoginPage'});
-        }
+        return rejectedValueOrSerializedError;
       });
   };
   return (
