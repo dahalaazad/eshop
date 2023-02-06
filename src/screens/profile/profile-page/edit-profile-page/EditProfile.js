@@ -13,8 +13,17 @@ import {Colors, InputRules} from '@app/constants';
 import Images from '@app/constants/Images';
 import Feather from 'react-native-vector-icons/Feather';
 import ImageSelectModal from '../components/ImageSelectModal';
+import {useDispatch, useSelector} from 'react-redux';
+import {editProfile} from '@app/redux/slices/auth/authSlice';
+import {showToast} from '@app/utils/showToast';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 export default function EditProfile({navigation}) {
+  const dispatch = useDispatch();
+
+  const userInfo = useSelector(state => state?.auth?.userInfo);
+  const loading = useSelector(state => state?.auth?.loading);
+
   const [selectedImageResponse, setSelectedImageResponse] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -33,15 +42,64 @@ export default function EditProfile({navigation}) {
     formState: {errors},
   } = useForm({
     defaultValues: {
-      name: '',
-      phone: '',
-      address: '',
-      email: '',
+      name: userInfo?.fullName || '',
+      phoneNumber: userInfo?.phoneNumber || '',
+      address: userInfo?.address || '',
+      email: userInfo?.email || '',
     },
   });
 
+  const onEditProfilePress = editProfileData => {
+    const {name, phoneNumber, address, email} = editProfileData;
+    let form = new FormData();
+    form.append(
+      'display_picture',
+      Array.isArray(selectedImageResponse?.assets)
+        ? {
+            uri: selectedImageResponse?.assets[0]?.uri,
+            name: selectedImageResponse?.assets[0]?.fileName,
+            type: selectedImageResponse?.assets[0]?.type,
+          }
+        : null,
+    );
+
+    dispatch(
+      editProfile({
+        userDetails: {
+          customer: {
+            full_name: name,
+            phone_number: phoneNumber,
+            address: address,
+          },
+        },
+        profilePic: form,
+      }),
+    )
+      .unwrap()
+      .then(originalPromiseResult => {
+        if (
+          originalPromiseResult?.userData?.status === 200 &&
+          (form?._parts[0][1]?.uri
+            ? originalPromiseResult?.userProfilePic?.status === 200
+            : true)
+        ) {
+          showToast('success', 'Success', 'Profile Successfully Updated!');
+          navigation.navigate('MainStack', {screen: 'UserProfile'});
+        }
+      })
+      .catch(rejectedValueOrSerializedError => {
+        return rejectedValueOrSerializedError;
+      });
+  };
   return (
     <ScrollView style={styles.container}>
+      <Spinner
+        visible={loading}
+        color={Colors.whiteColor}
+        overlayColor={Colors.loadingOverlayColor}
+        animation="fade"
+      />
+
       <ImageSelectModal
         modalState={isModalVisible}
         modalChange={setIsModalVisible}
@@ -53,7 +111,9 @@ export default function EditProfile({navigation}) {
           source={
             Array.isArray(selectedImageResponse?.assets)
               ? {uri: selectedImageResponse?.assets[0]?.uri}
-              : Images.profileManImage
+              : userInfo?.displayPicturePath
+              ? {uri: userInfo?.displayPicturePath}
+              : Images.profilePlaceholderImage
           }
           style={styles.imageStyle}
           resizeMode="cover"
@@ -75,7 +135,7 @@ export default function EditProfile({navigation}) {
           <InputField
             control={control}
             errors={errors}
-            labelText="Your Name"
+            placeholderText="Your Name"
             inputName="name"
             rules={InputRules.fullName}
             outlineColor={Colors.inputFieldOutlineColor}
@@ -88,8 +148,9 @@ export default function EditProfile({navigation}) {
           <InputField
             control={control}
             errors={errors}
-            labelText="Your Phone No."
-            inputName="phone"
+            placeholderText="Your Phone No."
+            inputName="phoneNumber"
+            keyboardType="phone-pad"
             rules={InputRules.phone}
             outlineColor={Colors.inputFieldOutlineColor}
           />
@@ -101,7 +162,7 @@ export default function EditProfile({navigation}) {
           <InputField
             control={control}
             errors={errors}
-            labelText="Your Address"
+            placeholderText="Your Address"
             inputName="address"
             rules={InputRules.address}
             outlineColor={Colors.inputFieldOutlineColor}
@@ -114,10 +175,11 @@ export default function EditProfile({navigation}) {
           <InputField
             control={control}
             errors={errors}
-            labelText="Your email"
+            placeholderText="Your email"
             inputName="email"
             rules={InputRules.email}
             outlineColor={Colors.inputFieldOutlineColor}
+            disabled
           />
         </View>
 
@@ -126,7 +188,7 @@ export default function EditProfile({navigation}) {
             buttonLabel="Update Profile"
             buttonHeight={50}
             buttonRadius={10}
-            onPressHandler={() => alert('Profile Updated')}
+            onPressHandler={handleSubmit(onEditProfilePress)}
           />
         </View>
       </View>

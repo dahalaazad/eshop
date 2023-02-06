@@ -12,7 +12,7 @@ export const Styles = StyleSheet.create({
     borderRadius: 13,
     shadowColor: Colors.checkboxColor,
     elevation: 10,
-    marginTop: 40,
+    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',

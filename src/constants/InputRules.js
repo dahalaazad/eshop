@@ -41,10 +41,18 @@ export const InputRules = {
       value: true,
       message: 'Please enter your phone number',
     },
-    pattern: {
-      value: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/,
-      message: 'Enter a valid phone number',
+    minLength: {
+      value: 10,
+      message: '10 digit phone number required',
     },
+    maxLength: {
+      value: 10,
+      message: '10 digit phone number required',
+    },
+    // pattern: {
+    //   value: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/,
+    //   message: 'Enter a valid phone number',
+    // },
   },
   address: {
     required: {

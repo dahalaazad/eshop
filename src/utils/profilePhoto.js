@@ -14,13 +14,13 @@ export const changeProfilePhoto = setSelectedImageResponse => {
   );
 };
 
-export const requestCameraPermission = async () => {
+export const requestCameraPermission = async setSelectedImageResponse => {
   try {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA,
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      captureNewPhoto();
+      captureNewPhoto(setSelectedImageResponse);
     }
   } catch (err) {
     console.warn(err);

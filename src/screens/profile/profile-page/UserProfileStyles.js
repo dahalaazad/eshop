@@ -11,6 +11,23 @@ export const Styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative',
   },
+  imageContainer: {
+    height: 122,
+    width: 122,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 80,
+    // alignSelf: 'center',
+    // backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+  },
+  imageStyle: {
+    width: '100%',
+    height: '100%',
+  },
   buttonContainer: {marginTop: 25},
   botContainer: {
     marginTop: 40,
