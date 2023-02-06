@@ -57,6 +57,8 @@ export const editProfile = createAsyncThunk(
         editInfoContainer?.userDetails,
       );
 
+      let editResponse = {userData: editProfileResponse};
+
       if (editInfoContainer?.profilePic?._parts[0][1]?.uri) {
         const editProfilePicResponse = await emistiriAPI.post(
           'api/v1/customers/attach_picture',
@@ -67,18 +69,10 @@ export const editProfile = createAsyncThunk(
             },
           },
         );
-        const editResponse = {
-          userData: editProfileResponse,
-          userProfilePic: editProfilePicResponse,
-        };
-        return editResponse;
-      } else {
-        const editResponse = {
-          userData: editProfileResponse,
-        };
-
-        return editResponse;
+        editResponse.userProfilePic = editProfilePicResponse;
       }
+
+      return editResponse;
     } catch (error) {
       return rejectWithValue(error);
     }
