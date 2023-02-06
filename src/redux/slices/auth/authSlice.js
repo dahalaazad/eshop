@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {showToast} from '@app/utils/showToast';
 import mapKeys from 'lodash.mapkeys';
 import toCamelCase from 'lodash.camelcase';
 import {emistiriAPI} from '@app/utils/api';
@@ -24,15 +23,10 @@ export const authUser = createAsyncThunk(
         `${userInfoContainer?.loginURL}`,
         userInfoContainer?.userDetails,
       );
-      dispatch(setToken(authResponse?.headers?.authorization || null));
       return authResponse;
     } catch (error) {
       // return custom error message from backend if present
-      if (error?.response && error?.response?.data) {
-        return rejectWithValue(error);
-      } else {
-        return rejectWithValue(error.response);
-      }
+      return rejectWithValue(error);
     }
   },
 );
@@ -45,14 +39,7 @@ export const signOutUser = createAsyncThunk(
       dispatch(setLoggedIn(false));
       return signOutResponse;
     } catch (error) {
-      // return custom error message from backend if present
-      if (error?.response && error?.response?.data?.message) {
-        showToast('error', 'Error', `${error?.response?.data?.message}`);
-        return rejectWithValue(error);
-      } else {
-        showToast('error', 'Error', 'Oops! Something went wrong.');
-        return rejectWithValue(error.response);
-      }
+      return rejectWithValue(error);
     }
   },
 );
@@ -93,14 +80,7 @@ export const editProfile = createAsyncThunk(
         return editResponse;
       }
     } catch (error) {
-      // return custom error message from backend if present
-      if (error?.response && error?.response?.data?.message) {
-        showToast('error', 'Error', `${error?.response?.data?.message}`);
-        return rejectWithValue(error);
-      } else {
-        showToast('error', 'Error', 'Oops! Something went wrong.');
-        return rejectWithValue(error.response);
-      }
+      return rejectWithValue(error);
     }
   },
 );
@@ -137,6 +117,7 @@ export const authSlice = createSlice({
           payload?.data?.status?.data,
           (value, key) => toCamelCase(key) || {},
         );
+        state.userToken = payload?.headers?.authorization;
       })
       .addCase(authUser.rejected, (state, {payload}) => {
         state.loading = false;
@@ -167,6 +148,7 @@ export const authSlice = createSlice({
           payload?.userData?.data,
           (value, key) => toCamelCase(key) || {},
         );
+
         state.userInfo.displayPicturePath = payload?.userProfilePic
           ? payload?.userProfilePic?.data?.display_picture_path.replace(
               'http://localhost:3000',
