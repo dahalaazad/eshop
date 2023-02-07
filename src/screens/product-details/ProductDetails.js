@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import React, {useLayoutEffect} from 'react';
 import {
   BackButton,
@@ -12,11 +12,9 @@ import FA from 'react-native-vector-icons/FontAwesome';
 import {DashAdCarouselPagination} from '@app/screens';
 import {useSelector} from 'react-redux';
 import {CommentIcon, BrakePadImage, EngineFilterImage} from '@app/assets/svg';
-import getImage from '@app/utils/getImage';
 
 export default function ProductDetails({navigation}) {
   const currentProduct = useSelector(state => state.product.currentProduct);
-  const productImage = getImage(currentProduct?.imageId);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -26,13 +24,15 @@ export default function ProductDetails({navigation}) {
     });
   }, [navigation]);
 
-  const renderCarouselItem = ({item}) => item;
+  const renderCarouselItem = ({item}) => (
+    <Image source={{uri: item}} style={styles.productImageStyle} />
+  );
 
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <DashAdCarouselPagination
-          dataArr={[productImage, <EngineFilterImage />, <BrakePadImage />]}
+          dataArr={[currentProduct?.imagePath, currentProduct?.imagePath]}
           renderCarouselItem={renderCarouselItem}
         />
       </View>
@@ -40,9 +40,7 @@ export default function ProductDetails({navigation}) {
       <View style={styles.bottomContainer}>
         <View style={{alignItems: 'stretch', padding: 20}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.topLine}>
-              {currentProduct?.productCardCategory || ''}
-            </Text>
+            <Text style={styles.topLine}>{currentProduct?.name || ''}</Text>
 
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -58,19 +56,17 @@ export default function ProductDetails({navigation}) {
           </View>
 
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.secondLine}>
-              {currentProduct?.productCardTitle || ''}
-            </Text>
+            <Text style={styles.secondLine}>{currentProduct?.name || ''}</Text>
 
             <Text style={styles.secondLine}>{`Rs. ${
-              currentProduct?.productCardPrice || ''
+              currentProduct?.price || ''
             }`}</Text>
           </View>
         </View>
 
         <View style={{padding: 20}}>
           <Text style={styles.topLine}>
-            {currentProduct?.productCardSubTitle || ''}
+            {currentProduct?.description || ''}
           </Text>
         </View>
 
@@ -124,7 +120,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // marginTop: 70,
+    paddingVertical: 10,
   },
   bottomContainer: {
     flex: 1,
@@ -177,5 +173,9 @@ const styles = StyleSheet.create({
   similarItemTextStyle: {
     flexDirection: 'row',
     paddingBottom: 10,
+  },
+  productImageStyle: {
+    height: '100%',
+    width: '100%',
   },
 });

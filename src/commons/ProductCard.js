@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {Colors, TextStyle} from '@app/constants';
 
@@ -9,26 +9,38 @@ export default function ProductCard({
 }) {
   return (
     <TouchableOpacity
-      style={Styles.mainContainer}
+      style={styles.mainContainer}
       activeOpacity={0.6}
       onPress={() => onPressHandler(product)}>
-      <View style={Styles.imageContainer}>{product.productCardImage}</View>
+      <View style={styles.imageContainer}>
+        <Image
+          source={
+            product?.imagePath
+              ? {
+                  uri: product?.imagePath,
+                }
+              : null
+          }
+          style={styles.productImage}
+        />
+      </View>
 
-      <View style={Styles.textContainer}>
-        <Text style={{...Styles.titleText, fontWeight: titleTextFontWeight}}>
-          {product.productCardTitle}
+      <View style={styles.textContainer}>
+        <Text style={{...styles.titleText, fontWeight: titleTextFontWeight}}>
+          {product?.name}
         </Text>
 
-        <Text style={Styles.subTitleText}>{product.productCardSubTitle}</Text>
+        <Text style={styles.subTitleText} numberOfLines={1}>
+          {product?.description}
+        </Text>
 
-        <Text
-          style={Styles.priceText}>{`Rs. ${product.productCardPrice}`}</Text>
+        <Text style={styles.priceText}>{`Rs. ${product?.price}`}</Text>
       </View>
     </TouchableOpacity>
   );
 }
 
-const Styles = StyleSheet.create({
+const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: Colors.mainBackgroundColor,
     width: '45%',
@@ -37,12 +49,13 @@ const Styles = StyleSheet.create({
     marginBottom: 30,
     shadowColor: Colors.checkboxColor,
     elevation: 8,
+    // overflow: 'hidden',
   },
   imageContainer: {
     height: 150,
-    paddingTop: 15,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingVertical: 5,
   },
   textContainer: {
     paddingTop: 10,
@@ -58,5 +71,10 @@ const Styles = StyleSheet.create({
     color: Colors.productCardPriceColor,
     fontWeight: '400',
     fontSize: 14,
+  },
+  productImage: {
+    height: '100%',
+    width: '100%',
+    borderRadius: 28,
   },
 });
