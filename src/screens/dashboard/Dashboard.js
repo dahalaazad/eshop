@@ -27,6 +27,15 @@ export default function Dashboard({navigation}) {
   );
 
   useEffect(() => {
+    dispatch(getProductList())
+      .unwrap()
+      .then(originalPromiseResult => originalPromiseResult)
+      .catch(rejectedValueOrSerializedError => {
+        console.log(rejectedValueOrSerializedError);
+      });
+  }, [dispatch]);
+
+  useEffect(() => {
     const backAction = () => {
       BackHandler.exitApp();
     };
@@ -36,15 +45,6 @@ export default function Dashboard({navigation}) {
     );
     return () => backHandler.remove();
   }, []);
-
-  useEffect(() => {
-    dispatch(getProductList())
-      .unwrap()
-      .then(originalPromiseResult => originalPromiseResult)
-      .catch(rejectedValueOrSerializedError => {
-        console.log(rejectedValueOrSerializedError);
-      });
-  }, [dispatch]);
 
   const onProductCardPress = item => {
     dispatch(setCurrentProduct(item));
