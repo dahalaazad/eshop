@@ -45,9 +45,11 @@ export const productSlice = createSlice({
       })
       .addCase(getProductList.fulfilled, (state, {payload}) => {
         state.productListLoading = false;
-        const tempProductList = payload.data.map(item =>
-          mapKeys(item, (value, key) => toCamelCase(key) || {}),
-        );
+        const tempProductList = Array.isArray(payload.data)
+          ? payload.data.map(item =>
+              mapKeys(item, (value, key) => toCamelCase(key) || {}),
+            )
+          : [];
 
         state.productList = tempProductList.map(item =>
           Object.assign({}, item, {
