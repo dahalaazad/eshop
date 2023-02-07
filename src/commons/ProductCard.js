@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {Colors, TextStyle} from '@app/constants';
+import {HondaGearBoxImage1} from '@app/assets/svg';
 
 export default function ProductCard({
   product,
@@ -13,16 +14,16 @@ export default function ProductCard({
       activeOpacity={0.6}
       onPress={() => onPressHandler(product)}>
       <View style={styles.imageContainer}>
-        <Image
-          source={
-            product?.imagePath
-              ? {
-                  uri: product?.imagePath,
-                }
-              : null
-          }
-          style={styles.productImage}
-        />
+        {product?.imagePath !== '' ? (
+          <Image
+            source={{
+              uri: product?.imagePath,
+            }}
+            style={styles.productImage}
+          />
+        ) : (
+          <HondaGearBoxImage1 />
+        )}
       </View>
 
       <View style={styles.textContainer}>
