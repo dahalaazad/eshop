@@ -14,7 +14,7 @@ export default function ProductCard({
       activeOpacity={0.6}
       onPress={() => onPressHandler(product)}>
       <View style={styles.imageContainer}>
-        {product?.imagePath !== '' ? (
+        {product?.imagePath ? (
           <Image
             source={{
               uri: product?.imagePath,
