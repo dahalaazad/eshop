@@ -30,14 +30,16 @@ export default function ProductCard({
         <Text
           style={{...styles.titleText, fontWeight: titleTextFontWeight}}
           numberOfLines={1}>
-          {product?.name}
+          {product?.name || 'Product Name'}
         </Text>
 
         <Text style={styles.subTitleText} numberOfLines={1}>
-          {product?.description}
+          {product?.description || 'Product Description'}
         </Text>
 
-        <Text style={styles.priceText}>{`Rs. ${product?.price}`}</Text>
+        <Text style={styles.priceText}>
+          {`Rs. ${product?.price}` || 'Price'}
+        </Text>
       </View>
     </TouchableOpacity>
   );
