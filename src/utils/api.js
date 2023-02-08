@@ -35,7 +35,13 @@ export function setupInterceptor(store) {
           store.dispatch(setLoggedIn(false));
           store.dispatch(setUserInfo({}));
           store.dispatch(setToken(null));
-          showToast('error', 'Warning', error?.response?.data);
+          showToast(
+            'error',
+            'Warning',
+            error?.response?.data?.data
+              ? 'Session expired'
+              : error?.response?.data,
+          );
           break;
         case 404:
           showToast('error', 'Warning', 'Please connect to a network');
