@@ -27,7 +27,9 @@ export default function ProductCard({
       </View>
 
       <View style={styles.textContainer}>
-        <Text style={{...styles.titleText, fontWeight: titleTextFontWeight}}>
+        <Text
+          style={{...styles.titleText, fontWeight: titleTextFontWeight}}
+          numberOfLines={1}>
           {product?.name}
         </Text>
 
