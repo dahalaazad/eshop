@@ -38,7 +38,7 @@ export default function ProductCard({
         </Text>
 
         <Text style={styles.priceText}>
-          {`Rs. ${product?.price}` || 'Price'}
+          {`Rs. ${product?.price || 'Price'}`}
         </Text>
       </View>
     </TouchableOpacity>
