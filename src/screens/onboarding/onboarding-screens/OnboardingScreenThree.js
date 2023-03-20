@@ -5,9 +5,10 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import React, {useState} from 'react';
-import {Colors, TextStyle} from '@app/constants';
+import {Colors, Images, TextStyle} from '@app/constants';
 import AD from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -23,38 +24,32 @@ export default function OnboardingScreenTwo({navigation}) {
     navigation.navigate('SignupPage');
   };
 
-  const moveToNextScreen = () => {};
-
-  const moveToBackScreen = () => {};
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      style={styles.container}
+      source={Images.OnboardThreeBackground}
+      imageStyle={{resizeMode: 'stretch', width: '101%'}}>
       <View style={styles.topHalfContainer}>
         <View style={styles.skipButtonLayout}>
           <View>
             <TouchableOpacity
               onPress={() => navigation.navigate('OnboardingScreenTwo')}
-              style={{zIndex: 1}}>
+              // style={{zIndex: 1}}
+            >
               <SimpleLineIcons
                 name="arrow-left-circle"
                 color={Colors.whiteColor}
                 size={45}
               />
             </TouchableOpacity>
-            <TouchableOpacity disabled={true}>
-              <SimpleLineIcons
-                name="arrow-left-circle"
-                color={Colors.backButtonBlueColor}
-                size={45}
-              />
-            </TouchableOpacity>
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate('SignupPage')}>
+          <TouchableOpacity onPress={navigateToSignupPage}>
             <Text style={styles.skipButtonText}>Skip</Text>
           </TouchableOpacity>
         </View>
 
-        <View>{onboardingValues[2].svgIcon}</View>
+        {/* <View>{onboardingValues[1].svgIcon}</View> */}
       </View>
 
       <View style={[styles.bottomHalfContainer, styles.centerStyle]}>
@@ -78,12 +73,12 @@ export default function OnboardingScreenTwo({navigation}) {
           style={{borderRadius: 50}}>
           <TouchableOpacity
             style={styles.nextButtonStyle}
-            onPress={moveToNextScreen}>
+            onPress={navigateToSignupPage}>
             <AD name="right" size={20} color={Colors.whiteColor} />
           </TouchableOpacity>
         </LinearGradient>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -97,7 +92,7 @@ const styles = StyleSheet.create({
   },
   topHalfContainer: {
     flex: 1,
-    backgroundColor: Colors.backButtonBlueColor,
+    // backgroundColor: Colors.backButtonBlueColor,
   },
   skipButtonLayout: {
     flexDirection: 'row',
@@ -132,7 +127,8 @@ const styles = StyleSheet.create({
   },
   titleText: {
     ...TextStyle.poppinsExtraLargerNormal,
-    padding: 10,
+    paddingHorizontal: 10,
+    // paddingTop: 5,
   },
   descriptionText: {
     ...TextStyle.poppinsLargeLight,
