@@ -6,13 +6,27 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import React, {useLayoutEffect} from 'react';
+import React, {useState, useLayoutEffect} from 'react';
+import {useForm} from 'react-hook-form';
 import {BackButton, InputField, PrimaryButton} from '@app/commons';
-import {Colors} from '@app/constants';
+import {Colors, InputRules} from '@app/constants';
 import Images from '@app/constants/Images';
 import Feather from 'react-native-vector-icons/Feather';
+import ImageSelectModal from '../components/ImageSelectModal';
+import {useDispatch, useSelector} from 'react-redux';
+import {editProfile} from '@app/redux/slices/auth/authSlice';
+import {showToast} from '@app/utils/showToast';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 export default function EditProfile({navigation}) {
+  const dispatch = useDispatch();
+
+  const userInfo = useSelector(state => state?.auth?.userInfo);
+  const loading = useSelector(state => state?.auth?.loading);
+
+  const [selectedImageResponse, setSelectedImageResponse] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: (...props) => (
@@ -20,12 +34,87 @@ export default function EditProfile({navigation}) {
       ),
     });
   }, [navigation]);
-  
+
+  const {
+    control,
+    handleSubmit,
+    setError,
+    formState: {errors},
+  } = useForm({
+    defaultValues: {
+      name: userInfo?.fullName || '',
+      phoneNumber: userInfo?.phoneNumber || '',
+      address: userInfo?.address || '',
+      email: userInfo?.email || '',
+    },
+  });
+
+  const onEditProfilePress = editProfileData => {
+    const {name, phoneNumber, address, email} = editProfileData;
+    let form = new FormData();
+    form.append(
+      'display_picture',
+      Array.isArray(selectedImageResponse?.assets)
+        ? {
+            uri: selectedImageResponse?.assets[0]?.uri,
+            name: selectedImageResponse?.assets[0]?.fileName,
+            type: selectedImageResponse?.assets[0]?.type,
+          }
+        : null,
+    );
+
+    dispatch(
+      editProfile({
+        userDetails: {
+          customer: {
+            full_name: name,
+            phone_number: phoneNumber,
+            address: address,
+          },
+        },
+        profilePic: form,
+      }),
+    )
+      .unwrap()
+      .then(originalPromiseResult => {
+        if (
+          originalPromiseResult?.userData?.status === 200 &&
+          (form?._parts[0][1]?.uri
+            ? originalPromiseResult?.userProfilePic?.status === 200
+            : true)
+        ) {
+          showToast('success', 'Success', 'Profile Successfully Updated!');
+          navigation.navigate('MainStack', {screen: 'UserProfile'});
+        }
+      })
+      .catch(rejectedValueOrSerializedError => {
+        return rejectedValueOrSerializedError;
+      });
+  };
   return (
     <ScrollView style={styles.container}>
+      <Spinner
+        visible={loading}
+        color={Colors.whiteColor}
+        overlayColor={Colors.loadingOverlayColor}
+        animation="fade"
+      />
+
+      <ImageSelectModal
+        modalState={isModalVisible}
+        modalChange={setIsModalVisible}
+        setSelectedImageResponse={setSelectedImageResponse}
+      />
+
       <View style={styles.imageContainer}>
         <Image
-          source={Images.profileManImage}
+          source={
+            Array.isArray(selectedImageResponse?.assets)
+              ? {uri: selectedImageResponse?.assets[0]?.uri}
+              : userInfo?.displayPicturePath
+              ? {uri: userInfo?.displayPicturePath}
+              : Images.profilePlaceholderImage
+          }
           style={styles.imageStyle}
           resizeMode="cover"
         />
@@ -34,7 +123,7 @@ export default function EditProfile({navigation}) {
       <View style={styles.changePhotoTextContainer}>
         <Feather name="edit-3" size={15} color={Colors.checkoutPriceText} />
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setIsModalVisible(!isModalVisible)}>
           <Text style={styles.changePhotoTextStyle}>Change Photo</Text>
         </TouchableOpacity>
       </View>
@@ -44,9 +133,11 @@ export default function EditProfile({navigation}) {
           <Text style={styles.mainTextStyle}>Full Name</Text>
 
           <InputField
-            labelText="Your Name"
-            isPassword={false}
-            passwordIcon={false}
+            control={control}
+            errors={errors}
+            placeholderText="Your Name"
+            inputName="name"
+            rules={InputRules.fullName}
             outlineColor={Colors.inputFieldOutlineColor}
           />
         </View>
@@ -55,9 +146,12 @@ export default function EditProfile({navigation}) {
           <Text style={styles.mainTextStyle}>Phone no.</Text>
 
           <InputField
-            labelText="Your Phone No."
-            isPassword={false}
-            passwordIcon={false}
+            control={control}
+            errors={errors}
+            placeholderText="Your Phone No."
+            inputName="phoneNumber"
+            keyboardType="phone-pad"
+            rules={InputRules.phone}
             outlineColor={Colors.inputFieldOutlineColor}
           />
         </View>
@@ -66,9 +160,11 @@ export default function EditProfile({navigation}) {
           <Text style={styles.mainTextStyle}>Address</Text>
 
           <InputField
-            labelText="Your Address"
-            isPassword={false}
-            passwordIcon={false}
+            control={control}
+            errors={errors}
+            placeholderText="Your Address"
+            inputName="address"
+            rules={InputRules.address}
             outlineColor={Colors.inputFieldOutlineColor}
           />
         </View>
@@ -77,10 +173,13 @@ export default function EditProfile({navigation}) {
           <Text style={styles.mainTextStyle}>Email Address</Text>
 
           <InputField
-            labelText="Your email"
-            isPassword={false}
-            passwordIcon={false}
+            control={control}
+            errors={errors}
+            placeholderText="Your email"
+            inputName="email"
+            rules={InputRules.email}
             outlineColor={Colors.inputFieldOutlineColor}
+            disabled
           />
         </View>
 
@@ -89,7 +188,7 @@ export default function EditProfile({navigation}) {
             buttonLabel="Update Profile"
             buttonHeight={50}
             buttonRadius={10}
-            onPressHandler={() => alert('Profile Updated')}
+            onPressHandler={handleSubmit(onEditProfilePress)}
           />
         </View>
       </View>
@@ -106,10 +205,9 @@ const styles = StyleSheet.create({
     width: 122,
     overflow: 'hidden',
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: 'none',
     borderRadius: 80,
     alignSelf: 'center',
-    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 15,
@@ -149,4 +247,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 70,
   },
 });
-ScrollView;

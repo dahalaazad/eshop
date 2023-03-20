@@ -12,12 +12,20 @@ import {AccountRewardPointCard, UserAccountMenuItemGroup} from './components';
 import UserAccountMenuItem from './components/UserAccountMenuItem';
 import ProfileLogoutModal from '../components/ProfileLogoutModal';
 import {ProfileLogoutCard} from '@app/screens/profile';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import {useDispatch, useSelector} from 'react-redux';
+import {signOutUser} from '@app/redux/slices/auth/authSlice';
+import Spinner from 'react-native-loading-spinner-overlay';
+import {Colors} from '@app/constants';
 
 export default function UserAccount({navigation}) {
+  const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector(state => state?.auth?.isLoggedIn);
+  const {fullName, email, displayPicturePath} = useSelector(
+    state => state?.auth?.userInfo,
+  );
+  const loading = useSelector(state => state?.auth?.loading);
+
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
 
   const toggleLogoutModal = () => {
@@ -28,11 +36,11 @@ export default function UserAccount({navigation}) {
     setLogoutModalVisible(false);
   };
 
-  handleOnPressInformation = () => {
+  const handleOnPressInformation = () => {
     navigation.navigate('UserProfile');
   };
 
-  handleOnPressSettings = () => {
+  const handleOnPressSettings = () => {
     navigation.navigate('UserSettings');
   };
 
@@ -47,8 +55,27 @@ export default function UserAccount({navigation}) {
     }
   };
 
+  const logout = () => {
+    dispatch(signOutUser())
+      .unwrap()
+      .then(originalPromiseResult => {
+        originalPromiseResult?.data?.status === 200 &&
+          navigation.navigate('AuthStack', {screen: 'LoginPage'});
+      })
+      .catch(rejectedValueOrSerializedError => {
+        console.log(rejectedValueOrSerializedError);
+      });
+  };
+
   return (
     <ScrollView style={Styles.mainContainer}>
+      <Spinner
+        visible={loading}
+        color={Colors.whiteColor}
+        overlayColor={Colors.loadingOverlayColor}
+        animation="fade"
+      />
+
       <LinearGradient
         start={{x: 0.5, y: 0.1}}
         // end={{x: 1, y: 0}}
@@ -56,7 +83,11 @@ export default function UserAccount({navigation}) {
         style={Styles.topContainer}>
         <View style={Styles.imageContainer}>
           <Image
-            source={Images.profileManImage}
+            source={
+              displayPicturePath
+                ? {uri: displayPicturePath}
+                : Images.profilePlaceholderImage
+            }
             style={Styles.imageStyle}
             resizeMode="cover"
           />
@@ -67,11 +98,11 @@ export default function UserAccount({navigation}) {
         </View>
 
         <View style={Styles.nameTextContainer}>
-          <Text style={Styles.nameText}>Jenny Wilson</Text>
+          <Text style={Styles.nameText}>{fullName} </Text>
         </View>
 
         <View style={Styles.emailTextContainer}>
-          <Text style={Styles.emailText}>example@mail.com</Text>
+          <Text style={Styles.emailText}>{email} </Text>
         </View>
 
         <View>
@@ -105,7 +136,10 @@ export default function UserAccount({navigation}) {
         modalVisible={logoutModalVisible}
         toggleLogoutModal={toggleLogoutModal}
         closeLogoutModal={closeLogoutModal}>
-        <ProfileLogoutCard closeLogoutModal={closeLogoutModal} />
+        <ProfileLogoutCard
+          closeLogoutModal={closeLogoutModal}
+          logout={logout}
+        />
       </ProfileLogoutModal>
     </ScrollView>
   );

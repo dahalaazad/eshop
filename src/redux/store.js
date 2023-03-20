@@ -3,10 +3,12 @@ import {authReducer, productReducer} from './slices';
 import {persistReducer, persistStore} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const createDebugger = require('redux-flipper').default;
+
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['firstLoad', 'isLoggedIn'],
+  whitelist: ['firstLoad', 'isLoggedIn', 'userToken', 'userInfo'],
 };
 
 const rootReducer = combineReducers({
@@ -19,7 +21,7 @@ export const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }),
+    }).concat(createDebugger()),
 });
 
 export const persistor = persistStore(store);

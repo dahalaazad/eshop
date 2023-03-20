@@ -10,11 +10,14 @@ export default function InputField({
   rules,
   inputName,
   labelText,
-  isPassword,
-  passwordIcon,
+  keyboardType = 'default',
+  isPassword = false,
+  passwordIcon = false,
   borderWidth,
   borderColor,
   outlineColor = 'transparent',
+  placeholderText,
+  ...props
 }) {
   const [hidePassword, setHidePassword] = useState(isPassword);
   const [eyeIcon, setEyeIcon] = useState(passwordIcon);
@@ -29,9 +32,11 @@ export default function InputField({
           <TextInput
             theme={{roundness: 12}}
             mode="outlined"
+            placeholder={placeholderText}
             label={labelText}
             secureTextEntry={hidePassword}
             outlineColor={outlineColor}
+            keyboardType={keyboardType}
             activeOutlineColor={Colors.textLinkColor}
             onBlur={onBlur}
             onChangeText={onChange}
@@ -51,6 +56,7 @@ export default function InputField({
               )
             }
             style={{backgroundColor: Colors.whiteColor}}
+            {...props}
           />
         )}
       />

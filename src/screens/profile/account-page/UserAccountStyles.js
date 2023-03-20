@@ -30,7 +30,6 @@ export const Styles = StyleSheet.create({
     borderColor: 'white',
     borderRadius: 80,
     // alignSelf: 'center',
-    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',

@@ -3,7 +3,10 @@ import {View, StyleSheet} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel-v4';
 import {Colors} from '@app/constants';
 
-export default function DashAdCarouselPagination({dataArr, renderCarouselItem}) {
+export default function DashAdCarouselPagination({
+  dataArr,
+  renderCarouselItem,
+}) {
   const [adCarouselIndex, setAdCarouselIndex] = useState(0);
   const isCarousel = useRef(null);
 

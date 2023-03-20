@@ -1,7 +1,7 @@
-import React, {useRef, useState} from 'react';
-import {View, ScrollView, FlatList, Animated} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {View, ScrollView, FlatList, Animated, BackHandler} from 'react-native';
 import {FilterButton, ProductCard, SearchBar} from '@app/commons';
-import {Colors, ProductCardData} from '@app/constants';
+import {Colors} from '@app/constants';
 import {Styles} from '@app/screens/dashboard/DashboardStyles';
 import {
   DashProductCategory,
@@ -9,28 +9,45 @@ import {
   DashAdCarouselPagination,
   DashAdCarousel,
 } from '@app/screens';
-import {useDispatch} from 'react-redux';
-import {setCurrentProduct} from '@app/redux/slices/displayProducts/productSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  getProductList,
+  setCurrentProduct,
+} from '@app/redux/slices/displayProducts/productSlice';
 import {productCategoryDataItems} from '@app/constants/productCategoryData';
 import {adData} from '@app/constants';
 
 export default function Dashboard({navigation}) {
   const dispatch = useDispatch();
 
+  const productList = useSelector(state => state?.product?.productList);
+
   const [productCategoryData, setProductCategoryData] = useState(
     productCategoryDataItems,
   );
 
-  const onProductCardPress = item => {
-    const currentObj = {
-      id: item.id,
-      imageId: item.imageId,
-      productCardCategory: item.productCardCategory,
-      productCardTitle: item.productCardTitle,
-      productCardSubTitle: item.productCardSubTitle,
-      productCardPrice: item.productCardPrice,
+  useEffect(() => {
+    dispatch(getProductList())
+      .unwrap()
+      .then(originalPromiseResult => originalPromiseResult)
+      .catch(rejectedValueOrSerializedError => {
+        console.log(rejectedValueOrSerializedError);
+      });
+  }, [dispatch]);
+
+  useEffect(() => {
+    const backAction = () => {
+      BackHandler.exitApp();
     };
-    dispatch(setCurrentProduct(currentObj));
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+    return () => backHandler.remove();
+  }, []);
+
+  const onProductCardPress = item => {
+    dispatch(setCurrentProduct(item));
     navigation.navigate('ProductDetails');
   };
 
@@ -111,17 +128,16 @@ export default function Dashboard({navigation}) {
         </View>
 
         <View style={Styles.productCardContainer}>
-          {Array.isArray(productCardData) &&
-            productCardData.length &&
-            productCardData.map(item => (
-              <ProductCard
-                key={item.id}
-                product={item}
-                productCardImage={item.productCardImage}
-                onPressHandler={onProductCardPress}
-                titleTextFontWeight="600"
-              />
-            ))}
+          {Array.isArray(productList) && productList.length
+            ? productList.map(item => (
+                <ProductCard
+                  key={item.id}
+                  product={item}
+                  onPressHandler={onProductCardPress}
+                  titleTextFontWeight="600"
+                />
+              ))
+            : null}
         </View>
       </ScrollView>
     </View>
